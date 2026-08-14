@@ -16,8 +16,18 @@ page.
 ## 1. Logo & wordmark
 
 MEDKONG is **always uppercase**. `MED` is set in primary teal, `KONG` in ink.
-The mark to its left is a placeholder until the final logo arrives: dashed
-border, mono "MK", never treated as a finished logo.
+The icon mark sits to its left at the wordmark's cap height, and the two always
+travel together — the mark is never used on its own.
+
+The mark is inline SVG, not an image file:
+[`components/shared/MedkongMark.tsx`](../components/shared/MedkongMark.tsx).
+It takes a `height` (width follows the 259.07 × 281.11 artwork) and a `tone`:
+
+| `tone` | Linework | Chevron & dot | Use |
+| --- | --- | --- | --- |
+| `light` (default) | `#1C1B1A` | `#005749` | White and light grounds |
+| `dark` | `#FFFFFF` | `#5FBFA6` | Ink `#0E1512` grounds |
+| `onTeal` | `#FFFFFF` | `#FFFFFF` | Primary teal — single-colour, never teal-on-teal |
 
 | Context | Treatment |
 | --- | --- |

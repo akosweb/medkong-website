@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { MedkongMark } from '@/components/shared/MedkongMark';
 import { sx } from '@/lib/css';
 import { useGuide } from './state';
 
@@ -15,7 +16,7 @@ export function MockUiSection() {
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 18px 48px -22px rgba(14,21,18,.2);overflow:hidden")}>
     <div style={sx("display:flex;align-items:center;gap:14px;padding:12px 16px;background:#F7F9F7;border-bottom:1px solid #E6EAE5")}>
     <span style={sx("display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:13.5px")}>
-    <span style={sx("width:20px;height:20px;border-radius:5px;background:#0E1512;color:#fff;display:grid;place-items:center;font:600 8px/1 'IBM Plex Mono',monospace")}>MK</span>
+    <MedkongMark height={20} />
     <span><span style={sx("color:#0A5A4B")}>MED</span><span style={sx("color:#0E1512")}>KONG</span></span>
     </span>
     <span style={sx("width:1px;height:15px;background:#D6DBD6")}></span>
