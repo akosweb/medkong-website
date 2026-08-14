@@ -124,18 +124,24 @@ function startSkeleton(el: HTMLElement): { reveal: () => void; finish: () => voi
 export function usePageMotion(rootSelector: string) {
   useIsomorphicLayoutEffect(() => {
     const root = document.querySelector<HTMLElement>(rootSelector);
-    if (!root) return;
+    if (!root || prefersReducedMotion()) return;
 
-    // Releases the pre-hydration hold in globals.css. Set it on every exit path
-    // — if the hold is never lifted the content stays invisible.
-    const release = () => root.classList.add('mk-motion-ready');
+    /**
+     * Anything on screen when this runs is left completely alone — no hiding,
+     * no animation.
+     *
+     * Entrance motion must never gate the first paint: the hero is the LCP
+     * element, and holding it until React hydrates put ~460KB of JS in front of
+     * it. Content below the fold can be hidden here instead, because nobody can
+     * see it happen, which gets the reveal without costing anything on load.
+     */
+    const viewportHeight = window.innerHeight;
+    const onScreen = (el: Element) => {
+      const rect = el.getBoundingClientRect();
+      return rect.top < viewportHeight && rect.bottom > 0;
+    };
 
-    if (prefersReducedMotion()) {
-      release();
-      return;
-    }
-
-    const inScope = (el: Element) => !el.closest(MOTION_EXCLUDE);
+    const inScope = (el: Element) => !el.closest(MOTION_EXCLUDE) && !onScreen(el);
     const headlines = Array.from(root.querySelectorAll<HTMLElement>(HEADLINE_SELECTOR)).filter(
       (el) => inScope(el) && el.textContent?.trim()
     );
@@ -147,9 +153,6 @@ export function usePageMotion(rootSelector: string) {
     for (const el of headlines) el.classList.add('mk-reveal', 'mk-skel-host');
     for (const el of fades) el.classList.add('mk-reveal');
 
-    // Every target now carries .mk-reveal, so handing over from the CSS hold
-    // to the classes is invisible — both states are "hidden".
-    release();
 
     const timers: ReturnType<typeof setTimeout>[] = [];
     const pending: Array<{ finish: () => void }> = [];
@@ -194,7 +197,6 @@ export function usePageMotion(rootSelector: string) {
       for (const el of [...headlines, ...fades]) {
         el.classList.remove('mk-reveal', 'mk-reveal-in', 'mk-skel-host', 'mk-skel-reveal');
       }
-      root.classList.remove('mk-motion-ready');
     };
   }, [rootSelector]);
 }

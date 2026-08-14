@@ -30,7 +30,7 @@ import { GuideProvider } from './state';
 export function DesignGuide() {
   return (
     <GuideProvider>
-      <div className="mk-guide mk-motion-root">
+      <div className="mk-guide">
         <GuideHeader />
         <GuideIntro />
         <LogoSection />

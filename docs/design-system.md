@@ -371,13 +371,21 @@ Excluded from entrance motion: `.mkscale` mockups, the sticky header, the
 mobile menu, the dialog, `pre` blocks and the guide's table of contents. Every
 entrance effect is skipped entirely under `prefers-reduced-motion: reduce`.
 
-**Avoiding the load flash.** Entrance classes can only be applied once React
-hydrates, which is after first paint — so an inline script in `<head>` sets
-`mk-js` on `<html>`, and a CSS rule holds the same elements at `opacity:0` from
-the first frame until the motion hook tags them and marks the root
-`.mk-motion-ready`. Without script the class is never set and the page renders
-plainly, so the markup degrades cleanly. The hook runs in `useLayoutEffect` so
-the handover happens before paint.
+**Entrance motion never gates the first paint.** Elements already on screen
+when the motion hook runs are left completely alone — not hidden, not animated.
+Only off-screen elements get the entrance classes, because hiding those costs
+nothing visually and can't delay anything the reader is looking at.
+
+That rule exists because the obvious implementation is wrong in an expensive
+way: entrance classes can only be applied once React hydrates, so holding
+content until then puts the whole JS bundle in front of the hero — which is the
+LCP element. It also means the page needs no pre-hydration CSS hold, no inline
+`<head>` script, and no no-JS fallback: the server HTML is simply the finished
+page. The hook runs in `useLayoutEffect` so off-screen elements are tagged
+before the next paint.
+
+The practical consequence: **above-the-fold content does not animate on first
+load.** It's already there. The reveal is for content you scroll to.
 
 ### Hover & timing
 
