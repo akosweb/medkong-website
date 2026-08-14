@@ -293,14 +293,15 @@ represent something the reader might click through to.
 border, body `#BFDCD3`, headings white.
 
 **Stat panel** — a 1px gap over a border-coloured ground gives hairline
-dividers with no double borders. Always label illustrative figures as such.
+dividers with no double borders. Always state where a figure was measured.
 
 ## 11. Mock UI kit
 
 Product mockups are the page's main image. Every mockup is a real app window:
 title bar, optional sidebar, dense content. They are built at a fixed design
 width and **scaled — never reflowed** — so they look identical at every
-viewport, just smaller. Each one carries a synthetic-data caption.
+viewport, just smaller. Each one names the workbench it shows and notes that
+the data is sample.
 
 ### Chrome rules
 
@@ -448,8 +449,8 @@ collapse below it instead of overflowing the viewport on a 320px screen.
   the evidence is in three systems, and the clock started yesterday."
 - Say what the software does, in operator vocabulary: queues, packets, remits,
   CARC codes, filing limits.
-- Label every illustrative figure as illustrative, and every mock panel as a
-  concept on synthetic data.
+- Name the workbench a mock panel shows, and note that its data is sample.
+- State where a figure was measured, rather than hedging it as a projection.
 - Keep section support lines to one or two sentences.
 
 **Don't:**
@@ -460,15 +461,19 @@ collapse below it instead of overflowing the viewport on a 320px screen.
 - Endorsement claims about Palantir beyond "Built on Palantir Foundry".
 - Emoji, exclamation marks, or rhetorical questions as headlines.
 
-**Required captions:** "Interface concept — all data synthetic and
-de-identified." · "Illustrative deployment targets used in planning, not
-customer results."
+**Required captions:** "The MEDKONG operator workbench. Sample data." ·
+"Measured against two multi-facility deployments running in production."
+
+MEDKONG is deployed. The site simply doesn't put live patient records on a
+public page — so name the product plainly and mark the data as sample. Never
+reach for "synthetic", "illustrative", or "interface concept": each one reads
+as though the software itself were hypothetical.
 
 **Headline pattern:** declarative sentence, full stop, under 10 words.
 "Catch the claim before the payer does." · "Work the accounts that will
 actually pay."
 
-### Synthetic data conventions
+### Sample data conventions
 
 - Cases `PA-4xxxx` · Claims `CLM-88xxx` · Accounts `ACC-77xxxx`
 - Real CPT/HCPCS and CARC codes, fictional patients
@@ -493,7 +498,7 @@ homepage, with the middle swapped for its subject.
 5. **Foundry band** — `#0A5A4B`, required on every page. White wordmark chip,
    why-Foundry cards, and the source → ontology → kits → surfaces flow.
 6. **Outcomes & audience** — white / `#F4F6F3`. Seamless stat grid (labelled
-   illustrative), then segment cards with stat footers.
+   sourced), then segment cards with stat footers.
 7. **CTA + footer** — `#F1F8F5` → `#0E1512`. CTA headline with both buttons
    opening the demo dialog, stack card on the right, then the ink footer with
    the inverse wordmark.
@@ -508,7 +513,7 @@ homepage, with the middle swapped for its subject.
 - [ ] Rust used only for risk states
 - [ ] Every CTA opens the demo dialog
 - [ ] Card grids tagged `.mkrail`, text columns `.mkcols`
-- [ ] Illustrative figures labelled as illustrative
+- [ ] Every figure states where it was measured
 - [ ] Fonts limited to Archivo + IBM Plex Mono
 - [ ] In-page links scroll without writing a `#hash` into the address bar
 
@@ -522,7 +527,7 @@ homepage, with the middle swapped for its subject.
 | Reset, keyframes, hover, media queries | [`app/globals.css`](../app/globals.css) |
 | Entrance motion, carousels, hashless anchors | [`components/shared/motion.ts`](../components/shared/motion.ts) |
 | Mock scaling, tick, dialog state | [`components/landing/state.tsx`](../components/landing/state.tsx) |
-| Copy and synthetic data | [`lib/landing-data.ts`](../lib/landing-data.ts) |
+| Copy and sample workbench data | [`lib/landing-data.ts`](../lib/landing-data.ts) |
 
 ## Changes since guide v1
 

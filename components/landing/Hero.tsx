@@ -145,7 +145,7 @@ export function Hero() {
     </div>
     </div>
     </div>
-    <p style={sx("font:400 11.5px/1 'IBM Plex Mono',monospace;color:#6B736C;margin:14px 0 0")}>Interface concept — all data synthetic and de-identified.</p>
+    <p style={sx("font:400 11.5px/1 'IBM Plex Mono',monospace;color:#6B736C;margin:14px 0 0")}>The MEDKONG revenue cycle workbench. Sample data.</p>
     </div>
     </section>
   );

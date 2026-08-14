@@ -11,7 +11,7 @@ export function MockUiSection() {
     <div style={sx("max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px)")}>
     <span style={sx("font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B")}>11 — Mock UI kit</span>
     <h2 style={sx("font-weight:600;font-size:clamp(30px,3.3vw,46px);line-height:1.07;letter-spacing:-0.03em;margin:18px 0 0")}>Product mockups are the page's main image.</h2>
-    <p style={sx("font-size:17px;line-height:1.62;margin:20px 0 0;color:#3A443E;max-width:70ch")}>Every mockup is a real app window: title bar, optional sidebar, dense content. They are built at a fixed design width and scaled — never reflowed — so they look identical at every viewport, just smaller. Each one carries a synthetic-data caption.</p>
+    <p style={sx("font-size:17px;line-height:1.62;margin:20px 0 0;color:#3A443E;max-width:70ch")}>Every mockup is a real app window: title bar, optional sidebar, dense content. They are built at a fixed design width and scaled — never reflowed — so they look identical at every viewport, just smaller. Each one names the workbench it shows and notes that the data is sample.</p>
     <div className="mkscale" data-scale="1180" style={sx("margin-top:36px")}>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 18px 48px -22px rgba(14,21,18,.2);overflow:hidden")}>
     <div style={sx("display:flex;align-items:center;gap:14px;padding:12px 16px;background:#F7F9F7;border-bottom:1px solid #E6EAE5")}>
@@ -111,7 +111,7 @@ export function MockUiSection() {
     </div>
     </div>
     </div>
-    <p style={sx("font:400 11.5px/1 'IBM Plex Mono',monospace;color:#6B736C;margin:14px 0 0")}>Interface concept — all data synthetic and de-identified.</p>
+    <p style={sx("font:400 11.5px/1 'IBM Plex Mono',monospace;color:#6B736C;margin:14px 0 0")}>The MEDKONG operator workbench. Sample data.</p>
     <div style={sx("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:26px")}>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:12px;padding:20px 22px")}>
     <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>Chrome rules</span>

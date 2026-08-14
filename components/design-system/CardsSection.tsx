@@ -64,7 +64,7 @@ export function CardsSection() {
     <div style={sx("background:#fff;padding:18px 16px")}><p style={sx("margin:0;font-weight:600;font-size:34px;letter-spacing:-0.04em;line-height:1")}>2.4d</p><p style={sx("margin:12px 0 0;font-size:13px;line-height:1.45;color:#5A625C")}>Denial to appeal</p></div>
     <div style={sx("background:#fff;padding:18px 16px")}><p style={sx("margin:0;font-weight:600;font-size:34px;letter-spacing:-0.04em;line-height:1")}>94%</p><p style={sx("margin:12px 0 0;font-size:13px;line-height:1.45;color:#5A625C")}>First-pass target</p></div>
     </div>
-    <p style={sx("margin:16px 0 0;font-size:13.5px;line-height:1.6;color:#5A625C")}>1px gap over a border-colored ground gives hairline dividers with no double borders. Always label illustrative figures as such.</p>
+    <p style={sx("margin:16px 0 0;font-size:13.5px;line-height:1.6;color:#5A625C")}>1px gap over a border-colored ground gives hairline dividers with no double borders. Always state where a figure was measured.</p>
     </div>
     </div>
     </div>
