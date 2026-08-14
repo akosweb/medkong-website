@@ -1,0 +1,487 @@
+/*
+ * Everything an inline style can't express — resets, keyframes, hover states,
+ * scrollbars and the responsive collapse rules — lifted verbatim from the
+ * <style> blocks of the two Claude Design source files. Per-element styling
+ * stays inline in the components (see lib/css.ts for why).
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #0e1512;
+  font-family: Archivo, system-ui, sans-serif;
+  text-wrap: pretty;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #0a5a4b;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0e7a66;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* The two pages sit under different sticky header heights. */
+.mk-landing section[id] {
+  scroll-margin-top: 84px;
+}
+
+.mk-guide section[id] {
+  scroll-margin-top: 96px;
+}
+
+@keyframes mkpulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes mksweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+.mkcta:hover {
+  background: #0e7a66;
+}
+
+.mkghost:hover {
+  background: #f1f4f1;
+  border-color: #0a5a4b;
+}
+
+.mkrow:hover {
+  background: #f7f9f7;
+}
+
+.mktab:hover {
+  color: #0a5a4b;
+}
+
+.mkcard {
+  transition: box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.mkcard:hover {
+  box-shadow: 0 8px 28px rgba(14, 21, 18, 0.09);
+  transform: translateY(-2px);
+}
+
+/* Product mock frames scale to fit their column — see useScaleToFit(). */
+.mkscale {
+  overflow: hidden;
+}
+
+.mkscale > * {
+  transform-origin: top left;
+}
+
+#mk-header.mkstuck {
+  box-shadow: 0 6px 24px -14px rgba(14, 21, 18, 0.4);
+  border-bottom-color: #d6dbd6;
+}
+
+.mkrail::-webkit-scrollbar {
+  height: 6px;
+}
+
+.mkrail::-webkit-scrollbar-thumb {
+  background: #cfd6cf;
+  border-radius: 3px;
+}
+
+/* Design-guide-only */
+
+/* The version stamp is metadata, not navigation — it's the first thing to go
+   when the guide's header bar runs out of room. */
+@media (max-width: 760px) {
+  .mk-guide-meta {
+    display: none !important;
+  }
+}
+
+.mkguide-toc a {
+  color: #3a443e;
+}
+
+.mkguide-toc a:hover {
+  color: #0a5a4b;
+}
+
+pre {
+  margin: 0;
+  font: 400 12px/1.65 'IBM Plex Mono', monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ------------------------------------------------------------------
+   Entrance motion
+   Applied imperatively by usePageMotion() so the generated section
+   components stay untouched and the markup still renders without JS:
+   the hiding classes are only ever added by script.
+   ------------------------------------------------------------------ */
+
+:root {
+  --mk-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* Keep in step with WIPE_MS in components/shared/motion.ts. */
+  --mk-wipe: 0.62s;
+}
+
+/* Pre-hydration hold.
+   The motion hook can only add .mk-reveal once React has hydrated, which is
+   after first paint — so without this the text paints, disappears and replays.
+   This hides the same elements from the very first frame, and stops applying
+   the moment the hook has tagged them and marked the root ready.
+
+   The selector mirrors HEADLINE_SELECTOR, FADE_SELECTOR and MOTION_EXCLUDE in
+   components/shared/motion.ts — keep the two in step. */
+.mk-js .mk-motion-root:not(.mk-motion-ready)
+  :is(h1, h2, h3, h4, p, .mkcard):not(
+    .mkscale *,
+    #mk-header *,
+    .mk-menu *,
+    [role='dialog'] *,
+    pre *,
+    .mkguide-toc *
+  ) {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-js .mk-motion-root:not(.mk-motion-ready) :is(h1, h2, h3, h4, p, .mkcard) {
+    opacity: 1;
+  }
+}
+
+.mk-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.mk-reveal-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.9s var(--mk-ease), transform 0.9s var(--mk-ease);
+}
+
+/* ---- headline skeleton -------------------------------------------
+   Bars sit over the headline's own line boxes while it "loads", then wipe
+   away left to right to uncover the words. The text lives in .mk-skel-text
+   and the bars in .mk-skel; both are clipped across the same box, so the two
+   edges travel together instead of drifting apart on short lines. */
+
+.mk-skel-host {
+  position: relative;
+}
+
+.mk-skel-text {
+  display: block;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--mk-wipe) var(--mk-ease);
+}
+
+.mk-skel-reveal .mk-skel-text {
+  clip-path: inset(0 0 0 0);
+}
+
+.mk-skel {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path var(--mk-wipe) var(--mk-ease);
+}
+
+.mk-skel-reveal .mk-skel {
+  clip-path: inset(0 0 0 100%);
+}
+
+.mk-skel-bar {
+  position: absolute;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #e9ede9 0%, #f5f8f4 50%, #e9ede9 100%);
+  background-size: 200% 100%;
+  animation: mkshimmer 1.15s linear infinite;
+}
+
+/* Headlines that sit on a dark band need the inverse treatment. */
+.mk-skel-dark .mk-skel-bar {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.26) 50%, rgba(255, 255, 255, 0.13) 100%);
+  background-size: 200% 100%;
+}
+
+@keyframes mkshimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-reveal,
+  .mk-reveal-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .mk-skel {
+    display: none;
+  }
+
+  .mk-skel-bar {
+    animation: none;
+  }
+
+  .mk-skel-text {
+    clip-path: none;
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Mobile navigation
+   ------------------------------------------------------------------ */
+
+.mk-burger {
+  display: none;
+}
+
+.mk-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: #0e1512;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 0 clamp(24px, 6vw, 48px) clamp(32px, 8vw, 56px);
+  overflow-y: auto;
+  animation: mkmenuin 0.22s ease-out;
+}
+
+@keyframes mkmenuin {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-menu {
+    animation: none;
+  }
+}
+
+.mk-menu a {
+  color: #fff;
+}
+
+.mk-menu-link {
+  display: block;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  font-size: clamp(26px, 7vw, 38px);
+  letter-spacing: -0.028em;
+  color: #fff;
+  transition: color 0.16s ease;
+}
+
+.mk-menu-link:hover,
+.mk-menu-link:focus-visible {
+  color: #5fbfa6;
+}
+
+/* Body scroll lock while the menu or the dialog is open. */
+body.mk-menu-open,
+body.mk-dialog-open {
+  overflow: hidden;
+}
+
+@media (max-width: 1020px) {
+  .mk-burger {
+    display: inline-flex;
+  }
+
+  /* The bar is tighter once the burger is in it.
+     !important throughout: the design styles every element inline, and an
+     inline declaration outranks any selector without it. */
+  #mk-header .mkcta {
+    padding: 0 14px !important;
+    font-size: 13.5px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Below this the wordmark, a CTA and the burger can't share a row without the
+   CTA wrapping. The hero's own CTA is a few hundred pixels away and the menu
+   carries a full-width one, so the bar drops it. */
+@media (max-width: 600px) {
+  #mk-header .mkcta {
+    display: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Hero meta row — the eyebrow takes its own line on narrow screens,
+   above the "Built by AKOS / Built on Foundry" credits.
+   ------------------------------------------------------------------ */
+
+.mk-hero-break {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  /* Row gap moves onto the eyebrow so the zero-height break element doesn't
+     contribute a second gap between the two lines. */
+  .mk-hero-meta {
+    row-gap: 0 !important;
+    column-gap: 14px !important;
+  }
+
+  .mk-hero-break {
+    display: block;
+    flex: 0 0 100%;
+    height: 0;
+  }
+
+  .mk-hero-eyebrow {
+    margin-bottom: 14px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Demo dialog — on narrow screens the artwork becomes a band above the
+   form rather than a column beside it.
+   ------------------------------------------------------------------ */
+
+/* !important throughout this block: the dialog's geometry is set inline, and
+   an inline declaration outranks any selector without it. */
+@media (max-width: 860px) {
+  /* Edge to edge, not a floating card. */
+  .mk-dialog-backdrop {
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .mk-dialog {
+    flex-direction: column;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    height: 100dvh;
+    max-height: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    /* The panel itself is fixed to the viewport; the form scrolls inside it,
+       which keeps the close button pinned over the artwork. */
+    overflow: hidden !important;
+  }
+
+  .mk-dialog-art {
+    order: -1;
+    flex: none !important;
+  }
+
+  .mk-dialog-art-frame {
+    flex: none !important;
+    min-height: 0 !important;
+    height: 124px;
+  }
+
+  .mk-dialog-body {
+    flex: 1 1 auto !important;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  .mk-dialog-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    /* Sits over the artwork, so it carries its own contrast. */
+    background: rgba(14, 21, 18, 0.55) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    color: #fff !important;
+    backdrop-filter: blur(4px);
+  }
+
+  /* The credits repeat what the page already says; below a 124px band
+     they would just push the form off-screen. */
+  .mk-dialog-credits {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1020px) {
+  .mkcols {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .mkstack {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .mkstack > span:last-child {
+    justify-content: flex-start !important;
+  }
+
+  /* A column header row is meaningless once its columns have stacked. */
+  .mk-colhead {
+    display: none !important;
+  }
+
+  .mknav {
+    display: none !important;
+  }
+
+  .mkrail {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 14px;
+  }
+
+  .mkrail > * {
+    flex: 0 0 min(88%, 430px);
+    scroll-snap-align: start;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    // The pages are a direct port of the Claude Design source files, whose copy
+    // uses straight and curly quotes throughout. Unescaped quotes in JSX text
+    // are valid; escaping them all would make diffing against the design noise.
+    "react/no-unescaped-entities": "off",
+
+    // Every image is a small local PNG the design positions with exact inline
+    // CSS (`height:15px;width:auto`, `object-fit:cover` in a sized box).
+    // next/image would need those dimensions restated and changes the layout
+    // behaviour, so plain <img> is deliberate here.
+    "@next/next/no-img-element": "off"
+  }
+}
