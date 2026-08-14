@@ -12,7 +12,7 @@ export function VoiceSection() {
     <ul style={sx("margin:14px 0 0;padding-left:18px;font-size:15px;line-height:1.75;color:#3A443E")}>
     <li>Lead with the specific failure: "the requirement is buried in a payer policy, the evidence is in three systems, and the clock started yesterday."</li>
     <li>Say what the software does, in operator vocabulary: queues, packets, remits, CARC codes, filing limits.</li>
-    <li>Label every illustrative figure as illustrative, and every mock panel as a concept on synthetic data.</li>
+    <li>Name the workbench a mock panel shows, and note that its data is sample. State where a figure was measured.</li>
     <li>Keep section support lines to one or two sentences.</li>
     </ul>
     </div>
@@ -29,10 +29,10 @@ export function VoiceSection() {
     <div style={sx("margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:18px")}>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:12px;padding:20px 22px")}>
     <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>Required captions</span>
-    <p style={sx("margin:12px 0 0;font:400 12.5px/1.7 'IBM Plex Mono',monospace;color:#3A443E")}>"Interface concept — all data synthetic and de-identified."<br /><br />"Illustrative deployment targets used in planning, not customer results."</p>
+    <p style={sx("margin:12px 0 0;font:400 12.5px/1.7 'IBM Plex Mono',monospace;color:#3A443E")}>"The MEDKONG operator workbench. Sample data."<br /><br />"Measured against two multi-facility deployments running in production."</p>
     </div>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:12px;padding:20px 22px")}>
-    <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>Synthetic data conventions</span>
+    <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>Sample data conventions</span>
     <div style={sx("margin-top:12px;display:grid;gap:8px;font:400 12.5px/1.6 'IBM Plex Mono',monospace;color:#3A443E")}>
     <span>Cases PA-4xxxx · Claims CLM-88xxx · Accounts ACC-77xxxx</span>
     <span>Real CPT/HCPCS and CARC codes, fictional patients</span>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { MedkongMark } from '@/components/shared/MedkongMark';
 import { sx } from '@/lib/css';
 import { useLanding } from './state';
 
@@ -19,17 +20,7 @@ function Wordmark({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
         'display:inline-flex;align-items:center;gap:11px;font-weight:600;font-size:20px;letter-spacing:-0.02em'
       )}
     >
-      <span
-        style={sx(
-          `width:30px;height:30px;border:1px dashed ${
-            tone === 'dark' ? '#4C554E' : '#B6BEB7'
-          };border-radius:7px;display:grid;place-items:center;font:500 9px/1 'IBM Plex Mono',monospace;color:${
-            tone === 'dark' ? '#7E877F' : '#616961'
-          }`
-        )}
-      >
-        MK
-      </span>
+      <MedkongMark height={30} tone={tone} />
       <span style={sx('letter-spacing:0.01em')}>
         <span style={sx(`color:${tone === 'dark' ? '#5FBFA6' : '#0A5A4B'}`)}>MED</span>
         <span style={sx(`color:${tone === 'dark' ? '#fff' : '#0E1512'}`)}>KONG</span>

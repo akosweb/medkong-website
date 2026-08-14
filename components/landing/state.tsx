@@ -39,7 +39,7 @@ import {
  * Which of the two outcome treatments the page shows. The design file exposes
  * this as an author-facing toggle; here it's a build-time constant.
  */
-const METRICS_MODE: 'Illustrative figures' | 'Capability language' = 'Illustrative figures';
+const METRICS_MODE: 'Figures' | 'Capability language' = 'Figures';
 
 /** Interest chips the demo form starts with. */
 const DEFAULT_INTEREST: ModuleKey[] = ['pa', 'dn'];
@@ -286,8 +286,8 @@ function useLandingState() {
       }),
 
       /* ---- outcomes treatment ---- */
-      showFigures: METRICS_MODE === 'Illustrative figures',
-      showCapability: METRICS_MODE !== 'Illustrative figures',
+      showFigures: METRICS_MODE === 'Figures',
+      showCapability: METRICS_MODE !== 'Figures',
 
       /* ---- demo dialog ---- */
       demoOpen,

@@ -1,3 +1,4 @@
+import { MedkongMark } from '@/components/shared/MedkongMark';
 import { sx } from '@/lib/css';
 
 export function GuideFooter() {
@@ -5,7 +6,7 @@ export function GuideFooter() {
     <footer style={sx("background:#0E1512;color:#B9C1BB;padding:48px 0 44px")}>
     <div style={sx("max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px);display:flex;flex-wrap:wrap;gap:22px 44px;align-items:center")}>
     <span style={sx("display:inline-flex;align-items:center;gap:11px;color:#fff;font-weight:600;font-size:18px")}>
-    <span style={sx("width:28px;height:28px;border:1px dashed #4C554E;border-radius:6px;display:grid;place-items:center;font:500 8.5px/1 'IBM Plex Mono',monospace;color:#7E877F")}>MK</span>
+    <MedkongMark height={28} tone="dark" />
     <span><span style={sx("color:#5FBFA6")}>MED</span><span style={sx("color:#fff")}>KONG</span></span>
     </span>
     <span style={sx("font-size:14px")}>Design guide · internal reference</span>

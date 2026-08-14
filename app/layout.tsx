@@ -10,21 +10,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // suppressHydrationWarning: the inline script below adds `mk-js` to <html>
-    // before React hydrates, which React would otherwise report — and revert —
-    // as a server/client attribute mismatch.
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
-        {/*
-          Marks the document as script-enabled before the body is parsed, so the
-          pre-hydration rules in globals.css can hide the elements that are
-          about to animate in. Without this the browser paints the text, then
-          the motion hook hides it and replays it — a visible flash on load.
-          No script means the class is never set and everything renders plainly.
-        */}
-        <script
-          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('mk-js')" }}
-        />
         {/*
           The design's inline styles reference `Archivo` and `'IBM Plex Mono'`
           by literal family name in hundreds of `font:` shorthands, so the

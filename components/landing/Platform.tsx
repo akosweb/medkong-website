@@ -13,7 +13,7 @@ export function Platform() {
     <span style={sx("font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B")}>What MEDKONG is</span>
     <h2 style={sx("font-weight:600;font-size:clamp(32px,3.7vw,52px);line-height:1.06;letter-spacing:-0.032em;margin:18px 0 0")}>Not another billing tool. Operational infrastructure for RCM.</h2>
     <p style={sx("font-size:17.5px;line-height:1.62;margin:24px 0 0;color:#3A443E")}>Each module owns a piece of the financial workflow — pre-service, mid-cycle or post-service — and reads from the same operational model of patients, encounters, claims, payers and dollars. Nothing is monolithic, and nothing is a chatbot bolted onto a portal.</p>
-    <p style={sx("font-size:17.5px;line-height:1.62;margin:20px 0 0;color:#3A443E")}>Your EHR, PM system, clearinghouse and document stores stay where they are. MEDKONG maps them into one ontology, then runs work against it.</p>
+    <p style={sx("font-size:17.5px;line-height:1.62;margin:20px 0 0;color:#3A443E")}>Your EHR, PM system, clearinghouse and document stores stay where they are. Modules plug into the workflow your teams already run — no data migration, no platform replacement, no retraining the floor. MEDKONG maps your systems into one ontology, then runs work against it.</p>
     </div>
     <div className="mkscale" data-scale="620" data-scale-max="1.35">
     <div style={sx("border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 14px 40px -20px rgba(14,21,18,.18);overflow:hidden;background:#fff")}>

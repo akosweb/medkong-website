@@ -10,7 +10,7 @@ export function DemoCta() {
     <div className="mkcols" style={sx("display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:44px clamp(32px,6vw,100px);align-items:center")}>
     <div>
     <h2 style={sx("font-weight:600;font-size:clamp(34px,4.4vw,64px);line-height:1.03;letter-spacing:-0.036em;margin:0")}>Bring modular AI to the revenue cycle.</h2>
-    <p style={sx("font-size:18px;line-height:1.62;margin:24px 0 0;color:#3A443E;max-width:58ch")}>A walkthrough runs 45 minutes: the workbenches on synthetic data, the ontology behind them, and an honest scoping of what a first module would take in your environment.</p>
+    <p style={sx("font-size:18px;line-height:1.62;margin:24px 0 0;color:#3A443E;max-width:58ch")}>A walkthrough runs 45 minutes: the workbenches running, the ontology behind them, and an honest scoping of what a first module would take in your environment.</p>
     <div style={sx("display:flex;gap:12px;flex-wrap:wrap;margin-top:28px")}>
     <button type="button" className="mkcta" onClick={openDemo} style={sx("display:inline-flex;align-items:center;height:52px;padding:0 26px;border:0;border-radius:9px;background:#0A5A4B;color:#fff;font-weight:600;font-size:16px;cursor:pointer;transition:background .18s ease")}>Request a demo</button>
     <button type="button" className="mkghost" onClick={openDemo} style={sx("display:inline-flex;align-items:center;height:52px;padding:0 24px;border-radius:9px;border:1px solid #B9CCC3;background:#fff;color:#0E1512;font-weight:500;font-size:16px;cursor:pointer;transition:background .18s ease,border-color .18s ease")}>Book an architecture walkthrough</button>

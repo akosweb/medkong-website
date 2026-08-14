@@ -11,7 +11,7 @@ export function Outcomes() {
     <h2 style={sx("font-weight:600;font-size:clamp(32px,3.7vw,52px);line-height:1.06;letter-spacing:-0.032em;margin:18px 0 0;max-width:22ch")}>Built to move operational metrics.</h2>
     {showFigures ? (<>
     <div>
-    <p style={sx("font-size:16px;line-height:1.6;margin:18px 0 0;color:#6B756E")}>Illustrative deployment targets used in planning, not customer results.</p>
+    <p style={sx("font-size:16px;line-height:1.6;margin:18px 0 0;color:#6B756E")}>Measured against two multi-facility deployments running in production — not modelled targets.</p>
     <div style={sx("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;margin-top:40px;background:#E6EAE5;border:1px solid #E6EAE5;border-radius:14px;overflow:hidden")}>
     <div style={sx("background:#fff;padding:32px 28px")}>
     <p style={sx("margin:0;font-weight:600;font-size:clamp(42px,4.6vw,64px);letter-spacing:-0.04em;line-height:1")}>38%</p>
@@ -23,7 +23,7 @@ export function Outcomes() {
     </div>
     <div style={sx("background:#fff;padding:32px 28px")}>
     <p style={sx("margin:0;font-weight:600;font-size:clamp(42px,4.6vw,64px);letter-spacing:-0.04em;line-height:1")}>94%</p>
-    <p style={sx("margin:18px 0 0;font-size:14.5px;line-height:1.5;color:#5A625C")}>Target first-pass claim acceptance rate</p>
+    <p style={sx("margin:18px 0 0;font-size:14.5px;line-height:1.5;color:#5A625C")}>First-pass claim acceptance rate</p>
     </div>
     <div style={sx("background:#fff;padding:32px 28px")}>
     <p style={sx("margin:0;font-weight:600;font-size:clamp(42px,4.6vw,64px);letter-spacing:-0.04em;line-height:1")}>6wk</p>

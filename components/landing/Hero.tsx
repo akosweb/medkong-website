@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { MedkongMark } from '@/components/shared/MedkongMark';
 import { sx } from '@/lib/css';
 import { useLanding } from './state';
 
@@ -32,7 +33,7 @@ export function Hero() {
     <div style={sx("border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 24px 60px -22px rgba(14,21,18,.22);overflow:hidden;background:#fff")}>
     <div style={sx("display:flex;align-items:center;gap:14px;padding:12px 16px;background:#F7F9F7;border-bottom:1px solid #E6EAE5")}>
     <span style={sx("display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:13.5px")}>
-    <span style={sx("width:20px;height:20px;border-radius:5px;background:#0E1512;color:#fff;display:grid;place-items:center;font:600 8px/1 'IBM Plex Mono',monospace")}>MK</span>
+    <MedkongMark height={20} />
     <span><span style={sx("color:#0A5A4B")}>MED</span><span style={sx("color:#0E1512")}>KONG</span></span>
     </span>
     <span style={sx("width:1px;height:15px;background:#D6DBD6")}></span>
@@ -144,7 +145,7 @@ export function Hero() {
     </div>
     </div>
     </div>
-    <p style={sx("font:400 11.5px/1 'IBM Plex Mono',monospace;color:#6B736C;margin:14px 0 0")}>Interface concept — all data synthetic and de-identified.</p>
+    <p style={sx("font:400 11.5px/1 'IBM Plex Mono',monospace;color:#6B736C;margin:14px 0 0")}>The MEDKONG revenue cycle workbench. Sample data.</p>
     </div>
     </section>
   );

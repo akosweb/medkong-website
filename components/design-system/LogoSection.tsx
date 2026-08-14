@@ -1,3 +1,4 @@
+import { MedkongMark } from '@/components/shared/MedkongMark';
 import { sx } from '@/lib/css';
 
 export function LogoSection() {
@@ -6,12 +7,12 @@ export function LogoSection() {
     <div style={sx("max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px)")}>
     <span style={sx("font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B")}>01 — Logo &amp; wordmark</span>
     <h2 style={sx("font-weight:600;font-size:clamp(30px,3.3vw,46px);line-height:1.07;letter-spacing:-0.03em;margin:18px 0 0")}>MEDKONG is always uppercase.</h2>
-    <p style={sx("font-size:17px;line-height:1.62;margin:20px 0 0;color:#3A443E;max-width:66ch")}>MED is set in primary teal, KONG in ink. The mark to its left is a placeholder until the final logo arrives — dashed border, mono "MK", never treated as a finished logo.</p>
+    <p style={sx("font-size:17px;line-height:1.62;margin:20px 0 0;color:#3A443E;max-width:66ch")}>MED is set in primary teal, KONG in ink. The icon mark sits to its left at the wordmark's cap height, and the two always travel together — the mark is not used on its own.</p>
     <div style={sx("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:36px")}>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:14px;padding:26px")}>
     <span style={sx("font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#616961")}>Primary lockup · on white</span>
     <div style={sx("margin-top:22px;display:flex;align-items:center;gap:11px;font-weight:600;font-size:26px;letter-spacing:-0.02em")}>
-    <span style={sx("width:38px;height:38px;border:1px dashed #B6BEB7;border-radius:9px;display:grid;place-items:center;font:500 11px/1 'IBM Plex Mono',monospace;color:#616961")}>MK</span>
+    <MedkongMark height={38} />
     <span><span style={sx("color:#0A5A4B")}>MED</span><span style={sx("color:#0E1512")}>KONG</span></span>
     </div>
     <p style={sx("margin:22px 0 0;font-size:13.5px;line-height:1.55;color:#5A625C")}>Use in nav, app chrome, and any light surface. Minimum height 26px for the wordmark.</p>
@@ -19,7 +20,7 @@ export function LogoSection() {
     <div style={sx("background:#0E1512;border:1px solid #0E1512;border-radius:14px;padding:26px")}>
     <span style={sx("font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#8B948C")}>Inverse · on ink</span>
     <div style={sx("margin-top:22px;display:flex;align-items:center;gap:11px;font-weight:600;font-size:26px;letter-spacing:-0.02em")}>
-    <span style={sx("width:38px;height:38px;border:1px dashed #4C554E;border-radius:9px;display:grid;place-items:center;font:500 11px/1 'IBM Plex Mono',monospace;color:#7E877F")}>MK</span>
+    <MedkongMark height={38} tone="dark" />
     <span><span style={sx("color:#5FBFA6")}>MED</span><span style={sx("color:#fff")}>KONG</span></span>
     </div>
     <p style={sx("margin:22px 0 0;font-size:13.5px;line-height:1.55;color:#B9C1BB")}>On dark grounds MED lightens to #5FBFA6 so it clears 4.5:1. KONG goes pure white.</p>
@@ -27,7 +28,7 @@ export function LogoSection() {
     <div style={sx("background:#0A5A4B;border:1px solid #0A5A4B;border-radius:14px;padding:26px")}>
     <span style={sx("font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#8FD3C1")}>On primary teal</span>
     <div style={sx("margin-top:22px;display:flex;align-items:center;gap:11px;font-weight:600;font-size:26px;letter-spacing:-0.02em;color:#fff")}>
-    <span style={sx("width:38px;height:38px;border:1px dashed rgba(255,255,255,.4);border-radius:9px;display:grid;place-items:center;font:500 11px/1 'IBM Plex Mono',monospace;color:#CFE6DE")}>MK</span>
+    <MedkongMark height={38} tone="onTeal" />
     <span>MEDKONG</span>
     </div>
     <p style={sx("margin:22px 0 0;font-size:13.5px;line-height:1.55;color:#CFE6DE")}>On teal the wordmark is single-color white — never teal-on-teal.</p>
@@ -40,7 +41,7 @@ export function LogoSection() {
     <li>MEDKONG, all caps, every instance</li>
     <li>MED teal · KONG ink</li>
     <li>Wordmark at 600 weight, -0.02em tracking</li>
-    <li>Placeholder mark stays visibly dashed</li>
+    <li>Icon mark always paired with the wordmark</li>
     </ul>
     </div>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:12px;padding:20px 22px")}>

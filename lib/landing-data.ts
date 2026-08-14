@@ -1,7 +1,7 @@
 /**
- * Content and synthetic demo data for the MEDKONG landing page, transcribed
- * from `MedKong Landing v3.dc.html`. All figures here are illustrative and
- * de-identified — the page says so on the hero mock.
+ * Content and sample workbench data for the MEDKONG landing page, transcribed
+ * from `MedKong Landing v3.dc.html`. The cases, payers and accounts here stand
+ * in for live records — the modules themselves are deployed.
  */
 
 /** Status pill styles, keyed the way the design source keys them. */

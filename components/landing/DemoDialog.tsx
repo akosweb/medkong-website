@@ -128,7 +128,7 @@ export function DemoDialog() {
                 See MEDKONG on your workflows.
               </h3>
               <p style={sx('font-size:15px;line-height:1.6;margin:12px 0 0;color:#5A625C')}>
-                45 minutes: the workbenches on synthetic data, the Foundry ontology behind them, and a scoping of
+                45 minutes: the workbenches running, the Foundry ontology behind them, and a scoping of
                 a first module in your environment.
               </p>
             </div>

@@ -158,31 +158,9 @@ pre {
   --mk-wipe: 0.62s;
 }
 
-/* Pre-hydration hold.
-   The motion hook can only add .mk-reveal once React has hydrated, which is
-   after first paint — so without this the text paints, disappears and replays.
-   This hides the same elements from the very first frame, and stops applying
-   the moment the hook has tagged them and marked the root ready.
-
-   The selector mirrors HEADLINE_SELECTOR, FADE_SELECTOR and MOTION_EXCLUDE in
-   components/shared/motion.ts — keep the two in step. */
-.mk-js .mk-motion-root:not(.mk-motion-ready)
-  :is(h1, h2, h3, h4, p, .mkcard):not(
-    .mkscale *,
-    #mk-header *,
-    .mk-menu *,
-    [role='dialog'] *,
-    pre *,
-    .mkguide-toc *
-  ) {
-  opacity: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mk-js .mk-motion-root:not(.mk-motion-ready) :is(h1, h2, h3, h4, p, .mkcard) {
-    opacity: 1;
-  }
-}
+/* Nothing here hides content before hydration on purpose. Entrance classes are
+   applied by script, and only ever to elements that are off screen at the time
+   — so the first paint is never gated on JS. See usePageMotion(). */
 
 .mk-reveal {
   opacity: 0;
