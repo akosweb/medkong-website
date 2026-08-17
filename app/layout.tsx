@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@/components/shared/Analytics';
+import { SITE_URL } from '@/lib/site';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(SITE_URL),
   title: 'MEDKONG — Modular AI Kit for the revenue cycle',
   description:
     'A kit of deployable AI and workflow modules for healthcare revenue cycle operations. Built by AKOS on Palantir Foundry.',
@@ -28,7 +30,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

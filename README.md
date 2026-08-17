@@ -12,6 +12,33 @@ The design system also exists as a machine-readable spec at
 [docs/design-system.md](docs/design-system.md) — every token, component and rule
 in one file, for handing to an LLM when building the next page.
 
+Generated routes: `/robots.txt`, `/sitemap.xml` and `/llms.txt`. All three take
+their origin from [`lib/site.ts`](lib/site.ts) so they can't drift apart —
+set `NEXT_PUBLIC_SITE_URL` per environment; it falls back to the production
+domain rather than localhost.
+
+- **`/sitemap.xml`** — the homepage only. `/design-system` is noindexed and
+  disallowed, so it's deliberately absent.
+- **`/llms.txt`** — a brief for language models and agents
+  ([llmstxt.org](https://llmstxt.org)). Generated from
+  [`app/llms.txt/route.ts`](app/llms.txt/route.ts) rather than kept static, so
+  the module list stays in step with `lib/landing-data.ts`.
+
+## Analytics
+
+Google Analytics 4, wired in [`components/shared/Analytics.tsx`](components/shared/Analytics.tsx)
+via `next/script` at `afterInteractive` — so the tags load once the page is
+interactive and never sit in front of the first paint.
+
+**Only the production deploy reports.** The component returns `null` unless
+`VERCEL_ENV === 'production'`, which keeps preview builds and local dev out of
+the property. Set `NEXT_PUBLIC_GA_DEBUG=1` to opt a non-production build in when
+you need to test the tag itself.
+
+The site has no client-side navigation between its two routes, so the default
+`gtag('config', ...)` page_view is sufficient. If real routes get added later,
+they'll need a manual `page_view` on route change.
+
 Next.js 15 (App Router) · React 19 · TypeScript. No CSS framework — see
 [How the design was ported](#how-the-design-was-ported).
 
