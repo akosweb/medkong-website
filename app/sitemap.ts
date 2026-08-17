@@ -1,12 +1,16 @@
 import type { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/site';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-
-/** Only the homepage is indexable; /design-system is deliberately absent. */
+/**
+ * Only the homepage is indexable. `/design-system` is deliberately absent — it's
+ * an internal reference, noindexed in its own metadata and disallowed in
+ * robots.txt. `/llms.txt` is for agents, not crawlers, so it stays out too.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: `${siteUrl}/`,
+      url: `${SITE_URL}/`,
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
     },
