@@ -122,6 +122,25 @@ button {
 
 /* Design-guide-only */
 
+/* Logo download links. `.mkghost` is tuned for light grounds only, and half of
+   these sit on ink and teal cards. */
+.mk-dl {
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+.mk-dl:hover {
+  background: #f1f4f1;
+  border-color: #0a5a4b;
+  color: #0a5a4b;
+}
+
+.mk-dl-invert:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+
 /* The version stamp is metadata, not navigation — it's the first thing to go
    when the guide's header bar runs out of room. */
 @media (max-width: 760px) {

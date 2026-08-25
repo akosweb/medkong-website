@@ -16,8 +16,11 @@ page.
 ## 1. Logo & wordmark
 
 MEDKONG is **always uppercase**. `MED` is set in primary teal, `KONG` in ink.
-The icon mark sits to its left at the wordmark's cap height, and the two always
-travel together — the mark is never used on its own.
+The icon mark sits to its left at the wordmark's cap height. Use the full
+lockup wherever there is room for it; the icon on its own is reserved for
+square, constrained placements — favicons, app icons, social avatars, and the
+tenant badge inside product chrome — never as a substitute for the lockup in a
+page header or document.
 
 The mark is inline SVG, not an image file:
 [`components/shared/MedkongMark.tsx`](../components/shared/MedkongMark.tsx).
@@ -44,6 +47,32 @@ Wordmark is 600 weight, `-0.02em` tracking.
 **Do not:** write "MedKong" or "Medkong" in body copy; put rust or any
 non-teal on `MED`; add gradients, shadows or outlines; set the wordmark in
 IBM Plex Mono.
+
+### Downloadable files
+
+`/public/brand` holds both the lockup and the icon in all three tones, as SVG
+and PNG. The design guide links to them under each specimen.
+
+| File stem | Contents |
+| --- | --- |
+| `medkong-lockup-{on-white,on-ink,on-teal}` | Mark plus wordmark |
+| `medkong-icon-{on-white,on-ink,on-teal}` | Mark alone |
+
+Two things to know about them:
+
+- **The wordmark is outlined**, not set as `<text>`. Archivo isn't installed on
+  most machines, so a font-referenced SVG would fall back to something else the
+  moment it left this repo.
+- **PNGs are transparent**, which means the `on-ink` and `on-teal` files look
+  blank against a white preview. That is correct — they are white artwork meant
+  for dark grounds.
+
+They also carry the artwork's own 5-unit stroke rather than the height-derived
+weight the site uses. The site compensates for rendering at 20px; a master asset
+should be the true drawing, since whoever downloads it will scale it themselves.
+
+Regenerate with the script in the scratchpad if the artwork ever changes — the
+files are committed output, not built at deploy time.
 
 ## 2. AKOS & Palantir attribution
 
