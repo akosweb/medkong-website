@@ -29,7 +29,7 @@ import { LandingProvider } from './state';
 export function Landing() {
   return (
     <LandingProvider>
-      <div className="mk-landing">
+      <div className="mk-page mk-has-subnav mk-landing">
         <Header />
         <Hero />
         <PartnerStrip />

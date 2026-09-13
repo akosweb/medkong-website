@@ -2,7 +2,7 @@
 
 import { SiteFooter } from '@/components/landing/SiteFooter';
 import { SiteHeader } from '@/components/shared/SiteHeader';
-import { NAV_LINKS } from '@/lib/macs-data';
+import { SECTIONS } from '@/lib/macs-data';
 import { Audience } from './Audience';
 import { Board } from './Board';
 import { FoundryBand } from './FoundryBand';
@@ -18,11 +18,10 @@ function Header() {
   const { goToRequest } = useMacs();
   return (
     <SiteHeader
-      links={NAV_LINKS}
+      sections={SECTIONS}
       ctaLabel="Request a walkthrough"
       onCta={goToRequest}
       tagline="Prior authorization review for Medicare Administrative Contractors"
-      homeHref="/"
     />
   );
 }
@@ -39,7 +38,7 @@ function Header() {
 export function MacsPage() {
   return (
     <MacsProvider>
-      <div className="mk-macs">
+      <div className="mk-page mk-has-subnav mk-macs">
         <Header />
         <Hero />
         <TrustBand />

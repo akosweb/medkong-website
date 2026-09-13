@@ -155,8 +155,8 @@ for it. See ${SITE_URL}/medicare-administrative-contractors.
 - [MEDKONG for MACs](${SITE_URL}/medicare-administrative-contractors): prior
   authorization review for Medicare Administrative Contractors
 - [AKOS](https://akos.ai): the team that builds and deploys the kit
-- [Request a demo](${SITE_URL}/#demo): 45 minutes — the workbenches running, the
-  Foundry ontology behind them, and a scoping of a first module in your
+- [Request a demo](${SITE_URL}/contact): 45 minutes — the workbenches running,
+  the Foundry ontology behind them, and a scoping of a first module in your
   environment
 
 ## Notes for agents
