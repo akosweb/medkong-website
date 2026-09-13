@@ -43,9 +43,22 @@ button {
   font-family: inherit;
 }
 
-/* The two pages sit under different sticky header heights. */
-.mk-landing section[id] {
+/* Anchored sections clear the sticky header: the 68px bar, plus the 44px
+   "on this page" row where a page has one. The guide has its own header. */
+.mk-page section[id] {
   scroll-margin-top: 84px;
+}
+
+.mk-page.mk-has-subnav section[id] {
+  scroll-margin-top: 128px;
+}
+
+.mk-subnav > div {
+  scrollbar-width: none;
+}
+
+.mk-subnav > div::-webkit-scrollbar {
+  display: none;
 }
 
 .mk-guide section[id] {
@@ -325,6 +338,36 @@ pre {
   color: #5fbfa6;
 }
 
+/* Section links inside the mobile menu — chips under the main links. */
+.mk-menu-sub {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.mk-menu-sub:hover,
+.mk-menu-sub:focus-visible {
+  border-color: #5fbfa6;
+  color: #5fbfa6;
+}
+
+/* Footer link groups. */
+.mk-footer-link {
+  color: #b9c1bb;
+  font-size: 14px;
+  transition: color 0.16s ease;
+}
+
+.mk-footer-link:hover,
+.mk-footer-link:focus-visible {
+  color: #fff;
+}
+
 /* Body scroll lock while the menu or the dialog is open. */
 body.mk-menu-open,
 body.mk-dialog-open {
@@ -351,6 +394,10 @@ body.mk-dialog-open {
    carries a full-width one, so the bar drops it. */
 @media (max-width: 600px) {
   #mk-header .mkcta {
+    display: none !important;
+  }
+
+  .mk-subnav-label {
     display: none !important;
   }
 }

@@ -514,7 +514,11 @@ actually pay."
 A module page, a use-case page or a solution page follows the same spine as the
 homepage, with the middle swapped for its subject.
 
-1. **Sticky header** — white, 68px. Wordmark, section links, demo button.
+1. **Sticky header** — white, 68px. Wordmark, the site nav (the same on every
+   page: Platform · For MACs · Contact), CTA button. Pages with sections add a
+   44px "On this page" row beneath it — 13.5px links, active one teal with a
+   2px underline, driven by scroll position. Anchored sections carry
+   `scroll-margin-top:128px` (`.mk-has-subnav`) so they clear both rows.
    Shadow appears past 8px of scroll.
 2. **Hero + product mock** — white. Chip eyebrow, trust line with both marks,
    H1 left with lede and buttons right, then the workbench for this page's
@@ -557,7 +561,9 @@ homepage, with the middle swapped for its subject.
 | Entrance motion, carousels, hashless anchors | [`components/shared/motion.ts`](../components/shared/motion.ts) |
 | Mock scaling, tick, dialog state | [`components/landing/state.tsx`](../components/landing/state.tsx) |
 | Copy and sample workbench data | [`lib/landing-data.ts`](../lib/landing-data.ts) |
-| Sticky header, shared by every page | [`components/shared/SiteHeader.tsx`](../components/shared/SiteHeader.tsx) — takes `links`, `ctaLabel`, `onCta`, `tagline` |
+| Site nav, footer groups, section links | [`lib/nav.ts`](../lib/nav.ts) |
+| Sticky header, shared by every page | [`components/shared/SiteHeader.tsx`](../components/shared/SiteHeader.tsx) — takes `sections`, `ctaLabel`, `onCta`, `tagline` |
+| The lead form (dialog, `/contact`, MAC page) | [`components/shared/LeadForm.tsx`](../components/shared/LeadForm.tsx) |
 | MAC campaign page (`/medicare-administrative-contractors`) | [`components/macs/`](../components/macs/) with copy in [`lib/macs-data.ts`](../lib/macs-data.ts); a worked example of §16 with an inline form in place of the dialog |
 
 ## Changes since guide v1

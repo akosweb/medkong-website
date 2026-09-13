@@ -11,12 +11,15 @@
  * governing policy in the example (L35004, blepharoplasty) is a Novitas LCD.
  */
 
-export const NAV_LINKS = [
+/** In-page section links for the header's "on this page" row. */
+export const SECTIONS = [
+  { href: '#what', label: 'Overview' },
   { href: '#workflow', label: 'Workflow' },
   { href: '#board', label: 'Review board' },
   { href: '#foundry', label: 'Foundry' },
   { href: '#governance', label: 'Governance' },
   { href: '#who', label: 'Who it’s for' },
+  { href: '#request', label: 'Request a walkthrough' },
 ];
 
 /* ------------------------------------------------------------------ hero */

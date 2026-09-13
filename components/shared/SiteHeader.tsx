@@ -1,29 +1,32 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { MedkongMark } from '@/components/shared/MedkongMark';
 import { sx } from '@/lib/css';
-
-export type NavLink = { href: string; label: string };
+import { SITE_NAV, type NavLink } from '@/lib/nav';
 
 export type SiteHeaderProps = {
-  /** In-page section links. Each `href` is a `#slug`. */
-  links: NavLink[];
+  /** In-page section links, rendered as a second row under the main bar. */
+  sections?: NavLink[];
   /** Label on the header button and the mobile menu's full-width button. */
   ctaLabel: string;
   /** Runs when either CTA is pressed — open a dialog, scroll to a form, etc. */
   onCta: () => void;
   /** One-line tagline under the mobile menu's CTA. */
   tagline: string;
-  /** Wraps the wordmark in a link when set — for pages that aren't the homepage. */
-  homeHref?: string;
 };
 
-function Wordmark({ tone = 'light', href }: { tone?: 'light' | 'dark'; href?: string }) {
-  const lockup = (
-    <span
+function Wordmark({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
+  return (
+    // Plain anchors, not <Link>: pages are full loads on purpose, so GA's
+    // default page_view fires and no route-change tracking is needed.
+    // eslint-disable-next-line @next/next/no-html-link-for-pages
+    <a
+      href="/"
+      aria-label="MEDKONG home"
       style={sx(
-        'display:inline-flex;align-items:center;gap:11px;font-weight:600;font-size:20px;letter-spacing:-0.02em'
+        'display:inline-flex;align-items:center;gap:11px;font-weight:600;font-size:20px;letter-spacing:-0.02em;color:inherit'
       )}
     >
       <MedkongMark height={30} tone={tone} />
@@ -31,21 +34,47 @@ function Wordmark({ tone = 'light', href }: { tone?: 'light' | 'dark'; href?: st
         <span style={sx(`color:${tone === 'dark' ? '#5FBFA6' : '#0A5A4B'}`)}>MED</span>
         <span style={sx(`color:${tone === 'dark' ? '#fff' : '#0E1512'}`)}>KONG</span>
       </span>
-    </span>
-  );
-  if (!href) return lockup;
-  return (
-    <a href={href} aria-label="MEDKONG home" style={sx('display:inline-flex;color:inherit')}>
-      {lockup}
     </a>
   );
 }
 
 /**
- * The sticky site header, shared by every page. The homepage wraps it in
- * `components/landing/Header.tsx`; other pages pass their own links and CTA.
+ * Tracks which in-page section is on screen so the section row can mark it.
+ * The active section is the last one whose top has passed the header.
  */
-export function SiteHeader({ links, ctaLabel, onCta, tagline, homeHref }: SiteHeaderProps) {
+function useActiveSection(sections: NavLink[] | undefined) {
+  const [active, setActive] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!sections?.length) return;
+    const ids = sections.map((s) => s.href.slice(1));
+
+    const onScroll = () => {
+      const header = document.getElementById('mk-header');
+      const line = (header?.offsetHeight ?? 0) + 24;
+      let current: string | null = null;
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= line) current = id;
+      }
+      setActive(current);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [sections]);
+
+  return active;
+}
+
+/**
+ * The sticky site header, shared by every page: the same main nav everywhere,
+ * plus an optional row of the current page's section links beneath it.
+ */
+export function SiteHeader({ sections, ctaLabel, onCta, tagline }: SiteHeaderProps) {
+  const pathname = usePathname();
+  const active = useActiveSection(sections);
   const [menuOpen, setMenuOpen] = useState(false);
   const burgerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -98,6 +127,8 @@ export function SiteHeader({ links, ctaLabel, onCta, tagline, homeHref }: SiteHe
     });
   };
 
+  const isCurrent = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
+
   return (
     <>
       <div
@@ -111,20 +142,27 @@ export function SiteHeader({ links, ctaLabel, onCta, tagline, homeHref }: SiteHe
             'max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px);height:68px;display:flex;align-items:center;gap:34px'
           )}
         >
-          <Wordmark href={homeHref} />
+          <Wordmark />
 
-          <span
+          <nav
             className="mknav"
-            style={sx(
-              'display:flex;align-items:center;gap:26px;margin-left:12px;font-size:14.5px;color:#3A443E'
-            )}
+            aria-label="Site"
+            style={sx('display:flex;align-items:center;gap:26px;margin-left:12px;font-size:14.5px;color:#3A443E')}
           >
-            {links.map((link) => (
-              <a key={link.href} href={link.href} style={sx('color:inherit')}>
-                {link.label}
-              </a>
-            ))}
-          </span>
+            {SITE_NAV.map((link) => {
+              const on = isCurrent(link.href);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  aria-current={on ? 'page' : undefined}
+                  style={sx(on ? 'color:#0A5A4B;font-weight:600' : 'color:inherit')}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
+          </nav>
 
           <span style={sx('margin-left:auto;display:flex;align-items:center;gap:12px')}>
             <button
@@ -157,6 +195,46 @@ export function SiteHeader({ links, ctaLabel, onCta, tagline, homeHref }: SiteHe
             </button>
           </span>
         </div>
+
+        {sections?.length ? (
+          <nav
+            className="mk-subnav"
+            aria-label="On this page"
+            style={sx('border-top:1px solid #EEF1ED;background:#fff')}
+          >
+            <div
+              style={sx(
+                'max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px);height:44px;display:flex;align-items:stretch;gap:4px;overflow-x:auto'
+              )}
+            >
+              <span
+                className="mk-subnav-label"
+                style={sx(
+                  "align-self:center;margin-right:14px;font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#6B736C;white-space:nowrap"
+                )}
+              >
+                On this page
+              </span>
+              {sections.map((s) => {
+                const on = active === s.href.slice(1);
+                return (
+                  <a
+                    key={s.href}
+                    href={s.href}
+                    aria-current={on ? 'location' : undefined}
+                    style={sx(
+                      `display:inline-flex;align-items:center;padding:0 12px;margin-bottom:-1px;border-bottom:2px solid ${
+                        on ? '#0A5A4B' : 'transparent'
+                      };font-size:13.5px;font-weight:500;white-space:nowrap;color:${on ? '#0A5A4B' : '#3A443E'};transition:color .16s ease`
+                    )}
+                  >
+                    {s.label}
+                  </a>
+                );
+              })}
+            </div>
+          </nav>
+        ) : null}
       </div>
 
       {menuOpen ? (
@@ -180,18 +258,43 @@ export function SiteHeader({ links, ctaLabel, onCta, tagline, homeHref }: SiteHe
             </button>
           </div>
 
-          <nav style={sx('margin-top:clamp(16px,5vw,40px)')}>
-            {links.map((link) => (
+          <nav aria-label="Site" style={sx('margin-top:clamp(16px,5vw,40px)')}>
+            {SITE_NAV.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 className="mk-menu-link"
-                onClick={(e) => goToSection(e, link.href)}
+                aria-current={isCurrent(link.href) ? 'page' : undefined}
+                style={sx(isCurrent(link.href) ? 'color:#5FBFA6' : '')}
               >
                 {link.label}
               </a>
             ))}
           </nav>
+
+          {sections?.length ? (
+            <nav aria-label="On this page" style={sx('margin-top:28px')}>
+              <span
+                style={sx(
+                  "display:block;font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#7E877F"
+                )}
+              >
+                On this page
+              </span>
+              <div style={sx('display:flex;flex-wrap:wrap;gap:8px;margin-top:14px')}>
+                {sections.map((s) => (
+                  <a
+                    key={s.href}
+                    href={s.href}
+                    className="mk-menu-sub"
+                    onClick={(e) => goToSection(e, s.href)}
+                  >
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            </nav>
+          ) : null}
 
           <button
             type="button"
