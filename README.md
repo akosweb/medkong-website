@@ -3,10 +3,20 @@
 Marketing site for MEDKONG — the modular AI kit for healthcare revenue cycle
 operations, built by AKOS on Palantir Foundry.
 
-| Route            | Source                            | Indexed |
-| ---------------- | --------------------------------- | ------- |
-| `/`              | `MedKong Landing v3.dc.html`      | yes     |
-| `/design-system` | `MEDKONG Design Guide.dc.html`    | no      |
+| Route                                  | Source                                              | Indexed |
+| -------------------------------------- | --------------------------------------------------- | ------- |
+| `/`                                    | `MedKong Landing v3.dc.html`                        | yes     |
+| `/medicare-administrative-contractors` | Built from `docs/design-system.md` + the MAC spec   | yes     |
+| `/macs`                                | 308 → the route above (short link for ads/posts)    | —       |
+| `/design-system`                       | `MEDKONG Design Guide.dc.html`                      | no      |
+
+**MEDKONG for MACs** (`components/macs/`, copy in
+[`lib/macs-data.ts`](lib/macs-data.ts)) is the campaign page for Medicare
+Administrative Contractors. It follows the page recipe in the design system,
+reuses the shared header and footer, and ends in an inline request form rather
+than the demo dialog — every CTA on the page scrolls to it. The source spec
+("MEDKONG for MACs — Workflow & Solution Specification") forbids outcome claims
+without a pilot baseline, so the page carries no figures.
 
 The design system also exists as a machine-readable spec at
 [docs/design-system.md](docs/design-system.md) — every token, component and rule
@@ -17,8 +27,8 @@ their origin from [`lib/site.ts`](lib/site.ts) so they can't drift apart —
 set `NEXT_PUBLIC_SITE_URL` per environment; it falls back to the production
 domain rather than localhost.
 
-- **`/sitemap.xml`** — the homepage only. `/design-system` is noindexed and
-  disallowed, so it's deliberately absent.
+- **`/sitemap.xml`** — the homepage and the MAC page. `/design-system` is
+  noindexed and disallowed, so it's deliberately absent; `/macs` is a redirect.
 - **`/llms.txt`** — a brief for language models and agents
   ([llmstxt.org](https://llmstxt.org)). Generated from
   [`app/llms.txt/route.ts`](app/llms.txt/route.ts) rather than kept static, so
@@ -35,9 +45,10 @@ interactive and never sit in front of the first paint.
 the property. Set `NEXT_PUBLIC_GA_DEBUG=1` to opt a non-production build in when
 you need to test the tag itself.
 
-The site has no client-side navigation between its two routes, so the default
-`gtag('config', ...)` page_view is sufficient. If real routes get added later,
-they'll need a manual `page_view` on route change.
+The site has no client-side navigation between its routes (the MAC page links
+back to `/` with a plain anchor, and there are no `<Link>`s), so the default
+`gtag('config', ...)` page_view is sufficient. If client-side routing gets
+added later, it'll need a manual `page_view` on route change.
 
 Next.js 15 (App Router) · React 19 · TypeScript. No CSS framework — see
 [How the design was ported](#how-the-design-was-ported).
@@ -119,7 +130,8 @@ was ported.
 
 ## Lead capture
 
-The demo dialog posts to [`/api/leads`](app/api/leads/route.ts), which inserts
+The demo dialog and the MAC page's inline form both post to
+[`/api/leads`](app/api/leads/route.ts), which inserts
 into `medkong.leads` in the shared **AKOS Toolkit ("arsenal")** Supabase project
 (`sgizuweopqywezpkumqt`) — the same project the AKOS site reads its blog from.
 
@@ -132,6 +144,10 @@ into `medkong.leads` in the shared **AKOS Toolkit ("arsenal")** Supabase project
   way to write.
 - Rows carry `environment` (`production` / `preview` / `development`), so local
   and preview submissions are easy to filter out.
+- Rows carry `source` — `medkong-website` for the demo dialog,
+  `medkong-macs` for the MAC form — and the MAC form adds `role` and
+  `jurisdictions` to the `metadata` jsonb column. The route only accepts sources
+  from its allowlist.
 - No IP address is stored. `referrer` and `user_agent` are, for attribution.
 
 ### Not yet done
