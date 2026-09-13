@@ -20,7 +20,7 @@ than the demo dialog — every CTA on the page scrolls to it. The source spec
 without a pilot baseline, so the page carries no figures.
 
 **Navigation** lives in [`lib/nav.ts`](lib/nav.ts): the main nav is the same
-on every page (Platform · For MACs · Contact), and pages with sections pass
+on every page (For Providers · For MACs · Contact), and pages with sections pass
 their own links to [`SiteHeader`](components/shared/SiteHeader.tsx), which
 renders them as an "On this page" row under the main bar with scroll-spy. The
 footer's link groups come from the same file.

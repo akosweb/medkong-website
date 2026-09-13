@@ -515,7 +515,7 @@ A module page, a use-case page or a solution page follows the same spine as the
 homepage, with the middle swapped for its subject.
 
 1. **Sticky header** — white, 68px. Wordmark, the site nav (the same on every
-   page: Platform · For MACs · Contact), CTA button. Pages with sections add a
+   page: For Providers · For MACs · Contact), CTA button. Pages with sections add a
    44px "On this page" row beneath it — 13.5px links, active one teal with a
    2px underline, driven by scroll position. Anchored sections carry
    `scroll-margin-top:128px` (`.mk-has-subnav`) so they clear both rows.
