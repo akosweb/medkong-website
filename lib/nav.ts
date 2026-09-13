@@ -18,7 +18,7 @@ export const FOOTER_NAV: { title: string; links: NavLink[] }[] = [
     title: 'Product',
     links: [
       { href: '/', label: 'For Providers' },
-      { href: '/medicare-administrative-contractors', label: 'MEDKONG for MACs' },
+      { href: '/medicare-administrative-contractors', label: 'For MACs' },
     ],
   },
   {
