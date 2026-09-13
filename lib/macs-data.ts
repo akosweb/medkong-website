@@ -26,7 +26,9 @@ export const SECTIONS = [
 
 export const HERO = {
   eyebrow: 'MEDKONG for Medicare Administrative Contractors',
-  headline: 'The system prepares the case. The reviewer decides.',
+  headline: 'The system prepares the case.',
+  /** Second sentence, set in primary teal on its own line. */
+  headlineAccent: 'The reviewer decides.',
   lede:
     'MEDKONG for MACs turns a submitted prior authorization request into a structured, evidence-backed review case. Seven review gates, policy-aware findings, and a reviewer in control of every determination — through to the final decision, the UTN and the provider letter.',
   caption: 'The MEDKONG MAC review workbench. Sample data.',

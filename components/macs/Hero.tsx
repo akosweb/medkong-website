@@ -42,8 +42,10 @@ export function Hero() {
             'display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px clamp(32px,5vw,90px);align-items:start;margin-top:38px'
           )}
         >
-          <h1 style={sx('font-weight:600;font-size:clamp(42px,5.6vw,82px);line-height:1.02;letter-spacing:-0.038em;margin:0')}>
+          <h1 style={sx('font-weight:600;font-size:clamp(38px,4.6vw,66px);line-height:1.04;letter-spacing:-0.036em;margin:0')}>
             {HERO.headline}
+            <br />
+            <span style={sx('color:#0A5A4B')}>{HERO.headlineAccent}</span>
           </h1>
           <div>
             <p style={sx('font-size:18px;line-height:1.62;margin:0;color:#3A443E')}>{HERO.lede}</p>
