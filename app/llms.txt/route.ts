@@ -136,9 +136,24 @@ From two multi-facility deployments running in production:
 5. **Add the next module** — adjacent workflows install against the same model
    and governance, so the second module costs a fraction of the first.
 
+## MEDKONG for MACs
+
+A separate solution for Medicare Administrative Contractors reviewing hospital
+outpatient prior authorization requests: a submitted request becomes a
+structured review case with seven gates (P1 completeness, P2 eligibility, P3
+program scope, P4 governing policy, P5 diagnosis coverage, P6 modifiers and
+attestation, P7 requirement-by-requirement documentation) and a decision stage
+that issues the outcome, the UTN where applicable and the provider letter. The
+system suggests; the MAC reviewer decides, and reviewed determinations are never
+overwritten by a machine refresh. Positioned as a pilot-ready workflow running
+in the MEDKONG prior authorization sandbox — no measured outcome claims are made
+for it. See ${SITE_URL}/medicare-administrative-contractors.
+
 ## Links
 
 - [MEDKONG](${SITE_URL}/): product overview, workbenches, architecture
+- [MEDKONG for MACs](${SITE_URL}/medicare-administrative-contractors): prior
+  authorization review for Medicare Administrative Contractors
 - [AKOS](https://akos.ai): the team that builds and deploys the kit
 - [Request a demo](${SITE_URL}/#demo): 45 minutes — the workbenches running, the
   Foundry ontology behind them, and a scoping of a first module in your

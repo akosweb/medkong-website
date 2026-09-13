@@ -15,17 +15,45 @@ const LIMITS = {
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/**
+ * Which form a lead came from. Each page tags its own submissions so the
+ * MAC campaign can be reported on separately from the homepage demo dialog.
+ */
+const SOURCES = ['medkong-website', 'medkong-macs'] as const;
+type Source = (typeof SOURCES)[number];
+
+/** Extra per-form fields (role, jurisdiction, …) land in the jsonb column. */
+const METADATA_KEYS = 8;
+const METADATA_VALUE = 200;
+
 type Payload = {
+  source?: unknown;
   name?: unknown;
   email?: unknown;
   phone?: unknown;
   organization?: unknown;
   message?: unknown;
   modules?: unknown;
+  metadata?: unknown;
 };
 
 function text(value: unknown, max: number): string {
   return typeof value === 'string' ? value.trim().slice(0, max) : '';
+}
+
+function source(value: unknown): Source {
+  return SOURCES.includes(value as Source) ? (value as Source) : 'medkong-website';
+}
+
+/** Keeps only short string values, and only a handful of them. */
+function metadata(value: unknown): Record<string, string> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  const out: Record<string, string> = {};
+  for (const [k, v] of Object.entries(value as Record<string, unknown>).slice(0, METADATA_KEYS)) {
+    const t = text(v, METADATA_VALUE);
+    if (t) out[k.slice(0, 40)] = t;
+  }
+  return out;
 }
 
 export async function POST(request: Request) {
@@ -58,7 +86,7 @@ export async function POST(request: Request) {
   }
 
   const { error } = await supabase.from('leads').insert({
-    source: 'medkong-website',
+    source: source(body.source),
     environment: leadEnvironment(),
     name,
     email,
@@ -69,6 +97,7 @@ export async function POST(request: Request) {
     referrer: request.headers.get('referer'),
     user_agent: request.headers.get('user-agent')?.slice(0, 500) ?? null,
     page_url: request.headers.get('referer'),
+    metadata: metadata(body.metadata),
   });
 
   if (error) {

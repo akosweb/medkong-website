@@ -557,6 +557,8 @@ homepage, with the middle swapped for its subject.
 | Entrance motion, carousels, hashless anchors | [`components/shared/motion.ts`](../components/shared/motion.ts) |
 | Mock scaling, tick, dialog state | [`components/landing/state.tsx`](../components/landing/state.tsx) |
 | Copy and sample workbench data | [`lib/landing-data.ts`](../lib/landing-data.ts) |
+| Sticky header, shared by every page | [`components/shared/SiteHeader.tsx`](../components/shared/SiteHeader.tsx) — takes `links`, `ctaLabel`, `onCta`, `tagline` |
+| MAC campaign page (`/medicare-administrative-contractors`) | [`components/macs/`](../components/macs/) with copy in [`lib/macs-data.ts`](../lib/macs-data.ts); a worked example of §16 with an inline form in place of the dialog |
 
 ## Changes since guide v1
 
