@@ -11,19 +11,24 @@
  * governing policy in the example (L35004, blepharoplasty) is a Novitas LCD.
  */
 
-export const NAV_LINKS = [
+/** In-page section links for the header's "on this page" row. */
+export const SECTIONS = [
+  { href: '#what', label: 'Overview' },
   { href: '#workflow', label: 'Workflow' },
   { href: '#board', label: 'Review board' },
   { href: '#foundry', label: 'Foundry' },
   { href: '#governance', label: 'Governance' },
   { href: '#who', label: 'Who it’s for' },
+  { href: '#request', label: 'Request a walkthrough' },
 ];
 
 /* ------------------------------------------------------------------ hero */
 
 export const HERO = {
   eyebrow: 'MEDKONG for Medicare Administrative Contractors',
-  headline: 'The system prepares the case. The reviewer decides.',
+  headline: 'The system prepares the case.',
+  /** Second sentence, set in primary teal on its own line. */
+  headlineAccent: 'The reviewer decides.',
   lede:
     'MEDKONG for MACs turns a submitted prior authorization request into a structured, evidence-backed review case. Seven review gates, policy-aware findings, and a reviewer in control of every determination — through to the final decision, the UTN and the provider letter.',
   caption: 'The MEDKONG MAC review workbench. Sample data.',

@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   useAutoScrollRails,
   usePageMotion,
@@ -28,9 +28,14 @@ function commas(n: number): string {
   return Math.round(n).toLocaleString('en-US');
 }
 
+/** Which workbench the mock UI section shows. */
+export type MockTab = 'providers' | 'macs';
+
 function useGuideValues() {
   const [t, setT] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [mockTab, setMockTab] = useState<MockTab>('providers');
+  const selectMockTab = useCallback((k: MockTab) => setMockTab(k), []);
 
   useEffect(() => {
     setMounted(true);
@@ -45,6 +50,8 @@ function useGuideValues() {
     const pct = Math.min(100, 62 + ((t * 3) % 39));
 
     return {
+      mockTab,
+      selectMockTab,
       clock: mounted ? new Date().toTimeString().slice(0, 8) : '--:--:--',
       kpi: commas(1284 + Math.floor(t / 3)),
       sla: mmss(1880 - t * 3),
@@ -62,7 +69,7 @@ function useGuideValues() {
         }`,
       })),
     };
-  }, [t, mounted]);
+  }, [t, mounted, mockTab, selectMockTab]);
 }
 
 type GuideValues = ReturnType<typeof useGuideValues>;
@@ -75,9 +82,10 @@ export function GuideProvider({ children }: { children: React.ReactNode }) {
   usePageMotion('.mk-guide');
   useAutoScrollRails('.mk-guide');
   useSmoothAnchors();
-  // The mock UI specimen follows the same "scale, never reflow" rule as the
-  // mockups on the landing page. The tick changes its content, not its height.
-  useScaleToFit();
+  // The mock UI specimens follow the same "scale, never reflow" rule as the
+  // mockups on the landing page. The tick changes their content, not their
+  // height; switching workbench does, so it re-fits.
+  useScaleToFit([value.mockTab]);
 
   return <GuideContext.Provider value={value}>{children}</GuideContext.Provider>;
 }

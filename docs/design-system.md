@@ -233,6 +233,12 @@ Two-column head puts the headline left and the support line right. Use
 `align-items:end` when both columns are short text, `align-items:start`
 whenever either side holds a stack, list or panel.
 
+**Two-sentence hero** — for a hero that states a division of labour ("The
+system prepares the case. The reviewer decides."). The second sentence is set
+in primary teal `#0A5A4B` and always starts a new line; the H1 steps down to
+`clamp(38px,4.6vw,66px)` so two sentences fit in three lines. Never colour a
+single word, and never use rust.
+
 ## 7. Badges, tags & chips
 
 Status tags are mono, uppercase, 5px radius. **Teal** means resolved or
@@ -339,6 +345,18 @@ the data is sample.
 - Sidebar `#F7F9F7`, active item `#E3F0EB` with a teal label
 - User block pinned bottom with `margin-top:auto`
 - Window radius 14px, shadow `0 18px 48px -22px rgba(14,21,18,.2)`
+
+### Review-board chrome
+
+The MAC case workbench (`components/macs/CaseWorkbench.tsx`, the "For MACs"
+specimen in the guide) adds a second window type to the kit:
+
+- Case header on `#F7F9F7`; identifiers (case, UTN, channel) in outlined mono
+  chips — `1px solid #DDE2DC`, 5px radius
+- Active step card: teal border + `#F1F8F5` fill; locked steps `#FAFBFA` with a
+  lock glyph and a mono `LOCKED` label
+- Machine output and reviewer controls side by side — Reject ghost, Verify solid
+- Evidence pane `#FAFBFA` with a tab row; one live dot per window
 
 ### Table rules
 
@@ -514,7 +532,11 @@ actually pay."
 A module page, a use-case page or a solution page follows the same spine as the
 homepage, with the middle swapped for its subject.
 
-1. **Sticky header** — white, 68px. Wordmark, section links, demo button.
+1. **Sticky header** — white, 68px. Wordmark, the site nav (the same on every
+   page: For Providers · For MACs · Contact), CTA button. Pages with sections add a
+   44px "On this page" row beneath it — 13.5px links, active one teal with a
+   2px underline, driven by scroll position. Anchored sections carry
+   `scroll-margin-top:128px` (`.mk-has-subnav`) so they clear both rows.
    Shadow appears past 8px of scroll.
 2. **Hero + product mock** — white. Chip eyebrow, trust line with both marks,
    H1 left with lede and buttons right, then the workbench for this page's
@@ -557,7 +579,9 @@ homepage, with the middle swapped for its subject.
 | Entrance motion, carousels, hashless anchors | [`components/shared/motion.ts`](../components/shared/motion.ts) |
 | Mock scaling, tick, dialog state | [`components/landing/state.tsx`](../components/landing/state.tsx) |
 | Copy and sample workbench data | [`lib/landing-data.ts`](../lib/landing-data.ts) |
-| Sticky header, shared by every page | [`components/shared/SiteHeader.tsx`](../components/shared/SiteHeader.tsx) — takes `links`, `ctaLabel`, `onCta`, `tagline` |
+| Site nav, footer groups, section links | [`lib/nav.ts`](../lib/nav.ts) |
+| Sticky header, shared by every page | [`components/shared/SiteHeader.tsx`](../components/shared/SiteHeader.tsx) — takes `sections`, `ctaLabel`, `onCta`, `tagline` |
+| The lead form (dialog, `/contact`, MAC page) | [`components/shared/LeadForm.tsx`](../components/shared/LeadForm.tsx) |
 | MAC campaign page (`/medicare-administrative-contractors`) | [`components/macs/`](../components/macs/) with copy in [`lib/macs-data.ts`](../lib/macs-data.ts); a worked example of §16 with an inline form in place of the dialog |
 
 ## Changes since guide v1

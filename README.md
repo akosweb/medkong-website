@@ -7,7 +7,8 @@ operations, built by AKOS on Palantir Foundry.
 | -------------------------------------- | --------------------------------------------------- | ------- |
 | `/`                                    | `MedKong Landing v3.dc.html`                        | yes     |
 | `/medicare-administrative-contractors` | Built from `docs/design-system.md` + the MAC spec   | yes     |
-| `/macs`                                | 308 → the route above (short link for ads/posts)    | —       |
+| `/contact`                             | Demo request as a page — the shared lead form       | yes     |
+| `/macs`                                | 308 → the MAC page (short link for ads/posts)       | —       |
 | `/design-system`                       | `MEDKONG Design Guide.dc.html`                      | no      |
 
 **MEDKONG for MACs** (`components/macs/`, copy in
@@ -18,6 +19,12 @@ than the demo dialog — every CTA on the page scrolls to it. The source spec
 ("MEDKONG for MACs — Workflow & Solution Specification") forbids outcome claims
 without a pilot baseline, so the page carries no figures.
 
+**Navigation** lives in [`lib/nav.ts`](lib/nav.ts): the main nav is the same
+on every page (For Providers · For MACs · Contact), and pages with sections pass
+their own links to [`SiteHeader`](components/shared/SiteHeader.tsx), which
+renders them as an "On this page" row under the main bar with scroll-spy. The
+footer's link groups come from the same file.
+
 The design system also exists as a machine-readable spec at
 [docs/design-system.md](docs/design-system.md) — every token, component and rule
 in one file, for handing to an LLM when building the next page.
@@ -27,7 +34,7 @@ their origin from [`lib/site.ts`](lib/site.ts) so they can't drift apart —
 set `NEXT_PUBLIC_SITE_URL` per environment; it falls back to the production
 domain rather than localhost.
 
-- **`/sitemap.xml`** — the homepage and the MAC page. `/design-system` is
+- **`/sitemap.xml`** — the homepage, the MAC page and `/contact`. `/design-system` is
   noindexed and disallowed, so it's deliberately absent; `/macs` is a redirect.
 - **`/llms.txt`** — a brief for language models and agents
   ([llmstxt.org](https://llmstxt.org)). Generated from
@@ -130,8 +137,9 @@ was ported.
 
 ## Lead capture
 
-The demo dialog and the MAC page's inline form both post to
-[`/api/leads`](app/api/leads/route.ts), which inserts
+One form, [`components/shared/LeadForm.tsx`](components/shared/LeadForm.tsx),
+serves the homepage demo dialog, `/contact` and the MAC page (in its `mac`
+variant). All of them post to [`/api/leads`](app/api/leads/route.ts), which inserts
 into `medkong.leads` in the shared **AKOS Toolkit ("arsenal")** Supabase project
 (`sgizuweopqywezpkumqt`) — the same project the AKOS site reads its blog from.
 

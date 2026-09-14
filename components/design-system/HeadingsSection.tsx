@@ -38,6 +38,11 @@ export function HeadingsSection() {
     </div>
     <p style={sx("margin:18px 0 0;font-size:13.5px;line-height:1.6;color:#5A625C")}>Use <span style={sx("font:400 12.5px 'IBM Plex Mono',monospace;color:#0A5A4B")}>align-items:end</span> when both columns are short text, <span style={sx("font:400 12.5px 'IBM Plex Mono',monospace;color:#0A5A4B")}>align-items:start</span> whenever either side holds a stack, list or panel.</p>
     </div>
+    <div style={sx("margin-top:18px;border:1px solid #DDE2DC;border-radius:14px;padding:26px")}>
+    <span style={sx("font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#616961")}>Two-sentence hero — second sentence in primary teal</span>
+    <h3 style={sx("font-weight:600;font-size:clamp(30px,3.4vw,50px);line-height:1.04;letter-spacing:-0.036em;margin:20px 0 0;padding-top:20px;border-top:1px solid #F1F3F0")}>The system prepares the case.<br /><span style={sx("color:#0A5A4B")}>The reviewer decides.</span></h3>
+    <p style={sx("margin:18px 0 0;font-size:13.5px;line-height:1.6;color:#5A625C")}>For a hero that states a division of labour. The teal sentence always comes second and always starts a new line; the H1 steps down to <span style={sx("font:400 12.5px 'IBM Plex Mono',monospace;color:#0A5A4B")}>clamp(38px,4.6vw,66px)</span> so two sentences fit in three lines. Never colour a single word, and never use rust.</p>
+    </div>
     </div>
     </section>
   );

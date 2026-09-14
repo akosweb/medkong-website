@@ -41,9 +41,6 @@ import {
  */
 const METRICS_MODE: 'Figures' | 'Capability language' = 'Figures';
 
-/** Interest chips the demo form starts with. */
-const DEFAULT_INTEREST: ModuleKey[] = ['pa', 'dn'];
-
 function mmss(v: number): string {
   const x = ((v % 3600) + 3600) % 3600;
   return `${String(Math.floor(x / 60)).padStart(2, '0')}:${String(x % 60).padStart(2, '0')}`;
@@ -90,17 +87,12 @@ function useLandingState() {
   const [installed, setInstalled] = useState<ModuleKey[]>(DEFAULT_INSTALLED);
   const [tab, setTab] = useState<string>('auth');
   const [demoOpen, setDemoOpen] = useState(false);
-  const [interest, setInterest] = useState<ModuleKey[]>(DEFAULT_INTEREST);
 
   const openDemo = useCallback(() => setDemoOpen(true), []);
   const closeDemo = useCallback(() => setDemoOpen(false), []);
 
   const toggleModule = useCallback((k: ModuleKey) => {
     setInstalled((cur) => (cur.includes(k) ? cur.filter((x) => x !== k) : cur.concat(k)));
-  }, []);
-
-  const toggleInterest = useCallback((k: ModuleKey) => {
-    setInterest((cur) => (cur.includes(k) ? cur.filter((x) => x !== k) : cur.concat(k)));
   }, []);
 
   // Escape closes the dialog.
@@ -293,22 +285,8 @@ function useLandingState() {
       demoOpen,
       openDemo,
       closeDemo,
-      interest,
-      interestCount: interest.length,
-      interestChips: MODULES.map((m) => {
-        const on = interest.includes(m.k);
-        return {
-          name: m.name,
-          toggle: () => toggleInterest(m.k),
-          style:
-            'cursor:pointer;font-family:inherit;font-size:13px;font-weight:500;padding:9px 13px;border-radius:8px;transition:background .16s ease,border-color .16s ease;' +
-            (on
-              ? 'background:#0A5A4B;border:1px solid #0A5A4B;color:#fff'
-              : 'background:#fff;border:1px solid #DDE2DC;color:#5A625C'),
-        };
-      }),
     };
-  }, [t, mounted, installed, tab, demoOpen, interest, openDemo, closeDemo, toggleModule, toggleInterest]);
+  }, [t, mounted, installed, tab, demoOpen, openDemo, closeDemo, toggleModule]);
 }
 
 export type LandingValues = ReturnType<typeof useLandingState>;
