@@ -1,0 +1,68 @@
+{
+  "projectId": "6de9823c-418e-45d6-9582-cab7204a4ab0",
+  "shape": "package",
+  "pkg": "@medkong/ds",
+  "globalName": "Medkong",
+  "entry": "./packages/medkong-ds/dist/index.js",
+  "buildCmd": "npm run build --prefix packages/medkong-ds",
+  "cssEntry": "styles.css",
+  "guidelinesGlob": [
+    "../../docs/design-system.md",
+    "brand-assets.md"
+  ],
+  "overrides": {
+    "CaseWorkbench": {
+      "cardMode": "single",
+      "viewport": "1300x1320"
+    },
+    "SiteHeader": {
+      "cardMode": "column",
+      "viewport": "1280x140"
+    },
+    "SiteFooter": {
+      "cardMode": "column",
+      "viewport": "1280x300"
+    },
+    "TrustBand": {
+      "cardMode": "column",
+      "viewport": "1280x200"
+    },
+    "Section": {
+      "cardMode": "column",
+      "viewport": "1280x260"
+    },
+    "Window": {
+      "cardMode": "column"
+    },
+    "LeadForm": {
+      "cardMode": "column"
+    },
+    "StatPanel": {
+      "cardMode": "column",
+      "viewport": "1280x360"
+    },
+    "KpiTile": {
+      "cardMode": "column"
+    },
+    "CompactCard": {
+      "cardMode": "column"
+    },
+    "Button": {
+      "cardMode": "column"
+    },
+    "PanelButton": {
+      "cardMode": "column"
+    },
+    "Chip": {
+      "cardMode": "column"
+    },
+    "SectionHead": {
+      "cardMode": "column",
+      "viewport": "1280x260"
+    },
+    "Logo": {
+      "cardMode": "column"
+    }
+  },
+  "readmeHeader": ".design-sync/conventions.md"
+}
