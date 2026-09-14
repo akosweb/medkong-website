@@ -5,6 +5,7 @@
 export { MedkongMark } from './brand/MedkongMark';
 export { Wordmark, type WordmarkProps } from './brand/Wordmark';
 export { TrustBand, type TrustBandProps } from './brand/TrustBand';
+export { Logo, type LogoProps } from './brand/Logo';
 
 export { Eyebrow, type EyebrowProps } from './type/Eyebrow';
 export { SectionHead, type SectionHeadProps } from './type/SectionHead';

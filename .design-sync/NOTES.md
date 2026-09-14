@@ -27,6 +27,10 @@ Repo-specific gotchas for syncing MEDKONG to claude.ai/design. Read before a re-
 - Tokens are declared inside `styles.css` (no separate token files), so `tokens/` in the
   bundle is empty by design.
 
+- Logo files: `src/brand/brand-files.ts` inlines the six `/public/brand/*.svg` as data URIs
+  for the `Logo` component; `packages/medkong-ds/brand-assets.md` (a guideline) carries the
+  SVG sources and the public download URLs. Regenerate both if the brand files change.
+
 ## Known render warns
 
 - `[RENDER_THIN] Sparkline` — a text-free SVG; the sheet shows the three lines correctly.

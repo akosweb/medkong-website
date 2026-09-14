@@ -6,7 +6,10 @@
   "entry": "./packages/medkong-ds/dist/index.js",
   "buildCmd": "npm run build --prefix packages/medkong-ds",
   "cssEntry": "styles.css",
-  "guidelinesGlob": "../../docs/design-system.md",
+  "guidelinesGlob": [
+    "../../docs/design-system.md",
+    "brand-assets.md"
+  ],
   "overrides": {
     "CaseWorkbench": {
       "cardMode": "single",
@@ -56,6 +59,9 @@
     "SectionHead": {
       "cardMode": "column",
       "viewport": "1280x260"
+    },
+    "Logo": {
+      "cardMode": "column"
     }
   },
   "readmeHeader": ".design-sync/conventions.md"
