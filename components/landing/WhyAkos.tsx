@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { sx } from '@/lib/css';
 import { useLanding } from './state';
+import { AKOS_MARK } from '@/lib/assets';
 
 export function WhyAkos() {
   const { akosLayers } = useLanding();
@@ -10,7 +11,7 @@ export function WhyAkos() {
     <div style={sx("max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px)")}>
     <div className="mkcols" style={sx("display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:44px clamp(32px,6vw,100px);align-items:start")}>
     <div>
-    <img src="/assets/akos-mark.png" alt="AKOS" style={sx("display:block;width:36px;height:36px;border-radius:5px;margin:0 0 16px")} />
+    <img src={AKOS_MARK} alt="AKOS" style={sx("display:block;width:36px;height:36px;border-radius:5px;margin:0 0 16px")} />
     <span style={sx("display:block;font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B")}>Why AKOS</span>
     <h2 style={sx("font-weight:600;font-size:clamp(30px,3.3vw,46px);line-height:1.07;letter-spacing:-0.03em;margin:22px 0 0")}>The team behind the kit builds the whole stack.</h2>
     <p style={sx("font-size:17px;line-height:1.62;margin:20px 0 0;color:#3A443E")}>AKOS is a systems builder, not a design studio with an AI demo. The work is integration against real systems of record, canonical models that survive messy source data, agents that operate inside approval paths, and applications operators run their shift in.</p>

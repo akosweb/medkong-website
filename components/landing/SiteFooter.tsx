@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { MedkongMark } from '@/components/shared/MedkongMark';
 import { sx } from '@/lib/css';
 import { FOOTER_NAV } from '@/lib/nav';
+import { PALANTIR_WORDMARK } from '@/lib/assets';
 
 export function SiteFooter() {
   return (
@@ -34,7 +35,7 @@ export function SiteFooter() {
     <span>© {new Date().getFullYear()} AKOS. MEDKONG is deployed software; product screenshots use sample data.</span>
     <span style={sx("margin-left:auto;display:flex;flex-wrap:wrap;align-items:center;gap:22px")}>
     <span style={sx("display:inline-flex;align-items:center;gap:9px")}>Built by <a href="https://akos.ai" target="_blank" rel="noopener" style={sx("color:#fff;font-weight:600")}>akos.ai</a></span>
-    <span style={sx("display:inline-flex;align-items:center;gap:9px")}>Built on <span style={sx("display:inline-flex;align-items:center;background:#fff;border-radius:5px;padding:5px 9px")}><img src="/assets/palantir-wordmark.png" alt="Palantir" style={sx("height:13px;width:auto")} /></span> Foundry</span>
+    <span style={sx("display:inline-flex;align-items:center;gap:9px")}>Built on <span style={sx("display:inline-flex;align-items:center;background:#fff;border-radius:5px;padding:5px 9px")}><img src={PALANTIR_WORDMARK} alt="Palantir" style={sx("height:13px;width:auto")} /></span> Foundry</span>
     </span>
     </div>
     </div>

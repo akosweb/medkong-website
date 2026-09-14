@@ -6,6 +6,7 @@ import { LeadForm } from '@/components/shared/LeadForm';
 import { SiteHeader } from '@/components/shared/SiteHeader';
 import { usePageMotion } from '@/components/shared/motion';
 import { sx } from '@/lib/css';
+import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
 
 const EXPECT = [
   { t: 'The workbenches running', d: 'Prior auth, coding review, claim QA, denial triage and AR follow-up on sample data, end to end.' },
@@ -45,12 +46,12 @@ export function ContactPage() {
             </span>
             <span className="mk-hero-break" aria-hidden="true" />
             <span style={sx('display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:#6B756E')}>
-              <img src="/assets/akos-mark.png" alt="AKOS" style={sx('width:19px;height:19px;border-radius:3px')} />
+              <img src={AKOS_MARK} alt="AKOS" style={sx('width:19px;height:19px;border-radius:3px')} />
               Built by AKOS
             </span>
             <span style={sx('width:1px;height:14px;background:#D6DBD6')}></span>
             <span style={sx('display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:#6B756E;white-space:nowrap')}>
-              Built on <img src="/assets/palantir-wordmark.png" alt="Palantir" style={sx('height:15px;width:auto')} /> Foundry
+              Built on <img src={PALANTIR_WORDMARK} alt="Palantir" style={sx('height:15px;width:auto')} /> Foundry
             </span>
           </div>
 

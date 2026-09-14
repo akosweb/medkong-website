@@ -1,5 +1,6 @@
 import { sx } from '@/lib/css';
 import { useLanding } from './state';
+import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
 
 export function DemoCta() {
   const { openDemo } = useLanding();
@@ -19,11 +20,11 @@ export function DemoCta() {
     <div style={sx("background:#fff;border:1px solid #DCEAE3;border-radius:14px;padding:28px 30px")}>
     <p style={sx("margin:0;font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#616961")}>The stack behind it</p>
     <div style={sx("display:flex;align-items:center;gap:14px;margin-top:20px;padding-bottom:20px;border-bottom:1px solid #EEF1ED")}>
-    <img src="/assets/akos-mark.png" alt="AKOS" style={sx("width:40px;height:40px;border-radius:6px")} />
+    <img src={AKOS_MARK} alt="AKOS" style={sx("width:40px;height:40px;border-radius:6px")} />
     <span><span style={sx("display:block;font-weight:600;font-size:16px")}>Built by AKOS</span><span style={sx("font-size:13.5px;color:#6B756E")}>Integration, ontology, agents, applications</span></span>
     </div>
     <div style={sx("display:flex;align-items:center;gap:14px;margin-top:20px")}>
-    <img src="/assets/palantir-wordmark.png" alt="Palantir" style={sx("height:22px;width:auto")} />
+    <img src={PALANTIR_WORDMARK} alt="Palantir" style={sx("height:22px;width:auto")} />
     <span><span style={sx("display:block;font-weight:600;font-size:16px")}>Built on Foundry</span><span style={sx("font-size:13.5px;color:#6B756E")}>Governed data, orchestration, full lineage</span></span>
     </div>
     <p style={sx("margin:22px 0 0;font-size:14px;line-height:1.55;color:#5A625C")}>Deployed module by module, into the systems you already run.</p>

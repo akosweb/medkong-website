@@ -1,0 +1,30 @@
+{
+  "name": "@medkong/ds",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MEDKONG design system \u2014 the site's shared components, tokens and fonts as a package.",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./styles.css"
+  },
+  "files": [
+    "dist",
+    "styles.css",
+    "tokens.css",
+    "fonts"
+  ],
+  "scripts": {
+    "build": "tsup && node scripts/build-css.mjs"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  }
+}

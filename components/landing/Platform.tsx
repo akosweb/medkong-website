@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { sx } from '@/lib/css';
 import { useLanding } from './state';
+import { PALANTIR_WORDMARK } from '@/lib/assets';
 
 export function Platform() {
   const { kitCount, modules } = useLanding();
@@ -36,7 +37,7 @@ export function Platform() {
     </div>
     <div style={sx("padding:14px 16px;background:#0A5A4B;color:#fff;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center")}>
     <span style={sx("font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase")}>Shared ontology · integration · governance</span>
-    <span style={sx("background:#fff;border-radius:5px;padding:5px 9px;display:inline-flex")}><img src="/assets/palantir-wordmark.png" alt="Palantir" style={sx("height:14px;width:auto")} /></span>
+    <span style={sx("background:#fff;border-radius:5px;padding:5px 9px;display:inline-flex")}><img src={PALANTIR_WORDMARK} alt="Palantir" style={sx("height:14px;width:auto")} /></span>
     </div>
     <div style={sx("padding:12px 16px;font:400 11.5px/1 'IBM Plex Mono',monospace;color:#6B736C")}>Click a module to add or remove it from the kit.</div>
     </div>
