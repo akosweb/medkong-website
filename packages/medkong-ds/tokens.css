@@ -1,0 +1,81 @@
+/* MEDKONG design tokens - docs/design-system.md §3-§5 as CSS custom properties.
+   The components set these values as literals (the site is a verbatim port of
+   its design file); the variables exist so layout glue written around the
+   components can use the same palette, type and radii by name. */
+:root {
+  /* primary - teal */
+  --mk-primary: #0A5A4B;
+  --mk-primary-hover: #0E7A66;
+  --mk-signal: #12866F;
+  --mk-teal-wash: #E3F0EB;
+  --mk-teal-tint: #F1F8F5;
+  --mk-teal-on-dark: #5FBFA6;
+  --mk-teal-eyebrow-on-teal: #8FD3C1;
+
+  /* risk - rust (state only: risk, denials, exceptions, errors) */
+  --mk-risk: #B23A1B;
+  --mk-risk-text: #96301A;
+  --mk-rust-wash: #FBE9E3;
+  --mk-rust-highlight: #FBE1D8;
+
+  /* ink, text */
+  --mk-ink: #0E1512;
+  --mk-body: #3A443E;
+  --mk-secondary: #5A625C;
+  --mk-muted: #616961;
+  --mk-muted-min: #6B736C;
+  --mk-on-ink-body: #B9C1BB;
+  --mk-on-teal-body: #BFDCD3;
+
+  /* surfaces */
+  --mk-chrome: #F7F9F7;
+  --mk-band-gray: #F4F6F3;
+  --mk-band-mint: #EEF2EF;
+  --mk-panel-tint: #FAFBFA;
+
+  /* borders */
+  --mk-border-card: #DDE2DC;
+  --mk-border-band: #E6EAE5;
+  --mk-border-panel: #EEF1ED;
+  --mk-border-row: #F1F3F0;
+  --mk-border-tint: #DCEAE3;
+
+  /* chart ramp - sequential only */
+  --mk-ramp-1: #12866F;
+  --mk-ramp-2: #4FA48F;
+  --mk-ramp-3: #84BFAE;
+  --mk-ramp-4: #B2D5C9;
+  --mk-ramp-5: #D6E7DF;
+
+  /* type */
+  --mk-font-voice: Archivo, system-ui, sans-serif;
+  --mk-font-machine: 'IBM Plex Mono', monospace;
+  --mk-h1: 600 clamp(42px, 5.6vw, 82px) / 1.02 var(--mk-font-voice);
+  --mk-h2: 600 clamp(32px, 3.7vw, 52px) / 1.06 var(--mk-font-voice);
+  --mk-h3: 600 29px / 1.14 var(--mk-font-voice);
+  --mk-h4: 600 19px / 1.25 var(--mk-font-voice);
+  --mk-lede: 400 17.5px / 1.62 var(--mk-font-voice);
+  --mk-body-text: 400 15px / 1.6 var(--mk-font-voice);
+  --mk-eyebrow: 500 11.5px / 1 var(--mk-font-machine);
+  --mk-data-label: 500 10px / 1 var(--mk-font-machine);
+  --mk-tracking-h1: -0.038em;
+  --mk-tracking-h2: -0.032em;
+  --mk-tracking-eyebrow: 0.14em;
+  --mk-tracking-label: 0.11em;
+
+  /* layout */
+  --mk-content-width: 1400px;
+  --mk-gutter: clamp(24px, 4vw, 56px);
+  --mk-section-padding: 110px;
+  --mk-column-gap: clamp(32px, 6vw, 100px);
+
+  /* radii */
+  --mk-radius-control: 8px;
+  --mk-radius-panel: 10px;
+  --mk-radius-card: 14px;
+  --mk-radius-dialog: 16px;
+
+  /* elevation */
+  --mk-shadow-window: 0 18px 48px -22px rgba(14, 21, 18, 0.2);
+  --mk-shadow-hero: 0 24px 60px -22px rgba(14, 21, 18, 0.22);
+}

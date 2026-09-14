@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { sx } from '@/lib/css';
 import { TRUST } from '@/lib/macs-data';
+import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
 
 export function TrustBand() {
   return (
@@ -15,12 +16,12 @@ export function TrustBand() {
         )}
       >
         <span style={sx('display:inline-flex;align-items:center;gap:12px')}>
-          <img src="/assets/akos-mark.png" alt="AKOS" style={sx('width:36px;height:36px;border-radius:5px')} />
+          <img src={AKOS_MARK} alt="AKOS" style={sx('width:36px;height:36px;border-radius:5px')} />
           <span style={sx('font-weight:600;font-size:16px')}>Built by AKOS</span>
         </span>
         <span style={sx('width:1px;height:34px;background:#D6DBD6')}></span>
         <span style={sx('display:inline-flex;align-items:center;gap:12px')}>
-          <img src="/assets/palantir-wordmark.png" alt="Palantir" style={sx('height:24px;width:auto')} />
+          <img src={PALANTIR_WORDMARK} alt="Palantir" style={sx('height:24px;width:auto')} />
           <span style={sx('font-weight:600;font-size:16px')}>Built on Foundry</span>
         </span>
         <span style={sx('flex:1;min-width:260px;font-size:15px;line-height:1.6;color:#3A443E')}>{TRUST.claim}</span>

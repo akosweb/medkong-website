@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { sx } from '@/lib/css';
 import { FOUNDRY } from '@/lib/macs-data';
+import { PALANTIR_WORDMARK } from '@/lib/assets';
 
 export function FoundryBand() {
   return (
@@ -17,7 +18,7 @@ export function FoundryBand() {
               Why Palantir
             </span>
             <div style={sx('background:#fff;border-radius:10px;padding:14px 18px;display:flex;width:fit-content;margin:22px 0 0')}>
-              <img src="/assets/palantir-wordmark.png" alt="Palantir" style={sx('height:30px;width:auto')} />
+              <img src={PALANTIR_WORDMARK} alt="Palantir" style={sx('height:30px;width:auto')} />
             </div>
             <h2 style={sx('font-weight:600;font-size:clamp(32px,3.7vw,52px);line-height:1.06;letter-spacing:-0.032em;margin:24px 0 0')}>
               {FOUNDRY.headline}

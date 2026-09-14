@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { MedkongMark } from '@/components/shared/MedkongMark';
 import { sx } from '@/lib/css';
 import { useLanding } from './state';
+import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
 
 export function Hero() {
   const { authRows, autoPct, clock, feed, firstPass, kpiAuth, openDemo, ringDash, sidebar } = useLanding();
@@ -13,9 +14,9 @@ export function Hero() {
     <span className="mk-hero-eyebrow" style={sx("display:inline-flex;align-items:center;font:500 11.5px/1.45 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B;background:#E3F0EB;padding:7px 11px;border-radius:6px")}>Modular AI kit for healthcare RCM</span>
     {/* Forces the credits onto their own line below the eyebrow on narrow screens. */}
     <span className="mk-hero-break" aria-hidden="true" />
-    <span style={sx("display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:#6B756E")}><img src="/assets/akos-mark.png" alt="AKOS" style={sx("width:19px;height:19px;border-radius:3px")} />Built by AKOS</span>
+    <span style={sx("display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:#6B756E")}><img src={AKOS_MARK} alt="AKOS" style={sx("width:19px;height:19px;border-radius:3px")} />Built by AKOS</span>
     <span style={sx("width:1px;height:14px;background:#D6DBD6")}></span>
-    <span style={sx("display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:#6B756E;white-space:nowrap")}>Built on <img src="/assets/palantir-wordmark.png" alt="Palantir" style={sx("height:15px;width:auto")} /> Foundry</span>
+    <span style={sx("display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:#6B756E;white-space:nowrap")}>Built on <img src={PALANTIR_WORDMARK} alt="Palantir" style={sx("height:15px;width:auto")} /> Foundry</span>
     </div>
     <div className="mkcols" style={sx("display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px clamp(32px,5vw,90px);align-items:start;margin-top:38px")}>
     <h1 style={sx("font-weight:600;font-size:clamp(42px,5.6vw,82px);line-height:1.02;letter-spacing:-0.038em;margin:0")}>Modular AI Kit for the revenue cycle.</h1>

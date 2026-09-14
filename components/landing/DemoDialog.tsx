@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { LeadForm } from '@/components/shared/LeadForm';
 import { sx } from '@/lib/css';
 import { stopPropagation, useLanding } from './state';
+import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
 
 export function DemoDialog() {
   const { demoOpen, closeDemo } = useLanding();
@@ -98,12 +99,12 @@ export function DemoDialog() {
             style={sx('padding:24px 26px;display:grid;gap:14px;border-top:1px solid rgba(255,255,255,.16)')}
           >
             <span style={sx('display:flex;align-items:center;gap:12px')}>
-              <img src="/assets/akos-mark.png" alt="AKOS" style={sx('width:32px;height:32px;border-radius:5px')} />
+              <img src={AKOS_MARK} alt="AKOS" style={sx('width:32px;height:32px;border-radius:5px')} />
               <span style={sx('color:#fff;font-weight:600;font-size:14.5px')}>Built by AKOS</span>
             </span>
             <span style={sx('display:flex;align-items:center;gap:12px')}>
               <span style={sx('background:#fff;border-radius:5px;padding:5px 8px;display:inline-flex')}>
-                <img src="/assets/palantir-wordmark.png" alt="Palantir" style={sx('height:13px;width:auto')} />
+                <img src={PALANTIR_WORDMARK} alt="Palantir" style={sx('height:13px;width:auto')} />
               </span>
               <span style={sx('color:#fff;font-weight:600;font-size:14.5px')}>Built on Foundry</span>
             </span>

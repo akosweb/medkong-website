@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { sx } from '@/lib/css';
 import { useLanding } from './state';
+import { PALANTIR_WORDMARK } from '@/lib/assets';
 
 export function Foundry() {
   const { palantirPoints } = useLanding();
@@ -12,7 +13,7 @@ export function Foundry() {
     <div>
     <span style={sx("font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#8FD3C1")}>Why Palantir</span>
     <div style={sx("background:#fff;border-radius:10px;padding:14px 18px;display:flex;width:fit-content;margin:22px 0 0")}>
-    <img src="/assets/palantir-wordmark.png" alt="Palantir" style={sx("height:30px;width:auto")} />
+    <img src={PALANTIR_WORDMARK} alt="Palantir" style={sx("height:30px;width:auto")} />
     </div>
     <h2 style={sx("font-weight:600;font-size:clamp(32px,3.7vw,52px);line-height:1.06;letter-spacing:-0.032em;margin:24px 0 0")}>MEDKONG is built on Palantir Foundry.</h2>
     <p style={sx("font-size:17.5px;line-height:1.62;margin:22px 0 0;color:#CFE6DE")}>Serious workflow infrastructure needs a serious foundation. Foundry is what turns a dozen disconnected systems into one governed operational model — and what makes AI decisions inside revenue workflows traceable rather than plausible.</p>

@@ -1,5 +1,6 @@
 import { MedkongMark } from '@/components/shared/MedkongMark';
 import { sx } from '@/lib/css';
+import { PALANTIR_WORDMARK } from '@/lib/assets';
 
 export function GuideFooter() {
   return (
@@ -12,7 +13,7 @@ export function GuideFooter() {
     <span style={sx("font-size:14px")}>Design guide · internal reference</span>
     <span style={sx("margin-left:auto;display:flex;flex-wrap:wrap;align-items:center;gap:20px;font-size:14px")}>
     <span style={sx("display:inline-flex;align-items:center;gap:9px")}>Built by <a href="https://akos.ai" target="_blank" rel="noopener" style={sx("color:#fff;font-weight:600")}>akos.ai</a></span>
-    <span style={sx("display:inline-flex;align-items:center;gap:9px;background:#fff;border-radius:5px;padding:5px 9px")}><img src="/assets/palantir-wordmark.png" alt="Palantir" style={sx("height:13px;width:auto")} /></span>
+    <span style={sx("display:inline-flex;align-items:center;gap:9px;background:#fff;border-radius:5px;padding:5px 9px")}><img src={PALANTIR_WORDMARK} alt="Palantir" style={sx("height:13px;width:auto")} /></span>
     </span>
     </div>
     </footer>
