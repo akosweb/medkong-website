@@ -233,6 +233,12 @@ Two-column head puts the headline left and the support line right. Use
 `align-items:end` when both columns are short text, `align-items:start`
 whenever either side holds a stack, list or panel.
 
+**Two-sentence hero** — for a hero that states a division of labour ("The
+system prepares the case. The reviewer decides."). The second sentence is set
+in primary teal `#0A5A4B` and always starts a new line; the H1 steps down to
+`clamp(38px,4.6vw,66px)` so two sentences fit in three lines. Never colour a
+single word, and never use rust.
+
 ## 7. Badges, tags & chips
 
 Status tags are mono, uppercase, 5px radius. **Teal** means resolved or
@@ -339,6 +345,18 @@ the data is sample.
 - Sidebar `#F7F9F7`, active item `#E3F0EB` with a teal label
 - User block pinned bottom with `margin-top:auto`
 - Window radius 14px, shadow `0 18px 48px -22px rgba(14,21,18,.2)`
+
+### Review-board chrome
+
+The MAC case workbench (`components/macs/CaseWorkbench.tsx`, the "For MACs"
+specimen in the guide) adds a second window type to the kit:
+
+- Case header on `#F7F9F7`; identifiers (case, UTN, channel) in outlined mono
+  chips — `1px solid #DDE2DC`, 5px radius
+- Active step card: teal border + `#F1F8F5` fill; locked steps `#FAFBFA` with a
+  lock glyph and a mono `LOCKED` label
+- Machine output and reviewer controls side by side — Reject ghost, Verify solid
+- Evidence pane `#FAFBFA` with a tab row; one live dot per window
 
 ### Table rules
 

@@ -1,10 +1,16 @@
 import { Fragment } from 'react';
+import { CaseWorkbench } from '@/components/macs/CaseWorkbench';
 import { MedkongMark } from '@/components/shared/MedkongMark';
 import { sx } from '@/lib/css';
-import { useGuide } from './state';
+import { type MockTab, useGuide } from './state';
+
+const MOCK_TABS: { k: MockTab; label: string }[] = [
+  { k: 'providers', label: 'For Providers' },
+  { k: 'macs', label: 'For MACs' },
+];
 
 export function MockUiSection() {
-  const { clock, kpi, autoPct, ringDash, packetPct, packetBar, feed } = useGuide();
+  const { clock, kpi, autoPct, ringDash, packetPct, packetBar, feed, mockTab, selectMockTab } = useGuide();
 
   return (
     <section id="mockui" style={sx("background:#EEF2EF;border-top:1px solid #E0E7E2;border-bottom:1px solid #E0E7E2;padding:88px 0")}>
@@ -12,7 +18,15 @@ export function MockUiSection() {
     <span style={sx("font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B")}>11 — Mock UI kit</span>
     <h2 style={sx("font-weight:600;font-size:clamp(30px,3.3vw,46px);line-height:1.07;letter-spacing:-0.03em;margin:18px 0 0")}>Product mockups are the page's main image.</h2>
     <p style={sx("font-size:17px;line-height:1.62;margin:20px 0 0;color:#3A443E;max-width:70ch")}>Every mockup is a real app window: title bar, optional sidebar, dense content. They are built at a fixed design width and scaled — never reflowed — so they look identical at every viewport, just smaller. Each one names the workbench it shows and notes that the data is sample.</p>
-    <div className="mkscale" data-scale="1180" style={sx("margin-top:36px")}>
+    <div style={sx("display:flex;gap:6px;margin-top:36px;overflow-x:auto;padding-bottom:2px;border-bottom:1px solid #D8E0DA")}>
+    {MOCK_TABS.map((t) => (
+            <Fragment key={t.k}>
+    <button type="button" className="mktab" onClick={() => selectMockTab(t.k)} style={sx(`cursor:pointer;background:transparent;border:0;border-bottom:2px solid ${mockTab === t.k ? '#0A5A4B' : 'transparent'};padding:12px 16px;margin-bottom:-1px;white-space:nowrap;font-weight:600;font-size:15px;letter-spacing:-0.01em;font-family:inherit;color:${mockTab === t.k ? '#0A5A4B' : '#616961'}`)}>{t.label}</button>
+    </Fragment>
+          ))}
+    </div>
+    {mockTab === 'providers' ? (<>
+    <div className="mkscale" data-scale="1180" style={sx("margin-top:32px")}>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 18px 48px -22px rgba(14,21,18,.2);overflow:hidden")}>
     <div style={sx("display:flex;align-items:center;gap:14px;padding:12px 16px;background:#F7F9F7;border-bottom:1px solid #E6EAE5")}>
     <span style={sx("display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:13.5px")}>
@@ -112,6 +126,13 @@ export function MockUiSection() {
     </div>
     </div>
     <p style={sx("font:400 11.5px/1 'IBM Plex Mono',monospace;color:#6B736C;margin:14px 0 0")}>The MEDKONG operator workbench. Sample data.</p>
+    </>) : null}
+    {mockTab === 'macs' ? (<>
+    <div className="mkscale" data-scale="1240" style={sx("margin-top:32px")}>
+    <CaseWorkbench clock={clock} shadow="0 18px 48px -22px rgba(14,21,18,.2)" />
+    </div>
+    <p style={sx("font:400 11.5px/1 'IBM Plex Mono',monospace;color:#6B736C;margin:14px 0 0")}>The MEDKONG MAC review workbench. Sample data.</p>
+    </>) : null}
     <div style={sx("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:26px")}>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:12px;padding:20px 22px")}>
     <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>Chrome rules</span>
@@ -139,6 +160,15 @@ export function MockUiSection() {
       &lt;!-- panel built at 1240px --&gt;
     &lt;/div&gt;</pre>
     <p style={sx("margin:12px 0 0;font-size:13.5px;line-height:1.6;color:#5A625C")}>The wrapper measures its column and applies a single transform, capping at <span style={sx("font:400 12.5px 'IBM Plex Mono',monospace;color:#0A5A4B")}>data-scale-max</span>. Mockup internals never get media queries.</p>
+    </div>
+    <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:12px;padding:20px 22px")}>
+    <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>Review-board chrome</span>
+    <ul style={sx("margin:12px 0 0;padding-left:18px;font-size:14px;line-height:1.7;color:#3A443E")}>
+    <li>Case header on #F7F9F7; identifiers in outlined mono chips</li>
+    <li>Active step: teal border + #F1F8F5 fill; locked steps #FAFBFA with a lock glyph</li>
+    <li>Machine output and reviewer controls side by side — Reject ghost, Verify solid</li>
+    <li>Evidence pane #FAFBFA with a tab row; one live dot per window</li>
+    </ul>
     </div>
     </div>
     </div>
