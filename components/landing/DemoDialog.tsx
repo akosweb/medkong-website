@@ -74,7 +74,7 @@ export function DemoDialog() {
           </div>
 
           <div style={sx('margin-top:26px')}>
-            <LeadForm variant="modules" source="medkong-website" submitLabel="Request a demo" successNoun="demo" />
+            <LeadForm variant="modules" source="medkong-website" placement="dialog" submitLabel="Request a demo" successNoun="demo" />
           </div>
         </div>
 

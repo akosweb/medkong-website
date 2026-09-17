@@ -57,6 +57,7 @@ export function RequestForm() {
               <LeadForm
                 variant="mac"
                 source="medkong-macs"
+                placement="mac"
                 submitLabel="Request a walkthrough"
                 successNoun="walkthrough"
                 intro="45 minutes, one case end to end, prepared against your jurisdiction’s policy corpus."
