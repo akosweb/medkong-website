@@ -102,6 +102,7 @@ export function ContactPage() {
                 <LeadForm
                   variant="modules"
                   source="medkong-website"
+                  placement="contact"
                   submitLabel="Request a demo"
                   successNoun="demo"
                   intro="Pick the modules you want to see. Two are preselected because that’s where most operators start."

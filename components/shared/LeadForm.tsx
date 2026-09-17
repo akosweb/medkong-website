@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { Confetti } from '@/components/landing/Confetti';
+import { trackLead, type LeadEvent } from '@/lib/analytics';
 import { sx } from '@/lib/css';
 import { MODULES, type ModuleKey } from '@/lib/landing-data';
 import { JURISDICTIONS, ROLES } from '@/lib/macs-data';
@@ -23,6 +24,8 @@ export type LeadFormProps = {
   successNoun: string;
   /** A short line above the fields; omitted when the host renders its own head. */
   intro?: string;
+  /** Which form this is, for the GA4 `generate_lead` event: dialog, contact page or MAC form. */
+  placement: LeadEvent['placement'];
 };
 
 export const FIELD = sx(
@@ -45,7 +48,7 @@ const DEFAULT_INTEREST: ModuleKey[] = ['pa', 'dn'];
 
 const MAC_MODULE = 'MAC prior authorization review';
 
-export function LeadForm({ variant, source, submitLabel, successNoun, intro }: LeadFormProps) {
+export function LeadForm({ variant, source, submitLabel, successNoun, intro, placement }: LeadFormProps) {
   const mac = variant === 'mac';
   const [form, setForm] = useState(EMPTY);
   const [interest, setInterest] = useState<ModuleKey[]>(DEFAULT_INTEREST);
@@ -98,6 +101,11 @@ export function LeadForm({ variant, source, submitLabel, successNoun, intro }: L
       setForm(EMPTY);
       setJurisdictions([]);
       setStatus('sent');
+      trackLead({
+        source,
+        placement,
+        selections: mac ? jurisdictions : MODULES.filter((m) => interest.includes(m.k)).map((m) => m.name),
+      });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong on our end.');
       setStatus('error');

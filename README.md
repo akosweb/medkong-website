@@ -185,6 +185,19 @@ into `medkong.leads` in the shared **AKOS Toolkit ("arsenal")** Supabase project
   from its allowlist.
 - No IP address is stored. `referrer` and `user_agent` are, for attribution.
 
+### Conversions in GA4
+
+A successful submission from any of the three forms sends a GA4
+`generate_lead` event ([`lib/analytics.ts`](lib/analytics.ts), called from
+`LeadForm` once `/api/leads` returns OK) with `lead_source`
+(`medkong-website` / `medkong-macs`), `form_placement` (`dialog` / `contact` /
+`mac`), the selected modules or jurisdictions, and their count. It's a GA4
+recommended event name, so it only needs to be marked as a key event in the
+property (Admin → Key events → New key event → `generate_lead`) to count as a
+conversion; the parameters can be registered as custom dimensions if you want
+to split conversions by form. Like the page tag, it only fires on the
+production deploy.
+
 ### Not yet done
 
 There's no spam protection on the form — no captcha, honeypot or rate limit.
