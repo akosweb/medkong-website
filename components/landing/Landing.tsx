@@ -1,5 +1,6 @@
 'use client';
 
+import { DemoProvider } from '@/components/shared/demo';
 import { Architecture } from './Architecture';
 import { Audience } from './Audience';
 import { DemoCta } from './DemoCta';
@@ -19,15 +20,18 @@ import { WhyAkos } from './WhyAkos';
 import { LandingProvider } from './state';
 
 /**
- * MEDKONG landing page — a port of `MedKong Landing v3.dc.html`.
+ * MEDKONG for providers (`/providers`) — a port of `MedKong Landing v3.dc.html`.
+ * This was the homepage until the platform overview took `/`; the module
+ * walkthrough, workbenches and outcomes now live here as the provider page.
  *
  * Section order matches the design file top to bottom. Everything that
  * animates or responds to a click reads from <LandingProvider>, which owns the
- * one-second tick, the configurator selection, the active workbench tab and
- * the demo dialog.
+ * one-second tick, the configurator selection and the active workbench tab;
+ * <DemoProvider> owns the demo dialog.
  */
-export function Landing() {
+export function ProvidersPage() {
   return (
+    <DemoProvider>
     <LandingProvider>
       <div className="mk-page mk-has-subnav mk-landing">
         <Header />
@@ -48,5 +52,6 @@ export function Landing() {
         <DemoDialog />
       </div>
     </LandingProvider>
+    </DemoProvider>
   );
 }

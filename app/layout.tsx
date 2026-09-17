@@ -5,9 +5,9 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'MEDKONG — Modular AI Kit for the revenue cycle',
+  title: 'MEDKONG · Revenue cycle AI we deploy and you own',
   description:
-    'A kit of deployable AI and workflow modules for healthcare revenue cycle operations. Built by AKOS on Palantir Foundry.',
+    'Deployable modules for healthcare revenue cycle operations, as versioned infrastructure in your environment. Built by AKOS on Palantir Foundry.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

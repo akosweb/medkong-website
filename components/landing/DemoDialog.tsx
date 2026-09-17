@@ -3,11 +3,11 @@
 import { useEffect } from 'react';
 import { LeadForm } from '@/components/shared/LeadForm';
 import { sx } from '@/lib/css';
-import { stopPropagation, useLanding } from './state';
+import { stopPropagation, useDemo } from '@/components/shared/demo';
 import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
 
 export function DemoDialog() {
-  const { demoOpen, closeDemo } = useLanding();
+  const { demoOpen, closeDemo } = useDemo();
 
   // On narrow screens the dialog is a full-screen sheet, so the page behind it
   // is locked. The form itself unmounts with the dialog, so reopening after a

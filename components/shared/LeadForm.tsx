@@ -123,7 +123,7 @@ export function LeadForm({ variant, source, submitLabel, successNoun, intro }: L
             An AKOS&nbsp;-&nbsp;MEDKONG engineer will reach out within one business day to schedule your {successNoun}.
           </p>
           <p style={sx('margin:16px 0 0;padding-top:14px;border-top:1px solid #C9DED6;font-size:13.5px;line-height:1.6;color:#5A625C')}>
-            Our email sometimes lands in spam. We’ve sent you a confirmation — if it isn’t in your inbox, check your junk
+            Our email sometimes lands in spam. We’ve sent you a confirmation. If it isn’t in your inbox, check your junk
             folder and mark it “not junk” so our reply reaches you.
           </p>
         </div>

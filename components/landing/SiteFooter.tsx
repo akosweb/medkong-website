@@ -15,7 +15,7 @@ export function SiteFooter() {
     <MedkongMark height={28} tone="dark" />
     <span><span style={sx("color:#5FBFA6")}>MED</span><span style={sx("color:#fff")}>KONG</span></span>
     </span>
-    <p style={sx("margin:14px 0 0;font-size:14px;line-height:1.6;max-width:36ch")}>Modular AI kit for healthcare RCM operations. Built by AKOS on Palantir Foundry.</p>
+    <p style={sx("margin:14px 0 0;font-size:14px;line-height:1.6;max-width:36ch")}>Deployable AI infrastructure for the revenue cycle. Built by AKOS on Palantir Foundry.</p>
     </div>
     {FOOTER_NAV.map((g, i) => (
             <Fragment key={i}>

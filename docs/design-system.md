@@ -194,9 +194,15 @@ of one scroll. **Never two adjacent sections on the same ground.**
 **Radii:** 8–9px controls · 10–12px inner panels · 14px cards and app windows ·
 16px dialogs.
 
-**Homepage band order:** Hero (white) → Trust band (`#F4F6F3`) → What it is
-(white) → Workflows (`#F4F6F3`) → Product explorer (`#EEF2EF`) → Palantir
-Foundry (`#0A5A4B`) → CTA (`#F1F8F5`) → Footer (`#0E1512`).
+**Homepage band order:** Hero + kit manifest (white) → Trust band (`#F4F6F3`)
+→ What it is (white) → Four layers (`#F4F6F3`) → Modules (`#EEF2EF`) → Palantir
+Foundry (`#0A5A4B`) → Deployment model (white) → Solutions (`#F4F6F3`) → CTA
+(`#F1F8F5`) → Footer (`#0E1512`).
+
+**Provider page band order** (`/providers`): Hero (white) → Trust band
+(`#F4F6F3`) → What it is (white) → Workflows (`#F4F6F3`) → Product explorer
+(`#EEF2EF`) → Palantir Foundry (`#0A5A4B`) → Outcomes → … → CTA (`#F1F8F5`) →
+Footer (`#0E1512`).
 
 At most one teal and one ink band per page. Bands get
 `border-top:1px solid #E6EAE5` where two light grounds meet.
@@ -344,7 +350,17 @@ the data is sample.
 - Order: wordmark → divider → tenant name → live dot, clock, avatar
 - Sidebar `#F7F9F7`, active item `#E3F0EB` with a teal label
 - User block pinned bottom with `margin-top:auto`
-- Window radius 14px, shadow `0 18px 48px -22px rgba(14,21,18,.2)`
+- Window radius 14px, shadow `0 16px 64px -18px rgba(14,21,18,.14)`. The `.mkscale` frame reserves 56px below the mock so the shadow is never clipped
+
+### Kit-manifest chrome
+
+The homepage hero (`components/home/KitManifest.tsx`) shows a deployment rather
+than a queue: the sidebar lists the eight modules with a version and a deployed
+/ available dot; the main pane opens one module with outlined mono chips for
+its version and environment, four KPI tiles, a manifest table (kind · resource
+· source, where `MODULE` is teal and the tenant's own `YOURS` configuration is
+grey), a change log with one live dot, and an environment panel. Resource names
+are the sandbox's real ones; tenant, versions and dates are sample.
 
 ### Review-board chrome
 
@@ -483,6 +499,19 @@ art are dropped.
 `minmax(min(100%, Npx), 1fr)`. Identical above `N`, but it lets the track
 collapse below it instead of overflowing the viewport on a 320px screen.
 
+**Four-up rows.** A row of exactly four cards (the homepage pillars, layers,
+module grid and deployment ledger) uses `.mk-four` instead of auto-fit, so it
+never orphans one card: four columns, two-by-two below 1300px. Pair it with
+`.mkrail` for the carousel below 1020px, or with `.mk-four-stack` to stay a
+grid and go to one column below 640px (text-only cards that should never
+scroll sideways). A ledger cell that must fill the last two slots of a row
+(the deployment CTA) takes `.mk-deploy-cta`.
+
+**Split cards.** A card that is copy on top and a widget or footer underneath
+takes `.mk-split`: inside a `.mk-four` grid it spans two rows and subgrids
+them, so every widget in a row starts on the same line however long the copy
+above it runs. Widgets align to the top of their row; card heights match.
+
 **Below 760px** the hero's chip eyebrow takes its own line above the
 "Built by AKOS / Built on Foundry" credits.
 
@@ -507,6 +536,13 @@ collapse below it instead of overflowing the viewport on a 320px screen.
   have.
 - Endorsement claims about Palantir beyond "Built on Palantir Foundry".
 - Emoji, exclamation marks, or rhetorical questions as headlines.
+- Em-dashes, anywhere in copy. Use a colon, a comma, parentheses or a new
+  sentence. Mono separators use the middle dot (`·`); ranges use an en-dash
+  (`0–30`).
+- Internal gate codes (P1…P7, M0, D) in customer-facing copy. Name the gate
+  (completeness, eligibility, governing policy…) or its phase (intake, medical
+  review, decision). The MAC workflow is the **Review Path**: seven gates and a
+  decision.
 
 **Required captions:** "The MEDKONG operator workbench. Sample data." ·
 "Measured against two multi-facility deployments running in production."
@@ -538,10 +574,14 @@ homepage, with the middle swapped for its subject.
    2px underline, driven by scroll position. Anchored sections carry
    `scroll-margin-top:128px` (`.mk-has-subnav`) so they clear both rows.
    Shadow appears past 8px of scroll.
-2. **Hero + product mock** — white. Chip eyebrow, trust line with both marks,
-   H1 left with lede and buttons right, then the workbench for this page's
-   subject.
-3. **Trust band** — `#F4F6F3`, 44px. AKOS mark, Foundry wordmark, one-line
+2. **Hero + product mock** — white, `padding:80px 0 24px; overflow:hidden`.
+   Chip eyebrow, trust line with both marks, H1 left with lede and buttons
+   right, then the workbench for this page's subject and its caption. The 24px
+   of bottom padding is not decorative: the caption's fade-up entrance starts
+   18px lower than its resting place, and without the padding the clipped
+   section hides it from the intersection observer, so it never reveals.
+3. **Trust band** — `#F4F6F3`, 44px, `margin-top:56px` (80px from the mock
+   caption, with the hero's own padding). AKOS mark, Foundry wordmark, one-line
    infrastructure claim, three outlined chips.
 4. **Subject body, 3–5 bands** — alternating white / `#F4F6F3`. What it is, how
    it works, mockup deep-dive, coverage cards. One band may go `#EEF2EF` for a
@@ -578,9 +618,13 @@ homepage, with the middle swapped for its subject.
 | Reset, keyframes, hover, media queries | [`app/globals.css`](../app/globals.css) |
 | Entrance motion, carousels, hashless anchors | [`components/shared/motion.ts`](../components/shared/motion.ts) |
 | Mock scaling, tick, dialog state | [`components/landing/state.tsx`](../components/landing/state.tsx) |
-| Copy and sample workbench data | [`lib/landing-data.ts`](../lib/landing-data.ts) |
+| Homepage copy and the kit-manifest / layer-widget sample data | [`lib/home-data.ts`](../lib/home-data.ts) |
+| Provider page copy and sample workbench data | [`lib/landing-data.ts`](../lib/landing-data.ts) |
 | Site nav, footer groups, section links | [`lib/nav.ts`](../lib/nav.ts) |
-| Sticky header, shared by every page | [`components/shared/SiteHeader.tsx`](../components/shared/SiteHeader.tsx) — takes `sections`, `ctaLabel`, `onCta`, `tagline` |
+| Sticky header, shared by every page | [`components/shared/SiteHeaderBase.tsx`](../components/shared/SiteHeaderBase.tsx) — takes `currentPath`, `sections`, `ctaLabel`, `onCta`, `tagline`; pages use the [`SiteHeader`](../components/shared/SiteHeader.tsx) wrapper, which supplies `currentPath` from the router |
+| Demo dialog state (`DemoProvider`, `useDemo`) and the mock tick (`useTick`) | [`components/shared/demo.tsx`](../components/shared/demo.tsx), [`components/shared/tick.ts`](../components/shared/tick.ts) |
+| Homepage (`/`) | [`components/home/`](../components/home/) — the platform overview; opens the demo dialog |
+| Provider page (`/providers`) | [`components/landing/`](../components/landing/) — the original homepage as `ProvidersPage` |
 | The lead form (dialog, `/contact`, MAC page) | [`components/shared/LeadForm.tsx`](../components/shared/LeadForm.tsx) |
 | MAC campaign page (`/medicare-administrative-contractors`) | [`components/macs/`](../components/macs/) with copy in [`lib/macs-data.ts`](../lib/macs-data.ts); a worked example of §16 with an inline form in place of the dialog |
 
@@ -598,5 +642,6 @@ file reflects what the site actually does:
 3. **Dialog on mobile** — v1 said "dialog panes stack, form pane keeps the
    scroll". Below 860px it is now a full-screen sheet with the artwork as a
    124px band above the form (§9, §14).
-4. **Hero headline** — now "Modular AI Kit for the revenue cycle."; the type
-   specimen in the visual guide still shows the older wording.
+4. **Hero headline** — the homepage now opens "Revenue cycle AI we deploy and
+   you own."; "Modular AI Kit for the revenue cycle." moved to `/providers`. The
+   type specimen in the visual guide still shows the older wording.

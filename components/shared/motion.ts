@@ -223,7 +223,9 @@ export function useScaleToFit(deps: unknown[] = []) {
       const scale = Math.max(0.12, Math.min(max, (frame.clientWidth - 8) / designWidth));
       inner.style.width = `${designWidth}px`;
       inner.style.transform = `scale(${scale})`;
-      frame.style.height = `${inner.offsetHeight * scale + 18}px`;
+      // Room below the mock for its drop shadow (0 16px 64px -18px): the frame
+      // clips overflow, so without this the shadow's tail is cut off flat.
+      frame.style.height = `${inner.offsetHeight * scale + 56}px`;
     });
   }, []);
 

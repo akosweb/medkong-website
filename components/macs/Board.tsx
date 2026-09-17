@@ -70,7 +70,7 @@ export function Board() {
           <div className="mkscale" data-scale="880">
             <div
               style={sx(
-                'border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 18px 48px -22px rgba(14,21,18,.2);overflow:hidden;background:#fff'
+                'border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 16px 64px -18px rgba(14,21,18,.14);overflow:hidden;background:#fff'
               )}
             >
               <div style={sx('display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F7F9F7;border-bottom:1px solid #E6EAE5')}>
@@ -105,7 +105,7 @@ export function Board() {
 /* --------------------------------------------------------------- queue */
 
 function QueuePanel() {
-  const cols = 'minmax(84px,100px) 44px minmax(110px,1fr) minmax(90px,110px) 44px minmax(56px,70px)';
+  const cols = 'minmax(84px,100px) 44px minmax(120px,1fr) minmax(90px,110px) minmax(78px,92px) minmax(56px,70px)';
   return (
     <>
       <div style={sx('display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid #EEF1ED')}>
@@ -140,7 +140,7 @@ function QueuePanel() {
             <span>Rnd</span>
             <span>Received</span>
             <span>Status</span>
-            <span>Step</span>
+            <span>Gate</span>
             <span>Due</span>
           </div>
           {QUEUE_ROWS.map((r, i) => (
@@ -156,7 +156,7 @@ function QueuePanel() {
                 <span style={sx(MONO)}>{r.round}</span>
                 <span style={sx(MONO)}>{r.received}</span>
                 <Tag kind={r.k}>{r.status}</Tag>
-                <span style={sx(MONO + ';color:#0E1512')}>{r.step}</span>
+                <span style={sx('font-size:12.5px;color:#0E1512;white-space:nowrap')}>{r.step}</span>
                 <span style={sx(MONO + (r.late ? ';color:#B23A1B;font-weight:600' : ''))}>{r.due}</span>
               </div>
             </Fragment>
@@ -210,7 +210,7 @@ function PolicyPanel() {
     <>
       <div style={sx('display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid #EEF1ED')}>
         <span>
-          <Label>Step 4 of 8 · P4</Label>
+          <Label>Step 4 of 8 · Medical review</Label>
           <span style={sx('display:block;margin-top:6px;font-weight:600;font-size:16px;letter-spacing:-0.015em')}>Governing policy</span>
         </span>
         <span style={sx('display:flex;align-items:center;gap:10px')}>
@@ -263,7 +263,7 @@ function PolicyPanel() {
             <Label>Rationale · editable</Label>
             <p style={sx('margin:8px 0 0;font-size:12.5px;line-height:1.55;color:#3A443E')}>
               Category BLEPHAROPLASTY in {CASE.state} on {CASE.dos} falls under {CASE.mac} {CASE.jurisdiction}. Article {CASE.article} v3 is
-              the active billing article for CPT {CASE.hcpcs}; its parent LCD {CASE.lcd} supplies the medical-necessity rule groups used at P5.
+              the active billing article for CPT {CASE.hcpcs}; its parent LCD {CASE.lcd} supplies the medical-necessity rule groups used for diagnosis coverage.
               No NCD is linked.
             </p>
           </div>
@@ -286,7 +286,7 @@ function LedgerPanel() {
     <>
       <div style={sx('display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid #EEF1ED')}>
         <span>
-          <Label>Step 7 of 8 · P7</Label>
+          <Label>Step 7 of 8 · Medical review</Label>
           <span style={sx('display:block;margin-top:6px;font-weight:600;font-size:16px;letter-spacing:-0.015em')}>Documentation</span>
         </span>
         <span style={sx('display:flex;align-items:center;gap:8px')}>
@@ -326,7 +326,7 @@ function LedgerPanel() {
                 <p style={sx('margin:8px 0 0;font-size:12.5px;line-height:1.55;color:#3A443E')}>{LEDGER_DETAIL.rationale}</p>
                 <p style={sx('margin:10px 0 0;display:flex;gap:6px')}>
                   <Tag kind="neutral">EVIDENCE QUOTE · NONE</Tag>
-                  <Tag kind="neutral">SOURCE · —</Tag>
+                  <Tag kind="neutral">SOURCE · NONE</Tag>
                 </p>
               </div>
               <div style={sx('display:grid;gap:10px;align-content:start')}>
@@ -410,7 +410,7 @@ function DecisionPanel() {
           </div>
           <div style={sx('border:1px solid #E6EAE5;border-radius:10px;padding:12px 14px')}>
             <Label>Provider letter</Label>
-            <p style={sx('margin:8px 0 0;font-size:12.5px;line-height:1.5;color:#3A443E')}>Composed from reviewed values: MAC identity, identifiers, decision language, 2 itemized P7 deficiencies, 1 override, resubmission terms.</p>
+            <p style={sx('margin:8px 0 0;font-size:12.5px;line-height:1.5;color:#3A443E')}>Composed from reviewed values: MAC identity, identifiers, decision language, 2 itemized documentation deficiencies, 1 override, resubmission terms.</p>
           </div>
         </div>
         <div style={sx('display:flex;align-items:center;gap:12px;padding-top:4px')}>

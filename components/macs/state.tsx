@@ -1,7 +1,8 @@
 'use client';
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { useStickyHeader } from '@/components/landing/state';
+import { useTick } from '@/components/shared/tick';
 import {
   useAutoScrollRails,
   usePageMotion,
@@ -13,26 +14,8 @@ import { BOARD_TABS, type BoardTab } from '@/lib/macs-data';
 /** The id of the inline request form — every CTA on the page scrolls here. */
 export const REQUEST_ID = 'request';
 
-/**
- * Same one-second tick as the homepage: starts at 0, only advances after
- * mount, so server and first client render agree. The MAC mocks use it for
- * the title-bar clock only — the case data itself is static sample data.
- */
-function useTick() {
-  const [t, setT] = useState(0);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const iv = setInterval(() => setT((prev) => prev + 1), 1000);
-    return () => clearInterval(iv);
-  }, []);
-
-  return { t, mounted };
-}
-
 function useMacsState() {
-  const { t, mounted } = useTick();
+  const { t, clock } = useTick();
   const [tab, setTab] = useState<BoardTab['k']>('queue');
 
   const goToRequest = useCallback(() => {
@@ -52,7 +35,7 @@ function useMacsState() {
     void t;
 
     return {
-      clock: mounted ? new Date().toTimeString().slice(0, 8) : '--:--:--',
+      clock,
       goToRequest,
 
       tabs: BOARD_TABS.map((x) => ({
@@ -70,7 +53,7 @@ function useMacsState() {
       isLedger: tab === 'ledger',
       isDecision: tab === 'decision',
     };
-  }, [t, mounted, tab, goToRequest]);
+  }, [t, clock, tab, goToRequest]);
 }
 
 export type MacsValues = ReturnType<typeof useMacsState>;

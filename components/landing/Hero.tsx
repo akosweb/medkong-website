@@ -8,10 +8,10 @@ export function Hero() {
   const { authRows, autoPct, clock, feed, firstPass, kpiAuth, openDemo, ringDash, sidebar } = useLanding();
 
   return (
-    <section style={sx("background:#fff;padding:80px 0 0;overflow:hidden")}>
+    <section style={sx("background:#fff;padding:80px 0 24px;overflow:hidden")}>
     <div style={sx("max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px)")}>
     <div className="mk-hero-meta" style={sx("display:flex;align-items:center;gap:14px;flex-wrap:wrap")}>
-    <span className="mk-hero-eyebrow" style={sx("display:inline-flex;align-items:center;font:500 11.5px/1.45 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B;background:#E3F0EB;padding:7px 11px;border-radius:6px")}>Modular AI kit for healthcare RCM</span>
+    <span className="mk-hero-eyebrow" style={sx("display:inline-flex;align-items:center;font:500 11.5px/1.45 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B;background:#E3F0EB;padding:7px 11px;border-radius:6px")}>MEDKONG for providers</span>
     {/* Forces the credits onto their own line below the eyebrow on narrow screens. */}
     <span className="mk-hero-break" aria-hidden="true" />
     <span style={sx("display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:#6B756E")}><img src={AKOS_MARK} alt="AKOS" style={sx("width:19px;height:19px;border-radius:3px")} />Built by AKOS</span>
@@ -21,7 +21,7 @@ export function Hero() {
     <div className="mkcols" style={sx("display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px clamp(32px,5vw,90px);align-items:start;margin-top:38px")}>
     <h1 style={sx("font-weight:600;font-size:clamp(42px,5.6vw,82px);line-height:1.02;letter-spacing:-0.038em;margin:0")}>Modular AI Kit for the revenue cycle.</h1>
     <div>
-    <p style={sx("font-size:18px;line-height:1.62;margin:0;color:#3A443E")}>A kit of deployable AI and workflow modules for healthcare revenue cycle operations — patient access, prior auth, coding, claims, denials, payments and AR. Install the module that fixes your worst queue. Expand when it earns it. No rip and replace.</p>
+    <p style={sx("font-size:18px;line-height:1.62;margin:0;color:#3A443E")}>A kit of deployable AI and workflow modules for healthcare revenue cycle operations: patient access, prior auth, coding, claims, denials, payments and AR. Install the module that fixes your worst queue. Expand when it earns it. No rip and replace.</p>
     <div style={sx("display:flex;gap:12px;flex-wrap:wrap;margin-top:26px")}>
     <button type="button" className="mkcta" onClick={openDemo} style={sx("display:inline-flex;align-items:center;height:48px;padding:0 24px;border:0;border-radius:9px;background:#0A5A4B;color:#fff;font-weight:600;font-size:15.5px;cursor:pointer;transition:background .18s ease")}>Request a demo</button>
     <a className="mkghost" href="#platform" style={sx("display:inline-flex;align-items:center;min-height:48px;padding:12px 22px;border-radius:9px;border:1px solid #CFD6CF;color:#0E1512;font-weight:500;font-size:15.5px;white-space:nowrap;transition:background .18s ease,border-color .18s ease")}>Explore the workbenches</a>
@@ -31,7 +31,7 @@ export function Hero() {
     </div>
     <div style={sx("max-width:1500px;margin:56px auto 0;padding:0 clamp(24px,4vw,56px)")}>
     <div className="mkscale" data-scale="1240">
-    <div style={sx("border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 24px 60px -22px rgba(14,21,18,.22);overflow:hidden;background:#fff")}>
+    <div style={sx("border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 16px 64px -18px rgba(14,21,18,.14);overflow:hidden;background:#fff")}>
     <div style={sx("display:flex;align-items:center;gap:14px;padding:12px 16px;background:#F7F9F7;border-bottom:1px solid #E6EAE5")}>
     <span style={sx("display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:13.5px")}>
     <MedkongMark height={20} />

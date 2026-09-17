@@ -3,7 +3,14 @@ import { sx } from '@/lib/css';
 import { FOUNDRY } from '@/lib/macs-data';
 import { PALANTIR_WORDMARK } from '@/lib/assets';
 
-export function FoundryBand() {
+export type FoundryContent = typeof FOUNDRY;
+
+/**
+ * The primary-teal Foundry band every page carries (§16): white wordmark chip,
+ * why-Foundry cards, and the source → ontology → modules → surfaces flow.
+ * Defaults to the MAC page's copy; the homepage passes its own.
+ */
+export function FoundryBand({ content = FOUNDRY }: { content?: FoundryContent }) {
   return (
     <section id="foundry" style={sx('background:#0A5A4B;color:#fff;padding:110px 0')}>
       <div style={sx('max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px)')}>
@@ -21,13 +28,13 @@ export function FoundryBand() {
               <img src={PALANTIR_WORDMARK} alt="Palantir" style={sx('height:30px;width:auto')} />
             </div>
             <h2 style={sx('font-weight:600;font-size:clamp(32px,3.7vw,52px);line-height:1.06;letter-spacing:-0.032em;margin:24px 0 0')}>
-              {FOUNDRY.headline}
+              {content.headline}
             </h2>
-            <p style={sx('font-size:17.5px;line-height:1.62;margin:22px 0 0;color:#CFE6DE')}>{FOUNDRY.lede}</p>
-            <p style={sx('font-size:17.5px;line-height:1.62;margin:18px 0 0;color:#CFE6DE')}>{FOUNDRY.second}</p>
+            <p style={sx('font-size:17.5px;line-height:1.62;margin:22px 0 0;color:#CFE6DE')}>{content.lede}</p>
+            <p style={sx('font-size:17.5px;line-height:1.62;margin:18px 0 0;color:#CFE6DE')}>{content.second}</p>
           </div>
           <div style={sx('display:grid;gap:12px')}>
-            {FOUNDRY.points.map((p, i) => (
+            {content.points.map((p, i) => (
               <Fragment key={i}>
                 <div style={sx('border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);border-radius:12px;padding:20px 22px')}>
                   <p style={sx('margin:0;font-weight:600;font-size:17px;letter-spacing:-0.015em')}>{p.name}</p>
@@ -46,7 +53,7 @@ export function FoundryBand() {
             Where Foundry sits
           </span>
           <span style={sx('display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:14px')}>
-            {FOUNDRY.flow.map((f, i) => (
+            {content.flow.map((f, i) => (
               <Fragment key={i}>
                 {i > 0 ? <span style={sx('color:#8FD3C1')}>→</span> : null}
                 <span

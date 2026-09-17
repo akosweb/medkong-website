@@ -31,7 +31,7 @@ export function ContactPage() {
 
   return (
     <div className="mk-page mk-contact">
-      <SiteHeader ctaLabel="Request a demo" onCta={scrollToForm} tagline="Modular AI kit for healthcare RCM operations" />
+      <SiteHeader ctaLabel="Request a demo" onCta={scrollToForm} tagline="Deployable AI infrastructure for the revenue cycle" />
 
       <section style={sx('background:#fff;padding:80px 0 110px')}>
         <div style={sx('max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px)')}>
