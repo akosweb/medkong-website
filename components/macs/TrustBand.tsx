@@ -3,11 +3,23 @@ import { sx } from '@/lib/css';
 import { TRUST } from '@/lib/macs-data';
 import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
 
-export function TrustBand() {
+export type TrustBandProps = {
+  /** One-line infrastructure claim shown between the marks and the chips. */
+  claim?: string;
+  /** Three outlined mono chips. */
+  chips?: string[];
+};
+
+/**
+ * The 44px grey trust band under a hero: AKOS mark, Palantir wordmark, one
+ * infrastructure claim and three outlined chips. Defaults to the MAC page's
+ * copy; the homepage passes its own.
+ */
+export function TrustBand({ claim = TRUST.claim, chips = TRUST.chips }: TrustBandProps) {
   return (
     <section
       style={sx(
-        'background:#F4F6F3;border-top:1px solid #E6EAE5;border-bottom:1px solid #E6EAE5;margin-top:80px;padding:44px 0'
+        'background:#F4F6F3;border-top:1px solid #E6EAE5;border-bottom:1px solid #E6EAE5;margin-top:56px;padding:44px 0'
       )}
     >
       <div
@@ -24,9 +36,9 @@ export function TrustBand() {
           <img src={PALANTIR_WORDMARK} alt="Palantir" style={sx('height:24px;width:auto')} />
           <span style={sx('font-weight:600;font-size:16px')}>Built on Foundry</span>
         </span>
-        <span style={sx('flex:1;min-width:260px;font-size:15px;line-height:1.6;color:#3A443E')}>{TRUST.claim}</span>
+        <span style={sx('flex:1;min-width:260px;font-size:15px;line-height:1.6;color:#3A443E')}>{claim}</span>
         <span style={sx('display:flex;gap:8px;flex-wrap:wrap')}>
-          {TRUST.chips.map((c, i) => (
+          {chips.map((c, i) => (
             <Fragment key={i}>
               <span
                 style={sx(

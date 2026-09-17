@@ -8,7 +8,7 @@
 export type NavLink = { href: string; label: string; external?: boolean };
 
 export const SITE_NAV: NavLink[] = [
-  { href: '/', label: 'For Providers' },
+  { href: '/providers', label: 'For Providers' },
   { href: '/medicare-administrative-contractors', label: 'For MACs' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -17,7 +17,8 @@ export const FOOTER_NAV: { title: string; links: NavLink[] }[] = [
   {
     title: 'Product',
     links: [
-      { href: '/', label: 'For Providers' },
+      { href: '/', label: 'Platform' },
+      { href: '/providers', label: 'For Providers' },
       { href: '/medicare-administrative-contractors', label: 'For MACs' },
     ],
   },
@@ -31,8 +32,18 @@ export const FOOTER_NAV: { title: string; links: NavLink[] }[] = [
   },
 ];
 
-/** Homepage section links. */
-export const LANDING_SECTIONS: NavLink[] = [
+/** Homepage (platform overview) section links. */
+export const HOME_SECTIONS: NavLink[] = [
+  { href: '#what', label: 'Overview' },
+  { href: '#layers', label: 'How it works' },
+  { href: '#modules', label: 'Modules' },
+  { href: '#foundry', label: 'Foundry' },
+  { href: '#deployment', label: 'Deployment' },
+  { href: '#solutions', label: 'Solutions' },
+];
+
+/** Provider page section links. */
+export const PROVIDERS_SECTIONS: NavLink[] = [
   { href: '#platform', label: 'Overview' },
   { href: '#workflows', label: 'Workflows' },
   { href: '#foundry', label: 'Foundry' },

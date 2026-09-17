@@ -1,29 +1,55 @@
 # MEDKONG website
 
-Marketing site for MEDKONG — the modular AI kit for healthcare revenue cycle
-operations, built by AKOS on Palantir Foundry.
+Marketing site for MEDKONG — deployable AI infrastructure for healthcare
+revenue cycle operations, built by AKOS on Palantir Foundry.
 
-| Route                                  | Source                                              | Indexed |
-| -------------------------------------- | --------------------------------------------------- | ------- |
-| `/`                                    | `MedKong Landing v3.dc.html`                        | yes     |
-| `/medicare-administrative-contractors` | Built from `docs/design-system.md` + the MAC spec   | yes     |
-| `/contact`                             | Demo request as a page — the shared lead form       | yes     |
-| `/macs`                                | 308 → the MAC page (short link for ads/posts)       | —       |
-| `/design-system`                       | `MEDKONG Design Guide.dc.html`                      | no      |
+| Route                                  | Source                                                        | Indexed |
+| -------------------------------------- | ------------------------------------------------------------- | ------- |
+| `/`                                    | Platform overview, built from `docs/design-system.md` + both specs | yes |
+| `/providers`                           | `MedKong Landing v3.dc.html` (the original homepage)          | yes     |
+| `/medicare-administrative-contractors` | Built from `docs/design-system.md` + the MAC spec             | yes     |
+| `/contact`                             | Demo request as a page — the shared lead form                 | yes     |
+| `/macs`                                | 308 → the MAC page (short link for ads/posts)                 | —       |
+| `/design-system`                       | `MEDKONG Design Guide.dc.html`                                | no      |
+
+**The homepage** (`components/home/`, copy in [`lib/home-data.ts`](lib/home-data.ts))
+is the lead-in: MEDKONG as infrastructure an organization deploys and owns
+rather than a SaaS tenant. It carries the kit-manifest hero mock (one module's
+object types, actions, functions, automations and applications against the
+tenant's own configuration, with a change log), the four layers every module is
+built from (Preparation · Decision · Governance · Audit, each proved by an
+embedded widget), the eight-module grid from the provider spec, the Foundry
+band, the deployment ledger, and two cards leading to the provider and MAC
+pages. It opens the shared demo dialog. Sources: the provider spec ("MedKong
+Provider Revenue Cycle — Eight-Module Workflow & Solution Specification") and
+the MAC spec; per both, no outcome figures.
+
+**MEDKONG for providers** (`components/landing/`, copy in
+[`lib/landing-data.ts`](lib/landing-data.ts)) is the original homepage moved to
+`/providers` — the module walkthrough, workbench explorer, outcomes, architecture
+and implementation steps. The directory keeps its `landing` name; the page
+component is `ProvidersPage`.
 
 **MEDKONG for MACs** (`components/macs/`, copy in
 [`lib/macs-data.ts`](lib/macs-data.ts)) is the campaign page for Medicare
-Administrative Contractors. It follows the page recipe in the design system,
+Administrative Contractors. It follows the page recipe in the design system, presents the review workflow as the Review Path (seven named gates and a decision, never the internal P1–P7 codes),
 reuses the shared header and footer, and ends in an inline request form rather
 than the demo dialog — every CTA on the page scrolls to it. The source spec
 ("MEDKONG for MACs — Workflow & Solution Specification") forbids outcome claims
 without a pilot baseline, so the page carries no figures.
 
 **Navigation** lives in [`lib/nav.ts`](lib/nav.ts): the main nav is the same
-on every page (For Providers · For MACs · Contact), and pages with sections pass
-their own links to [`SiteHeader`](components/shared/SiteHeader.tsx), which
-renders them as an "On this page" row under the main bar with scroll-spy. The
-footer's link groups come from the same file.
+on every page (For Providers · For MACs · Contact; the wordmark goes home), and
+pages with sections pass their own links to
+[`SiteHeader`](components/shared/SiteHeader.tsx), which renders them as an
+"On this page" row under the main bar with scroll-spy. The footer's link groups
+come from the same file. `SiteHeader` is a thin wrapper that supplies
+`usePathname()` to [`SiteHeaderBase`](components/shared/SiteHeaderBase.tsx),
+which is router-free so `@medkong/ds` can ship it unchanged.
+
+Every page that opens the demo dialog wraps itself in
+[`DemoProvider`](components/shared/demo.tsx); the one-second mock tick is
+[`useTick`](components/shared/tick.ts).
 
 The design system also exists as a machine-readable spec at
 [docs/design-system.md](docs/design-system.md) — every token, component and rule
@@ -34,7 +60,7 @@ their origin from [`lib/site.ts`](lib/site.ts) so they can't drift apart —
 set `NEXT_PUBLIC_SITE_URL` per environment; it falls back to the production
 domain rather than localhost.
 
-- **`/sitemap.xml`** — the homepage, the MAC page and `/contact`. `/design-system` is
+- **`/sitemap.xml`** — the homepage, `/providers`, the MAC page and `/contact`. `/design-system` is
   noindexed and disallowed, so it's deliberately absent; `/macs` is a redirect.
 - **`/llms.txt`** — a brief for language models and agents
   ([llmstxt.org](https://llmstxt.org)). Generated from
@@ -78,7 +104,7 @@ running** — it writes to `.next-build` so it doesn't pull `.next` out from und
 
 ## How the design was ported
 
-Both pages come from the Claude Design project
+The provider page and the design guide come from the Claude Design project
 [MedKong UI mockups](https://claude.ai/design/p/c4765e76-8d09-404c-8ea5-b10af072bdf9).
 Those source files style every element with an inline `style="..."` string, so
 the port keeps those strings verbatim and runs them through `sx()`
@@ -95,7 +121,8 @@ Section components are one-to-one with the top-level sections of the design
 files, in the same order:
 
 - `components/landing/` — [Landing.tsx](components/landing/Landing.tsx) composes
-  them; [state.tsx](components/landing/state.tsx) owns the shared behaviour.
+  them as `ProvidersPage`; [state.tsx](components/landing/state.tsx) owns the
+  shared behaviour.
 - `components/design-system/` — same shape, driven by
   [state.tsx](components/design-system/state.tsx).
 
@@ -138,8 +165,8 @@ was ported.
 ## Lead capture
 
 One form, [`components/shared/LeadForm.tsx`](components/shared/LeadForm.tsx),
-serves the homepage demo dialog, `/contact` and the MAC page (in its `mac`
-variant). All of them post to [`/api/leads`](app/api/leads/route.ts), which inserts
+serves the demo dialog (homepage and `/providers`), `/contact` and the MAC page
+(in its `mac` variant). All of them post to [`/api/leads`](app/api/leads/route.ts), which inserts
 into `medkong.leads` in the shared **AKOS Toolkit ("arsenal")** Supabase project
 (`sgizuweopqywezpkumqt`) — the same project the AKOS site reads its blog from.
 

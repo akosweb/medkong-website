@@ -1,6 +1,8 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useDemo } from '@/components/shared/demo';
+import { useTick } from '@/components/shared/tick';
 import {
   useAutoScrollRails,
   usePageMotion,
@@ -50,26 +52,6 @@ function commas(n: number): string {
   return Math.round(n).toLocaleString('en-US');
 }
 
-/**
- * The one-second tick that animates every mock on the page.
- *
- * Starts at 0 and only advances after mount, so the server-rendered HTML and
- * the first client render agree. `clock` is the one value that can't be
- * derived from the tick, so it stays blank until mounted.
- */
-function useTick() {
-  const [t, setT] = useState(0);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const iv = setInterval(() => setT((prev) => prev + 1), 1000);
-    return () => clearInterval(iv);
-  }, []);
-
-  return { t, mounted };
-}
-
 /** Toggles `.mkstuck` on the sticky header once the page has scrolled. */
 export function useStickyHeader() {
   useEffect(() => {
@@ -83,27 +65,14 @@ export function useStickyHeader() {
 }
 
 function useLandingState() {
-  const { t, mounted } = useTick();
+  const { t, clock } = useTick();
+  const { openDemo } = useDemo();
   const [installed, setInstalled] = useState<ModuleKey[]>(DEFAULT_INSTALLED);
   const [tab, setTab] = useState<string>('auth');
-  const [demoOpen, setDemoOpen] = useState(false);
-
-  const openDemo = useCallback(() => setDemoOpen(true), []);
-  const closeDemo = useCallback(() => setDemoOpen(false), []);
 
   const toggleModule = useCallback((k: ModuleKey) => {
     setInstalled((cur) => (cur.includes(k) ? cur.filter((x) => x !== k) : cur.concat(k)));
   }, []);
-
-  // Escape closes the dialog.
-  useEffect(() => {
-    if (!demoOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setDemoOpen(false);
-    };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [demoOpen]);
 
   return useMemo(() => {
     const rot = Math.floor(t / 9) % PRIOR_AUTH_QUEUE.length;
@@ -116,7 +85,7 @@ function useLandingState() {
 
     return {
       /* ---- hero dashboard ---- */
-      clock: mounted ? new Date().toTimeString().slice(0, 8) : '--:--:--',
+      clock,
       kpiAuth: commas(1284 + Math.floor(t / 3)),
       firstPass: `${(93.4 + (t % 7) * 0.1).toFixed(1)}%`,
       autoPct: `${autoPct}%`,
@@ -281,12 +250,10 @@ function useLandingState() {
       showFigures: METRICS_MODE === 'Figures',
       showCapability: METRICS_MODE !== 'Figures',
 
-      /* ---- demo dialog ---- */
-      demoOpen,
+      /* ---- demo dialog (owned by <DemoProvider>) ---- */
       openDemo,
-      closeDemo,
     };
-  }, [t, mounted, installed, tab, demoOpen, openDemo, closeDemo, toggleModule]);
+  }, [t, clock, installed, tab, openDemo, toggleModule]);
 }
 
 export type LandingValues = ReturnType<typeof useLandingState>;
@@ -311,9 +278,4 @@ export function useLanding(): LandingValues {
   const ctx = useContext(LandingContext);
   if (!ctx) throw new Error('useLanding must be used inside <LandingProvider>');
   return ctx;
-}
-
-/** Stops a click inside the dialog from reaching the backdrop's close handler. */
-export function stopPropagation(e: React.MouseEvent) {
-  e.stopPropagation();
 }

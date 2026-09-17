@@ -27,7 +27,7 @@ export function MockUiSection() {
     </div>
     {mockTab === 'providers' ? (<>
     <div className="mkscale" data-scale="1180" style={sx("margin-top:32px")}>
-    <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 18px 48px -22px rgba(14,21,18,.2);overflow:hidden")}>
+    <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 16px 64px -18px rgba(14,21,18,.14);overflow:hidden")}>
     <div style={sx("display:flex;align-items:center;gap:14px;padding:12px 16px;background:#F7F9F7;border-bottom:1px solid #E6EAE5")}>
     <span style={sx("display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:13.5px")}>
     <MedkongMark height={20} />
@@ -129,7 +129,7 @@ export function MockUiSection() {
     </>) : null}
     {mockTab === 'macs' ? (<>
     <div className="mkscale" data-scale="1240" style={sx("margin-top:32px")}>
-    <CaseWorkbench clock={clock} shadow="0 18px 48px -22px rgba(14,21,18,.2)" />
+    <CaseWorkbench clock={clock} shadow="0 16px 64px -18px rgba(14,21,18,.14)" />
     </div>
     <p style={sx("font:400 11.5px/1 'IBM Plex Mono',monospace;color:#6B736C;margin:14px 0 0")}>The MEDKONG MAC review workbench. Sample data.</p>
     </>) : null}
@@ -141,7 +141,7 @@ export function MockUiSection() {
     <li>Wordmark → divider → tenant name → live dot, clock, avatar</li>
     <li>Sidebar #F7F9F7, active item #E3F0EB with teal label</li>
     <li>User block pinned bottom with <span style={sx("font:400 12.5px 'IBM Plex Mono',monospace;color:#0A5A4B")}>margin-top:auto</span></li>
-    <li>Window radius 14px, shadow <span style={sx("font:400 12.5px 'IBM Plex Mono',monospace;color:#0A5A4B")}>0 18px 48px -22px rgba(14,21,18,.2)</span></li>
+    <li>Window radius 14px, shadow <span style={sx("font:400 12.5px 'IBM Plex Mono',monospace;color:#0A5A4B")}>0 16px 64px -18px rgba(14,21,18,.14)</span></li>
     </ul>
     </div>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:12px;padding:20px 22px")}>

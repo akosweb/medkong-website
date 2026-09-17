@@ -35,18 +35,18 @@ export const SIDEBAR = [
   { name: 'Coding review', count: '112', on: false },
   { name: 'Claim QA', count: '2.8K', on: false },
   { name: 'Denials', count: '63', on: true },
-  { name: 'Posting', count: '—', on: false },
+  { name: 'Posting', count: '', on: false },
   { name: 'AR follow-up', count: '391', on: true },
   { name: 'Audit trail', count: '', on: true },
 ];
 
 export const FEED = [
-  { time: '14:32:07', kind: 'DRAFT', text: 'Appeal letter drafted — CO-197, UHC, $41,280' },
-  { time: '14:32:04', kind: 'FLAG', text: 'Policy criteria unmet — PA-40894' },
+  { time: '14:32:07', kind: 'DRAFT', text: 'Appeal letter drafted · CO-197, UHC, $41,280' },
+  { time: '14:32:04', kind: 'FLAG', text: 'Policy criteria unmet · PA-40894' },
   { time: '14:32:01', kind: 'PASS', text: 'Claim batch B-2214 · 2,609 submitted' },
   { time: '14:31:58', kind: 'MATCH', text: 'Remit 835 matched to 1,204 claims' },
-  { time: '14:31:52', kind: 'SCAN', text: 'Payer policy MP-0142 updated — 3 cases requeued' },
-  { time: '14:31:44', kind: 'PASS', text: 'Auth approved — PA-40881, Aetna' },
+  { time: '14:31:52', kind: 'SCAN', text: 'Payer policy MP-0142 updated · 3 cases requeued' },
+  { time: '14:31:44', kind: 'PASS', text: 'Auth approved · PA-40881, Aetna' },
 ];
 
 export const FEED_KIND_COLOR: Record<string, string> = {
@@ -65,10 +65,10 @@ export const DENIAL_MIX = [
 ];
 
 export const CODING_SUGGESTIONS = [
-  { kind: 'Diagnosis', txt: 'Add I50.32 — chronic diastolic HF documented', conf: '0.94' },
+  { kind: 'Diagnosis', txt: 'Add I50.32: chronic diastolic HF documented', conf: '0.94' },
   { kind: 'Specificity', txt: 'Laterality missing on 25600 wrist procedure', conf: '0.88' },
   { kind: 'Level', txt: '99214 supported by MDM, not time', conf: '0.91' },
-  { kind: 'Bundling', txt: 'Unbundle 80053 from panel — modifier 91', conf: '0.79' },
+  { kind: 'Bundling', txt: 'Unbundle 80053 from panel, modifier 91', conf: '0.79' },
 ];
 
 export const AR_BUCKETS = [
@@ -201,11 +201,11 @@ export const PACKET = [
 ] satisfies ReadonlyArray<{ item: string; src: string; st: string; k: TagKind }>;
 
 export const TRIAGE = [
-  { code: 'CO-197', reason: 'Auth absent — payer rule changed 07/01', payer: 'UHC', amt: '$41,280', route: 'APPEAL', k: 'risk' },
+  { code: 'CO-197', reason: 'Auth absent: payer rule changed 07/01', payer: 'UHC', amt: '$41,280', route: 'APPEAL', k: 'risk' },
   { code: 'CO-16', reason: 'Attachment missing on submission', payer: 'Aetna', amt: '$18,905', route: 'CORRECT', k: 'ok' },
   { code: 'CO-11', reason: 'Dx / procedure mismatch at coding', payer: 'BCBS', amt: '$27,440', route: 'CODING', k: 'ok' },
   { code: 'CO-45', reason: 'Contracted rate variance', payer: 'Humana', amt: '$9,615', route: 'CONTRACT', k: 'neutral' },
-  { code: 'CO-29', reason: 'Filing limit — 3 days remaining', payer: 'Medicaid', amt: '$6,140', route: 'ESCALATE', k: 'risk' },
+  { code: 'CO-29', reason: 'Filing limit: 3 days remaining', payer: 'Medicaid', amt: '$6,140', route: 'ESCALATE', k: 'risk' },
   { code: 'CO-97', reason: 'Bundled into global period', payer: 'Cigna', amt: '$4,320', route: 'WRITE-OFF', k: 'neutral' },
 ] satisfies ReadonlyArray<{ code: string; reason: string; payer: string; amt: string; route: string; k: TagKind }>;
 
@@ -217,7 +217,7 @@ export const CLAIM_TOWER = [
 ];
 
 export const CLAIM_HOLDS = [
-  { claim: 'CLM-88214', flag: 'Missing modifier 59 — pattern denied 14×', risk: 'HIGH', action: 'FIX & RELEASE' },
+  { claim: 'CLM-88214', flag: 'Missing modifier 59: pattern denied 14×', risk: 'HIGH', action: 'FIX & RELEASE' },
   { claim: 'CLM-88190', flag: 'Auth number absent on 27447', risk: 'HIGH', action: 'ATTACH AUTH' },
   { claim: 'CLM-88177', flag: 'Secondary payer sequence incorrect', risk: 'MED', action: 'RESEQUENCE' },
 ];
@@ -376,7 +376,7 @@ export const TABS: WorkbenchTab[] = [
     title: 'Authorizations that clear before the appointment does.',
     pain: 'Pre-auth fails on assembly, not judgment: the requirement is buried in a payer policy, the evidence is in three systems, and the clock started yesterday.',
     capability:
-      'The workbench determines whether auth is required, assembles the clinical packet with citations, submits through the payer channel and tracks the clock — putting a human only on the decision.',
+      'The workbench determines whether auth is required, assembles the clinical packet with citations, submits through the payer channel and tracks the clock, putting a human only on the decision.',
     proof: [
       'Requirement determination against payer policy and plan',
       'Clinical packet drafted from the record with citations',
@@ -424,7 +424,7 @@ export const TABS: WorkbenchTab[] = [
     title: 'Every denial classified, routed and answered.',
     pain: 'Denials arrive faster than a team can read them, so the cheap ones get worked and the complex ones age out.',
     capability:
-      'Triage reads the remit, assigns root cause, and routes each denial to correction, appeal or a write-off decision — with the letter drafted and the evidence attached.',
+      'Triage reads the remit, assigns root cause, and routes each denial to correction, appeal or a write-off decision, with the letter drafted and the evidence attached.',
     proof: [
       'Root-cause classification from remits and payer rules',
       'Appeal letters drafted with retrieved evidence',

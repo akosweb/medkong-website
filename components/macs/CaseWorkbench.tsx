@@ -11,7 +11,7 @@ const FACT = 'display:grid;gap:7px;padding:16px 18px;border-left:1px solid #EEF1
  */
 export function CaseWorkbench({
   clock,
-  shadow = '0 24px 60px -22px rgba(14,21,18,.22)',
+  shadow = '0 16px 64px -18px rgba(14,21,18,.14)',
 }: {
   clock: string;
   shadow?: string;
@@ -110,8 +110,8 @@ export function CaseWorkbench({
             </span>
           </div>
           <div style={sx(FACT + ';border-top:1px solid #EEF1ED')}>
-            <Label>Current step</Label>
-            <span style={sx('font-weight:600;font-size:14px')}>P1 — Completeness</span>
+            <Label>Current gate</Label>
+            <span style={sx('font-weight:600;font-size:14px')}>Completeness · Intake</span>
             <span style={sx('font-size:12.5px;color:#5A625C')}>{CASE.daysLeft} on the decision clock</span>
           </div>
         </div>
@@ -128,7 +128,7 @@ export function CaseWorkbench({
               )}
             >
               <span>
-                <Label>Step 1 of 8 · P1</Label>
+                <Label>Step 1 of 8 · Intake</Label>
                 <span style={sx('display:block;margin-top:6px;font-weight:600;font-size:16px;letter-spacing:-0.015em')}>
                   Completeness
                 </span>

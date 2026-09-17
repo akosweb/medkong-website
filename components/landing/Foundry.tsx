@@ -16,7 +16,7 @@ export function Foundry() {
     <img src={PALANTIR_WORDMARK} alt="Palantir" style={sx("height:30px;width:auto")} />
     </div>
     <h2 style={sx("font-weight:600;font-size:clamp(32px,3.7vw,52px);line-height:1.06;letter-spacing:-0.032em;margin:24px 0 0")}>MEDKONG is built on Palantir Foundry.</h2>
-    <p style={sx("font-size:17.5px;line-height:1.62;margin:22px 0 0;color:#CFE6DE")}>Serious workflow infrastructure needs a serious foundation. Foundry is what turns a dozen disconnected systems into one governed operational model — and what makes AI decisions inside revenue workflows traceable rather than plausible.</p>
+    <p style={sx("font-size:17.5px;line-height:1.62;margin:22px 0 0;color:#CFE6DE")}>Serious workflow infrastructure needs a serious foundation. Foundry is what turns a dozen disconnected systems into one governed operational model, and what makes AI decisions inside revenue workflows traceable rather than plausible.</p>
     <p style={sx("font-size:17.5px;line-height:1.62;margin:18px 0 0;color:#CFE6DE")}>It is not a badge on the page. It is the layer every module reads from, writes to, and is audited against.</p>
     </div>
     <div style={sx("display:grid;gap:12px")}>

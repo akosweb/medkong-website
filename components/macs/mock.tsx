@@ -84,7 +84,7 @@ export function Window({
   tenant,
   clock,
   children,
-  shadow = '0 18px 48px -22px rgba(14,21,18,.2)',
+  shadow = '0 16px 64px -18px rgba(14,21,18,.14)',
 }: {
   tenant: string;
   clock: string;

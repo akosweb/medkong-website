@@ -494,6 +494,55 @@ body.mk-dialog-open {
   }
 }
 
+/*
+ * Four-up card rows (the homepage pillars, layers and module grid). Fixed
+ * columns rather than auto-fit so a row never orphans one card: four across
+ * on wide screens, two-by-two below 1300px. With .mkrail the carousel takes
+ * over below 1020px; .mk-four-stack instead goes to one column below 640px.
+ */
+.mk-four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/*
+ * A card whose top half is copy and bottom half is a widget or footer. Inside
+ * a .mk-four grid it spans two grid rows and subgrids them, so every widget
+ * in a row starts on the same line however long the copy above it runs.
+ * Outside a grid (the .mkrail carousel) subgrid resolves to none and the card
+ * is an ordinary two-row grid.
+ */
+.mk-split {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  align-content: start;
+}
+
+.mk-split > :last-child {
+  align-self: start;
+}
+
+@media (max-width: 1300px) {
+  .mk-four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* The deployment ledger's CTA cell fills the last two slots of the row. */
+.mk-deploy-cta {
+  grid-column: span 2;
+}
+
+@media (max-width: 640px) {
+  .mk-four-stack {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mk-deploy-cta {
+    grid-column: auto;
+  }
+}
+
 @media (max-width: 1020px) {
   .mkcols {
     grid-template-columns: minmax(0, 1fr) !important;
@@ -520,8 +569,12 @@ body.mk-dialog-open {
   .mkrail {
     display: flex !important;
     overflow-x: auto;
+    /* The card hover lift (translateY(-2px)) must not open a vertical
+       scrollbar; the top padding gives it room instead. */
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
-    padding-bottom: 14px;
+    padding: 4px 0 14px;
+    margin-top: -4px;
   }
 
   .mkrail > * {

@@ -20,10 +20,10 @@ export function Workflow() {
         {/* phase rail */}
         <div style={sx('display:flex;gap:10px;align-items:center;margin-top:40px;flex-wrap:wrap')}>
           {[
-            { t: 'M0 · Receipt', w: 1, c: '#B2D5C9' },
-            { t: 'P1–P3 · Intake screen', w: 3, c: '#4FA48F' },
-            { t: 'P4–P7 · Medical review', w: 4, c: '#12866F' },
-            { t: 'D · Decision', w: 1, c: '#0A5A4B' },
+            { t: 'Receipt', w: 1, c: '#B2D5C9' },
+            { t: 'Intake · 3 gates', w: 3, c: '#4FA48F' },
+            { t: 'Medical review · 4 gates', w: 4, c: '#12866F' },
+            { t: 'Decision', w: 1, c: '#0A5A4B' },
           ].map((p, i) => (
             <Fragment key={i}>
               <span style={sx(`flex:${p.w} 1 120px;display:grid;gap:8px`)}>
@@ -82,10 +82,10 @@ export function Workflow() {
             "font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.05em;padding:5px 9px;border-radius:5px;background:#FBE9E3;color:#96301A;white-space:nowrap;margin-top:2px"
           )}>EARLY EXIT</span>
           <p style={sx('margin:0;font-size:14.5px;line-height:1.6;color:#3A443E')}>
-            A reviewed objection at P1, P2 or P3 routes the case directly to Decision as a rejected intake request; the
-            medical-review gates are skipped. A reviewed objection at P4–P7 completes medical review and proposes
+            A reviewed objection at any intake gate routes the case directly to Decision as a rejected intake request; the
+            medical-review gates are skipped. A reviewed objection in medical review completes the review and proposes
             non-affirmed. Changing the category or governing policy upstream refreshes every dependent suggestion and
-            returns previously verified downstream steps to review — human-overridden steps stay protected.
+            returns previously verified downstream steps to review. Human-overridden steps stay protected.
           </p>
         </div>
       </div>

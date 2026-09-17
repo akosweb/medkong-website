@@ -1,9 +1,9 @@
 import { sx } from '@/lib/css';
-import { useLanding } from './state';
+import { useDemo } from '@/components/shared/demo';
 import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
 
 export function DemoCta() {
-  const { openDemo } = useLanding();
+  const { openDemo } = useDemo();
 
   return (
     <section id="demo" style={sx("background:#F1F8F5;border-top:1px solid #DCEAE3;padding:110px 0")}>

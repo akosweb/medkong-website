@@ -11,7 +11,7 @@ export function Architecture() {
     <span style={sx("font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B")}>System architecture</span>
     <div className="mkcols" style={sx("display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px clamp(32px,6vw,90px);align-items:end;margin-top:18px")}>
     <h2 style={sx("font-weight:600;font-size:clamp(32px,3.7vw,52px);line-height:1.06;letter-spacing:-0.032em;margin:0")}>The MEDKONG intelligence stack.</h2>
-    <p style={sx("font-size:17px;line-height:1.62;margin:0;color:#3A443E")}>Six layers. The bottom four are shared by every module — which is why the second module costs a fraction of the first.</p>
+    <p style={sx("font-size:17px;line-height:1.62;margin:0;color:#3A443E")}>Six layers. The bottom four are shared by every module, which is why the second module costs a fraction of the first.</p>
     </div>
     <div style={sx("display:grid;gap:12px;margin-top:44px")}>
     {stack.map((s, i) => (

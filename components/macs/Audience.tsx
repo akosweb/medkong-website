@@ -23,7 +23,7 @@ export function Audience() {
                       "font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#6B736C"
                     )}
                   >
-                    {s.n} — {s.kicker}
+                    {s.n} · {s.kicker}
                   </span>
                   <h3 style={sx('font-weight:600;font-size:22px;line-height:1.2;letter-spacing:-0.022em;margin:12px 0 0')}>{s.body}</h3>
                 </div>

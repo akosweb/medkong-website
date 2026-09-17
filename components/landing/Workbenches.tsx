@@ -37,7 +37,7 @@ export function Workbenches() {
     </div>
     </div>
     <div className="mkscale" data-scale="880">
-    <div style={sx("border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 18px 48px -22px rgba(14,21,18,.2);overflow:hidden;background:#fff")}>
+    <div style={sx("border:1px solid #DDE2DC;border-radius:14px;box-shadow:0 16px 64px -18px rgba(14,21,18,.14);overflow:hidden;background:#fff")}>
     <div style={sx("display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F7F9F7;border-bottom:1px solid #E6EAE5")}>
     <span style={sx("font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#616961")}>{tab.slug}</span>
     <span style={sx("margin-left:auto;display:inline-flex;align-items:center;gap:7px;font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#0A5A4B")}><span style={sx("width:6px;height:6px;border-radius:50%;background:#12866F;animation:mkpulse 1.8s ease-in-out infinite")}></span>{tab.state}</span>

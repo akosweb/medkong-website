@@ -14,9 +14,9 @@ Repo-specific gotchas for syncing MEDKONG to claude.ai/design. Read before a re-
   `@/*` to the repo root via the package tsconfig) then `scripts/build-css.mjs`, which
   flattens `fonts.css` + `tokens.css` + `app/globals.css` into `styles.css`. The converter
   copies `cssEntry` verbatim — it does not resolve `@import`, hence the flattening.
-- `SiteHeader` in the package is a copy of `components/shared/SiteHeader.tsx` with
-  `usePathname()` replaced by a `currentPath` prop (no `next/navigation` in the bundle).
-  Keep the two in step by hand when the site header changes.
+- `SiteHeader` in the package re-exports `components/shared/SiteHeaderBase.tsx`, which takes
+  `currentPath` as a prop and has no `next/navigation` dependency. The site's own
+  `components/shared/SiteHeader.tsx` is a thin wrapper that supplies `usePathname()`.
 - Partner marks: the site references `/assets/akos-mark.png` and
   `/assets/palantir-wordmark.png` through `lib/assets.ts`; tsup aliases that module to
   `packages/medkong-ds/src/assets.ts` (data URIs) so the marks travel with the bundle.
@@ -44,8 +44,6 @@ Repo-specific gotchas for syncing MEDKONG to claude.ai/design. Read before a re-
 
 ## Re-sync risks
 
-- `packages/medkong-ds/src/chrome/SiteHeader.tsx` is a manual copy of the site header —
-  it drifts silently if the site's header changes.
 - `src/assets.ts` inlines the partner PNGs; it goes stale if the PNGs are replaced.
 - Fonts were fetched from Google Fonts at sync time (Sept 2026); not re-fetched by the build.
 - Previews use realistic sample copy from the site's data files by value, not by import —

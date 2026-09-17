@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
-import { Landing } from '@/components/landing/Landing';
+import { HomePage } from '@/components/home/HomePage';
 
-const title = 'MEDKONG — Modular AI Kit for the revenue cycle';
+const title = 'MEDKONG · Revenue cycle AI we deploy and you own';
 const description =
-  'Deployable AI and workflow modules for prior auth, coding, claims, denials and AR. Built by AKOS on Palantir Foundry.';
+  'Deployable modules for healthcare revenue cycle operations (eligibility, prior auth, charge capture, coding, claim QA, denials, posting, AR) and a review system for Medicare Administrative Contractors. Versioned infrastructure AKOS deploys into your environment, built on Palantir Foundry.';
 
 export const metadata: Metadata = {
   title,
-  description:
-    'A kit of deployable AI and workflow modules for healthcare revenue cycle operations. Built by AKOS on Palantir Foundry.',
+  description,
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
@@ -24,6 +23,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
-  return <Landing />;
+export default function Home() {
+  return <HomePage />;
 }

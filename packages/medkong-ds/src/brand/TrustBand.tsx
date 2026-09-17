@@ -7,7 +7,7 @@ export type TrustBandProps = {
   claim: string;
   /** Three outlined mono chips, e.g. "Ontology-driven", "Audit trail per action", "Human in the loop". */
   chips?: string[];
-  /** Adds the 80px offset used directly under a hero mock. */
+  /** Adds the 56px offset used directly under a hero mock (the hero itself carries 24px of bottom padding). */
   afterHero?: boolean;
 };
 
@@ -24,7 +24,7 @@ export function TrustBand({
   return (
     <section
       style={sx(
-        `background:#F4F6F3;border-top:1px solid #E6EAE5;border-bottom:1px solid #E6EAE5;padding:44px 0;${afterHero ? 'margin-top:80px' : ''}`
+        `background:#F4F6F3;border-top:1px solid #E6EAE5;border-bottom:1px solid #E6EAE5;padding:44px 0;${afterHero ? 'margin-top:56px' : ''}`
       )}
     >
       <div

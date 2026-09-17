@@ -15,7 +15,7 @@ export function Audience() {
             <Fragment key={i}>
     <div className="mkcard" style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:14px;overflow:hidden")}>
     <div style={sx("padding:24px 26px 20px")}>
-    <span style={sx("font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#6B736C")}>{s.n} — {s.kicker}</span>
+    <span style={sx("font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#6B736C")}>{s.n} · {s.kicker}</span>
     <h3 style={sx("font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-0.024em;margin:12px 0 0")}>{s.title}</h3>
     <p style={sx("font-size:15px;line-height:1.6;margin:12px 0 0;color:#3A443E")}>{s.body}</p>
     </div>
