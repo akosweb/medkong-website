@@ -596,3 +596,18 @@ body.mk-dialog-open {
     grid-auto-rows: auto;
   }
 }
+
+/* Manifesto harness diagram: rulebook between the two harnesses; stacks
+   vertically below 1020px with the connectors turned upright. */
+@media (max-width: 1020px) {
+  .mk-harness {
+    grid-template-columns: minmax(0, 1fr) !important;
+    justify-items: stretch;
+  }
+
+  .mk-harness-link {
+    width: 2px;
+    height: 28px !important;
+    justify-self: center;
+  }
+}

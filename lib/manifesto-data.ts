@@ -13,6 +13,39 @@ export const HERO = {
   lede: 'We check your case the way the reviewer is required to check it, because we built the reviewer’s workbench first. When reviewers change how they decide, feedback loops carry that change into the same rules. Providers scale up to that rulebook, so a case goes through prior authorization once.',
 };
 
+export const WHAT_IT_IS = {
+  eyebrow: 'What MEDKONG is',
+  headline: 'Infrastructure you own. Powered by the same rulebook.',
+  support:
+    'For providers and for the reviewers who decide their cases. Same rules on both sides, installed in each side’s own environment.',
+  plain: {
+    label: 'In plain terms',
+    body: 'MEDKONG is software that checks prior authorization cases against Medicare’s rules. The reviewer deciding a case and the provider preparing it run the same rules. It’s installed in your environment, not rented from us, so your data, your decisions and what the system learns stay yours.',
+    points: [
+      'One set of rules for both sides of the table',
+      'Installed in your environment, not a subscription you rent',
+      'The machine prepares the case; a named person signs every decision',
+    ],
+  },
+  technical: {
+    label: 'In technical terms',
+    body: 'Infrastructure as code. Each module ships as a versioned package deployed into your Palantir Foundry environment. The rulebook is a shared, versioned layer that two harnesses execute against.',
+    spec: [
+      { k: 'Delivery', v: 'Versioned modules: ontology object types, governed actions, functions, automations, operator apps' },
+      { k: 'Runtime', v: 'Your Foundry environment. No MEDKONG tenant holds your records' },
+      { k: 'Rulebook', v: 'LCDs, NCDs, coverage articles and rule groups, resolved by category, state and jurisdiction' },
+      { k: 'Harnesses', v: 'Reviewer harness and provider harness, both running the seven gates against one rulebook' },
+      { k: 'Controls', v: 'Governed actions, not direct writes. Verified human decisions are never overwritten by a rerun' },
+      { k: 'Change', v: 'Rulebook updates ship as new versions, applied to every affected case' },
+    ],
+  },
+  diagram: {
+    left: { label: 'Reviewer harness', where: 'The reviewer’s environment', does: 'Decides the case' },
+    center: { label: 'One rulebook', where: 'Versioned · shared', does: 'Seven gates · LCD · NCD · rule groups' },
+    right: { label: 'Provider harness', where: 'Your environment', does: 'Prepares the case' },
+  },
+};
+
 export const PRINCIPLES_HEAD = {
   eyebrow: 'What we believe',
   headline: 'Four principles.',

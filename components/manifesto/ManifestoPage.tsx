@@ -10,7 +10,7 @@ import { usePageMotion, useSmoothAnchors } from '@/components/shared/motion';
 import { SiteHeader } from '@/components/shared/SiteHeader';
 import { sx } from '@/lib/css';
 import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
-import { CLOSING, CONTRAST, HERO, PRINCIPLES, PRINCIPLES_HEAD, RELAY, REVIEWER, SUBMIT_ONCE } from '@/lib/manifesto-data';
+import { CLOSING, CONTRAST, HERO, PRINCIPLES, PRINCIPLES_HEAD, RELAY, REVIEWER, SUBMIT_ONCE, WHAT_IT_IS } from '@/lib/manifesto-data';
 
 const WRAP = 'max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px)';
 const EYEBROW = "font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B";
@@ -89,11 +89,86 @@ function Hero() {
   );
 }
 
+/* ----------------------------------------------------------- what it is */
+
+function DiagramNode({ n, strong }: { n: { label: string; where: string; does: string }; strong?: boolean }) {
+  return (
+    <div
+      style={sx(
+        'border-radius:12px;padding:20px 22px;text-align:center;' +
+          (strong ? 'background:#0A5A4B;color:#fff' : 'background:#fff;border:1px solid #DDE2DC')
+      )}
+    >
+      <span style={sx(`${LABEL};color:${strong ? '#8FD3C1' : '#616961'}`)}>{n.where}</span>
+      <p style={sx('font-weight:600;font-size:20px;letter-spacing:-0.018em;margin:12px 0 0')}>{n.label}</p>
+      <p style={sx(`font-size:14px;line-height:1.5;margin:6px 0 0;color:${strong ? '#CFE6DE' : '#5A625C'}`)}>{n.does}</p>
+    </div>
+  );
+}
+
+function WhatItIs() {
+  const { plain, technical, diagram } = WHAT_IT_IS;
+  return (
+    <section id="what" style={sx('background:#F4F6F3;border-top:1px solid #E6EAE5;padding:110px 0')}>
+      <div style={sx(WRAP)}>
+        <SectionHead eyebrow={WHAT_IT_IS.eyebrow} headline={WHAT_IT_IS.headline} support={WHAT_IT_IS.support} />
+
+        {/* Rulebook in the middle, one harness either side. */}
+        <div
+          className="mk-harness"
+          style={sx('display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1.1fr) 56px minmax(0,1fr);align-items:center;margin-top:44px')}
+        >
+          <DiagramNode n={diagram.left} />
+          <span className="mk-harness-link" aria-hidden="true" style={sx('height:2px;background:#0A5A4B')} />
+          <DiagramNode n={diagram.center} strong />
+          <span className="mk-harness-link" aria-hidden="true" style={sx('height:2px;background:#0A5A4B')} />
+          <DiagramNode n={diagram.right} />
+        </div>
+
+        <div
+          className="mkcols"
+          style={sx('display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:16px')}
+        >
+          <div style={sx('background:#fff;border:1px solid #DDE2DC;border-radius:14px;padding:30px')}>
+            <span style={sx(`${LABEL};color:#0A5A4B`)}>{plain.label}</span>
+            <p style={sx('font-size:17px;line-height:1.62;margin:16px 0 0;color:#3A443E')}>{plain.body}</p>
+            <ul style={sx('list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px')}>
+              {plain.points.map((pt) => (
+                <li key={pt} style={sx('display:grid;grid-template-columns:22px minmax(0,1fr);font-weight:600;font-size:16px;line-height:1.45;letter-spacing:-0.01em')}>
+                  <span aria-hidden="true" style={sx('color:#0A5A4B')}>✓</span>
+                  {pt}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div style={sx('background:#fff;border:1px solid #DDE2DC;border-radius:14px;padding:30px')}>
+            <span style={sx(`${LABEL};color:#0A5A4B`)}>{technical.label}</span>
+            <p style={sx('font-size:17px;line-height:1.62;margin:16px 0 0;color:#3A443E')}>{technical.body}</p>
+            <dl style={sx('margin:22px 0 0;border-top:1px solid #EEF1ED')}>
+              {technical.spec.map((row) => (
+                <div
+                  key={row.k}
+                  className="mkstack"
+                  style={sx('display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid #F1F3F0')}
+                >
+                  <dt style={sx("font:500 10.5px/1.7 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#616961")}>{row.k}</dt>
+                  <dd style={sx('margin:0;font-size:14.5px;line-height:1.5;color:#3A443E')}>{row.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ------------------------------------------------------------ principles */
 
 function Principles() {
   return (
-    <section id="principles" style={sx('background:#F4F6F3;border-top:1px solid #E6EAE5;padding:110px 0')}>
+    <section id="principles" style={sx('background:#fff;border-top:1px solid #E6EAE5;padding:110px 0')}>
       <div style={sx(WRAP)}>
         <SectionHead eyebrow={PRINCIPLES_HEAD.eyebrow} headline={PRINCIPLES_HEAD.headline} support={PRINCIPLES_HEAD.support} />
         {/* .mk-principles: 2×2 with every row the same height on desktop. */}
@@ -137,14 +212,14 @@ function Arrow({ color = '#9AA59D' }: { color?: string }) {
 
 function Relay() {
   return (
-    <section style={sx('background:#fff;border-top:1px solid #E6EAE5;padding:110px 0')}>
+    <section style={sx('background:#F4F6F3;border-top:1px solid #E6EAE5;padding:110px 0')}>
       <div style={sx(WRAP)}>
         <SectionHead eyebrow={RELAY.eyebrow} headline={RELAY.headline} support={RELAY.support} />
         <div
           className="mkcols"
           style={sx('display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:44px')}
         >
-          <div style={sx('border:1px solid #DDE2DC;border-radius:14px;padding:28px 30px;display:flex;flex-direction:column')}>
+          <div style={sx('background:#fff;border:1px solid #DDE2DC;border-radius:14px;padding:28px 30px;display:flex;flex-direction:column')}>
             <span style={sx(`${LABEL};color:#616961`)}>The hops</span>
             <div style={sx('display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:22px')}>
               {RELAY.hops.map((h, i) => (
@@ -165,7 +240,7 @@ function Relay() {
             </p>
           </div>
 
-          <div style={sx('border:1px solid #DDE2DC;border-radius:14px;padding:28px 30px;display:flex;flex-direction:column')}>
+          <div style={sx('background:#fff;border:1px solid #DDE2DC;border-radius:14px;padding:28px 30px;display:flex;flex-direction:column')}>
             <span style={sx(`${LABEL};color:#96301A`)}>The loops</span>
             <div style={sx('display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:22px')}>
               {RELAY.loops.map((l, i) => (
@@ -389,7 +464,8 @@ function Hooks() {
 /**
  * /manifesto — what MEDKONG believes, for RCM and MAC leaders.
  *
- * Band order (§5): hero (white) → principles (grey) → the relay (white) →
+ * Band order (§5): hero (white) → what it is (grey) → principles (white) →
+ * the relay (grey) →
  * reviewer side first (teal) → submit once (grey) → what we don't believe
  * (white) → closing CTA (teal tint) → footer (ink).
  */
@@ -400,6 +476,7 @@ export function ManifestoPage() {
       <div className="mk-page mk-manifesto">
         <Header />
         <Hero />
+        <WhatItIs />
         <Principles />
         <Relay />
         <Reviewer />
