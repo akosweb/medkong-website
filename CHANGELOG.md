@@ -2,6 +2,15 @@
 
 Notable changes to the MEDKONG website. Newest first.
 
+## Unreleased
+
+### Changed
+
+- **Manifesto rulebook diagram** now shows direction: a fast, dense stream of
+  provider cases flows left to right through the rulebook, changing colour as
+  they come out checked, while fewer decisions flow right to left back to the
+  providers. Both run at once, with a legend under the diagram.
+
 ## 2026-09-29
 
 ### Added

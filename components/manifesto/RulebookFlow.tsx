@@ -11,10 +11,17 @@ import { REVIEWER, WHAT_IT_IS } from '@/lib/manifesto-data';
  * one rulebook in the middle.
  *
  * Motion (§13): the lines draw in toward the centre once, on scroll into
- * view, then a single teal dash travels each line inward, the same
- * operational register as the mock consoles. Like the rest of the entrance
- * motion, a diagram already on screen is never hidden, and everything is
- * static under prefers-reduced-motion.
+ * view. Then cases flow, in the same operational register as the mock
+ * consoles:
+ *   - provider cases leave the modules on the left in a fast, dense stream,
+ *     pass through the rulebook, come out checked (grey → teal) and go on to
+ *     the review gates on the right;
+ *   - fewer, slower decisions leave the gates, pass back through the
+ *     rulebook, and return to the provider modules.
+ * Both streams run at once. Particles are driven by requestAnimationFrame
+ * along the real paths, only while the diagram is on screen. A diagram
+ * already on screen is never hidden, and everything is static under
+ * prefers-reduced-motion.
  */
 
 const W = 1320;
@@ -31,9 +38,23 @@ function spread(n: number, top: number, bottom: number) {
 const LEFT = MODULES.map((m, i) => ({ label: m.name, y: spread(MODULES.length, 22, H - 22)[i] }));
 const RIGHT = REVIEWER.gates.map((g, i) => ({ label: g, y: spread(REVIEWER.gates.length, 34, H - 34)[i] }));
 
-/* Every path runs outside → centre, so one keyframe moves every dash inward. */
 const leftPath = (y: number) => `M ${LEFT_X} ${y} C ${LEFT_X + 150} ${y}, ${BOX.x0 - 120} ${MID}, ${BOX.x0} ${MID}`;
 const rightPath = (y: number) => `M ${RIGHT_X} ${y} C ${RIGHT_X - 150} ${y}, ${BOX.x1 + 120} ${MID}, ${BOX.x1} ${MID}`;
+
+/* A full journey: out of one side, straight through the rulebook, into the other. */
+const acrossLR = (yl: number, yr: number) =>
+  `M ${LEFT_X} ${yl} C ${LEFT_X + 150} ${yl}, ${BOX.x0 - 120} ${MID}, ${BOX.x0} ${MID} L ${BOX.x1} ${MID} C ${BOX.x1 + 120} ${MID}, ${RIGHT_X - 150} ${yr}, ${RIGHT_X} ${yr}`;
+const acrossRL = (yr: number, yl: number) =>
+  `M ${RIGHT_X} ${yr} C ${RIGHT_X - 150} ${yr}, ${BOX.x1 + 120} ${MID}, ${BOX.x1} ${MID} L ${BOX.x0} ${MID} C ${BOX.x0 - 120} ${MID}, ${LEFT_X + 150} ${yl}, ${LEFT_X} ${yl}`;
+
+const FLOW = {
+  /** Provider cases: many, quick. Grey until checked, teal after. */
+  lr: { every: 170, duration: 2300, r: 3.4, before: '#9AA59D', after: '#12866F' },
+  /** Reviewer decisions back to providers: fewer, slower. */
+  rl: { every: 1150, duration: 3400, r: 4.6, before: '#0A5A4B', after: '#0A5A4B' },
+  /** Hold the stream until the lines have drawn in. */
+  delay: 1200,
+};
 
 type Line = { d: string; i: number };
 
@@ -41,17 +62,134 @@ function Lines({ lines }: { lines: Line[] }) {
   return (
     <>
       {lines.map(({ d, i }) => (
-        <g key={d} style={{ ['--d' as string]: `${i * 70}ms`, ['--p' as string]: `${-i * 0.45}s` }}>
+        <g key={d} style={{ ['--d' as string]: `${i * 70}ms` }}>
           <path className="mk-flow-line" d={d} pathLength={1} fill="none" stroke="#B2D5C9" strokeWidth={1.6} />
-          <path className="mk-flow-dot" d={d} pathLength={100} fill="none" stroke="#12866F" strokeWidth={3} strokeLinecap="round" strokeDasharray="3 97" />
         </g>
       ))}
     </>
   );
 }
 
+const SVG_NS = 'http://www.w3.org/2000/svg';
+
+type Dir = 'lr' | 'rl';
+type Particle = { el: SVGCircleElement; path: SVGPathElement; len: number; start: number; dir: Dir; checked: boolean };
+
+function useParticles(
+  svgRef: React.RefObject<SVGSVGElement | null>,
+  layerRef: React.RefObject<SVGGElement | null>,
+  measureRef: React.RefObject<SVGGElement | null>
+) {
+  useEffect(() => {
+    const svg = svgRef.current;
+    const layer = layerRef.current;
+    const measure = measureRef.current;
+    if (!svg || !layer || !measure || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // One measured path per (module, gate, direction), built on first use.
+    const cache = new Map<string, { path: SVGPathElement; len: number }>();
+    const route = (dir: Dir, i: number, j: number) => {
+      const key = `${dir}${i}-${j}`;
+      let hit = cache.get(key);
+      if (!hit) {
+        const path = document.createElementNS(SVG_NS, 'path');
+        path.setAttribute('d', dir === 'lr' ? acrossLR(LEFT[i].y, RIGHT[j].y) : acrossRL(RIGHT[j].y, LEFT[i].y));
+        measure.appendChild(path);
+        hit = { path, len: path.getTotalLength() };
+        cache.set(key, hit);
+      }
+      return hit;
+    };
+
+    const live: Particle[] = [];
+    const pick = (n: number) => Math.floor(Math.random() * n);
+    const spawn = (dir: Dir, now: number) => {
+      const f = FLOW[dir];
+      const { path, len } = route(dir, pick(LEFT.length), pick(RIGHT.length));
+      const el = document.createElementNS(SVG_NS, 'circle');
+      el.setAttribute('r', String(f.r));
+      el.setAttribute('fill', f.before);
+      if (dir === 'rl') {
+        el.setAttribute('stroke', '#fff');
+        el.setAttribute('stroke-width', '1.5');
+      }
+      layer.appendChild(el);
+      live.push({ el, path, len, start: now, dir, checked: false });
+    };
+
+    let raf = 0;
+    let visibleSince = 0;
+    let nextLR = 0;
+    let nextRL = 0;
+
+    const frame = (now: number) => {
+      if (now - visibleSince > FLOW.delay) {
+        if (now >= nextLR) {
+          spawn('lr', now);
+          nextLR = now + FLOW.lr.every * (0.6 + Math.random() * 0.8);
+        }
+        if (now >= nextRL) {
+          spawn('rl', now);
+          nextRL = now + FLOW.rl.every * (0.7 + Math.random() * 0.6);
+        }
+      }
+
+      for (let k = live.length - 1; k >= 0; k--) {
+        const p = live[k];
+        const t = (now - p.start) / FLOW[p.dir].duration;
+        if (t >= 1) {
+          p.el.remove();
+          live.splice(k, 1);
+          continue;
+        }
+        const pt = p.path.getPointAtLength(t * p.len);
+        p.el.setAttribute('cx', pt.x.toFixed(1));
+        p.el.setAttribute('cy', pt.y.toFixed(1));
+        // Fade in at the source, out at the destination.
+        p.el.setAttribute('opacity', String(Math.min(1, t * 12, (1 - t) * 12)));
+        if (!p.checked && (p.dir === 'lr' ? pt.x > BOX.x1 : pt.x < BOX.x0)) {
+          p.checked = true;
+          p.el.setAttribute('fill', FLOW[p.dir].after);
+        }
+      }
+      raf = requestAnimationFrame(frame);
+    };
+
+    const stop = () => {
+      cancelAnimationFrame(raf);
+      raf = 0;
+      live.splice(0).forEach((p) => p.el.remove());
+    };
+    const start = () => {
+      if (raf || document.hidden) return;
+      visibleSince = performance.now();
+      nextLR = nextRL = 0;
+      raf = requestAnimationFrame(frame);
+    };
+
+    let onScreen = false;
+    const io = new IntersectionObserver((entries) => {
+      onScreen = entries.some((e) => e.isIntersecting);
+      if (onScreen) start();
+      else stop();
+    });
+    io.observe(svg);
+    const onVis = () => (document.hidden ? stop() : onScreen && start());
+    document.addEventListener('visibilitychange', onVis);
+
+    return () => {
+      io.disconnect();
+      document.removeEventListener('visibilitychange', onVis);
+      stop();
+      measure.replaceChildren();
+    };
+  }, [svgRef, layerRef, measureRef]);
+}
+
 export function RulebookFlow() {
   const ref = useRef<SVGSVGElement>(null);
+  const layerRef = useRef<SVGGElement>(null);
+  const measureRef = useRef<SVGGElement>(null);
   const { diagram } = WHAT_IT_IS;
 
   useEffect(() => {
@@ -77,6 +215,8 @@ export function RulebookFlow() {
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+  useParticles(ref, layerRef, measureRef);
 
   const lines: Line[] = [
     ...LEFT.map((n, i) => ({ d: leftPath(n.y), i })),
@@ -106,6 +246,9 @@ export function RulebookFlow() {
         style={sx('display:block;width:100%;height:auto;margin-top:18px;overflow:visible')}
       >
         <Lines lines={lines} />
+        <g ref={measureRef} aria-hidden="true" style={{ visibility: 'hidden' }} />
+        {/* Drawn under the rulebook card, so cases vanish into it and re-emerge. */}
+        <g ref={layerRef} aria-hidden="true" />
 
         {LEFT.map((n) => (
           <g key={n.label}>
@@ -137,6 +280,22 @@ export function RulebookFlow() {
           </text>
         </g>
       </svg>
+
+      <div style={sx(`display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;margin-top:18px;${mono};color:#616961`)}>
+        {[
+          { c: FLOW.lr.before, t: diagram.legend.unchecked },
+          { c: FLOW.lr.after, t: diagram.legend.checked },
+          { c: FLOW.rl.before, t: diagram.legend.decision, ring: true },
+        ].map((l) => (
+          <span key={l.t} style={sx('display:inline-flex;align-items:center;gap:8px')}>
+            <span
+              aria-hidden="true"
+              style={sx(`width:9px;height:9px;border-radius:50%;background:${l.c};${l.ring ? 'box-shadow:0 0 0 1.5px #fff,0 0 0 2.5px ' + l.c : ''}`)}
+            />
+            {l.t}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

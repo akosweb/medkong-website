@@ -423,7 +423,7 @@ does) or **entrance** (content arriving as you scroll). Nothing else moves.
 | --- | --- |
 | Live pulse | `mkpulse` 1.8s ease-in-out, opacity `.3` → `1`. One per panel |
 | Data tick | 1s interval. Counters climb, clocks count down, queue rows rotate, statuses flip |
-| Rulebook flow | Manifesto diagram only. Lines draw in toward the rulebook once on scroll, then one teal dash travels each line inward (3.2s loop). Static under reduced motion |
+| Rulebook flow | Manifesto diagram only. Lines draw in toward the rulebook once on scroll. Then two concurrent streams: many quick provider cases left → right through the rulebook (grey `#9AA59D` → teal `#12866F` as they come out checked), and fewer, slower decisions right → left back to the providers (`#0A5A4B`, white ring). Runs only while on screen and the tab is visible; static under reduced motion |
 
 All tick values derive from **one** counter so every panel stays in sync.
 Anything on a per-second render loop must not carry a CSS transition — it will
