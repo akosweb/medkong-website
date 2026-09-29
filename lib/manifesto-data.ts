@@ -10,7 +10,8 @@ export const HERO = {
   eyebrow: 'Our manifesto',
   headline: 'One rulebook.',
   second: 'Checked from both sides.',
-  lede: 'MEDKONG puts payers and providers on the same rulebook. For reviewers, a workbench that checks every request through seven gates, cites the policy behind each finding and leaves the decision to a person. For providers, modules that check the work against those same rules before it’s submitted. Feedback loops keep both sides current, so a case is decided once, and the decision holds up.',
+  leadIn: 'MEDKONG puts payers and providers on the same rulebook.',
+  lede: 'We built the reviewer’s workbench first: seven gates, with the policy cited behind every finding. Providers clear the same gates before they submit. Every decision feeds back into the rulebook. Decided once, and it holds.',
 };
 
 export const WHAT_IT_IS = {
