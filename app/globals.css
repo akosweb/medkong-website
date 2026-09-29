@@ -582,3 +582,17 @@ body.mk-dialog-open {
     scroll-snap-align: start;
   }
 }
+
+/* Manifesto principles: 2×2, every row the same height, so all four cards
+   match on desktop. One column, natural heights, below 1020px. */
+.mk-principles {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+}
+
+@media (max-width: 1020px) {
+  .mk-principles {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: auto;
+  }
+}

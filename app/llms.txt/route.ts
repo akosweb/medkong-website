@@ -199,6 +199,9 @@ for it. See ${SITE_URL}/medicare-administrative-contractors.
   workbenches, outcomes, architecture, implementation
 - [MEDKONG for MACs](${SITE_URL}/medicare-administrative-contractors): prior
   authorization review for Medicare Administrative Contractors
+- [Manifesto](${SITE_URL}/manifesto): what MEDKONG believes about AI in the
+  revenue cycle: one rulebook for both sides of prior authorization,
+  defensible decisions, policy as a system process, decisions you own
 - [AKOS](https://akos.ai): the team that builds and deploys the kit
 - [Request a demo](${SITE_URL}/contact): 45 minutes. The workbenches running,
   the Foundry ontology behind them, and a scoping of a first module in your
