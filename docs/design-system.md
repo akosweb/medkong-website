@@ -204,6 +204,12 @@ Foundry (`#0A5A4B`) → Deployment model (white) → Solutions (`#F4F6F3`) → C
 (`#EEF2EF`) → Palantir Foundry (`#0A5A4B`) → Outcomes → … → CTA (`#F1F8F5`) →
 Footer (`#0E1512`).
 
+**Manifesto band order** (`/manifesto`): Hero (white) → What MEDKONG is
+(`#F4F6F3`) → Principles (white) → The relay (`#F4F6F3`) → Reviewer side first
+(`#0A5A4B`) → Submit once (`#F4F6F3`) → Consensus vs our view (white) → CTA
+(`#F1F8F5`) → Footer (`#0E1512`). A belief page, not a product page: no hero
+mock and no Foundry band; the teal slot goes to the seven gates.
+
 At most one teal and one ink band per page. Bands get
 `border-top:1px solid #E6EAE5` where two light grounds meet.
 
@@ -417,6 +423,7 @@ does) or **entrance** (content arriving as you scroll). Nothing else moves.
 | --- | --- |
 | Live pulse | `mkpulse` 1.8s ease-in-out, opacity `.3` → `1`. One per panel |
 | Data tick | 1s interval. Counters climb, clocks count down, queue rows rotate, statuses flip |
+| Rulebook flow | Manifesto diagram only. Lines draw in toward the rulebook once on scroll, then one teal dash travels each line inward (3.2s loop). Static under reduced motion |
 
 All tick values derive from **one** counter so every panel stays in sync.
 Anything on a per-second render loop must not carry a CSS transition — it will
@@ -626,6 +633,7 @@ homepage, with the middle swapped for its subject.
 | Homepage (`/`) | [`components/home/`](../components/home/) — the platform overview; opens the demo dialog |
 | Provider page (`/providers`) | [`components/landing/`](../components/landing/) — the original homepage as `ProvidersPage` |
 | The lead form (dialog, `/contact`, MAC page) | [`components/shared/LeadForm.tsx`](../components/shared/LeadForm.tsx) |
+| Manifesto (`/manifesto`) | [`components/manifesto/`](../components/manifesto/) with copy in [`lib/manifesto-data.ts`](../lib/manifesto-data.ts); the rulebook diagram is [`RulebookFlow.tsx`](../components/manifesto/RulebookFlow.tsx), which reads the module list from `lib/landing-data.ts` and the gates from `REVIEWER.gates` |
 | MAC campaign page (`/medicare-administrative-contractors`) | [`components/macs/`](../components/macs/) with copy in [`lib/macs-data.ts`](../lib/macs-data.ts); a worked example of §16 with an inline form in place of the dialog |
 
 ## Changes since guide v1
