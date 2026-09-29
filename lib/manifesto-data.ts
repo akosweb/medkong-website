@@ -10,7 +10,7 @@ export const HERO = {
   eyebrow: 'Our manifesto',
   headline: 'One rulebook.',
   second: 'Checked from both sides.',
-  lede: 'We check your case the way the reviewer is required to check it, because we built the reviewer’s workbench first. When reviewers change how they decide, feedback loops carry that change into the same rules. Providers scale up to that rulebook, so a case goes through prior authorization once.',
+  lede: 'MEDKONG puts payers and providers on the same rulebook. For reviewers, a workbench that checks every request through seven gates, cites the policy behind each finding and leaves the decision to a person. For providers, modules that check the work against those same rules before it’s submitted. Feedback loops keep both sides current, so a case is decided once, and the decision holds up.',
 };
 
 export const WHAT_IT_IS = {
