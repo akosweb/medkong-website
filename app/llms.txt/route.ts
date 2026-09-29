@@ -199,9 +199,12 @@ for it. See ${SITE_URL}/medicare-administrative-contractors.
   workbenches, outcomes, architecture, implementation
 - [MEDKONG for MACs](${SITE_URL}/medicare-administrative-contractors): prior
   authorization review for Medicare Administrative Contractors
-- [Manifesto](${SITE_URL}/manifesto): what MEDKONG believes about AI in the
-  revenue cycle: one rulebook for both sides of prior authorization,
-  defensible decisions, policy as a system process, decisions you own
+- [Our Manifesto](${SITE_URL}/manifesto): one rulebook, checked from both
+  sides. The reviewer's side was built first; the eight provider modules and
+  the MAC review path run against the same rulebook. Four principles, why
+  prior authorization stalls in resubmission loops rather than in the relay,
+  and the provider promise: submit once, measured as first-pass affirmation
+  rate
 - [AKOS](https://akos.ai): the team that builds and deploys the kit
 - [Request a demo](${SITE_URL}/contact): 45 minutes. The workbenches running,
   the Foundry ontology behind them, and a scoping of a first module in your

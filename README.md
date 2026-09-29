@@ -8,6 +8,7 @@ revenue cycle operations, built by AKOS on Palantir Foundry.
 | `/`                                    | Platform overview, built from `docs/design-system.md` + both specs | yes |
 | `/providers`                           | `MedKong Landing v3.dc.html` (the original homepage)          | yes     |
 | `/medicare-administrative-contractors` | Built from `docs/design-system.md` + the MAC spec             | yes     |
+| `/manifesto`                           | Our Manifesto — the MEDKONG Manifesto doc, cut for RCM and MAC leaders | yes |
 | `/contact`                             | Demo request as a page — the shared lead form                 | yes     |
 | `/macs`                                | 308 → the MAC page (short link for ads/posts)                 | —       |
 | `/design-system`                       | `MEDKONG Design Guide.dc.html`                                | no      |
@@ -38,8 +39,19 @@ than the demo dialog — every CTA on the page scrolls to it. The source spec
 ("MEDKONG for MACs — Workflow & Solution Specification") forbids outcome claims
 without a pilot baseline, so the page carries no figures.
 
+**Our Manifesto** (`components/manifesto/`, copy in
+[`lib/manifesto-data.ts`](lib/manifesto-data.ts)) states what MEDKONG believes:
+one rulebook, checked from both sides. It defines MEDKONG (deployed
+infrastructure, never "software"), with an animated diagram of the eight
+provider modules and the seven MAC review gates running against one rulebook,
+then the four principles, the relay problem (hops cost days, loops cost
+months), the reviewer's side built first, the submit-once promise measured as
+first-pass affirmation rate, and the consensus table. Claim discipline: we
+built the reviewer's workbench, never "MACs use it"; gold carding is framed as
+eligibility, never a promise; no figures.
+
 **Navigation** lives in [`lib/nav.ts`](lib/nav.ts): the main nav is the same
-on every page (For Providers · For MACs · Contact; the wordmark goes home), and
+on every page (For Providers · For MACs · Our Manifesto · Contact; the wordmark goes home), and
 pages with sections pass their own links to
 [`SiteHeader`](components/shared/SiteHeader.tsx), which renders them as an
 "On this page" row under the main bar with scroll-spy. The footer's link groups
@@ -60,7 +72,7 @@ their origin from [`lib/site.ts`](lib/site.ts) so they can't drift apart —
 set `NEXT_PUBLIC_SITE_URL` per environment; it falls back to the production
 domain rather than localhost.
 
-- **`/sitemap.xml`** — the homepage, `/providers`, the MAC page and `/contact`. `/design-system` is
+- **`/sitemap.xml`** — the homepage, `/providers`, the MAC page, `/manifesto` and `/contact`. `/design-system` is
   noindexed and disallowed, so it's deliberately absent; `/macs` is a redirect.
 - **`/llms.txt`** — a brief for language models and agents
   ([llmstxt.org](https://llmstxt.org)). Generated from

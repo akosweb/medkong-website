@@ -10,7 +10,42 @@ export const HERO = {
   eyebrow: 'Our manifesto',
   headline: 'One rulebook.',
   second: 'Checked from both sides.',
-  lede: 'We check your case the way the reviewer is required to check it, because we built the reviewer’s workbench first. When reviewers change how they decide, feedback loops carry that change into the same rules. Providers scale up to that rulebook, so a case goes through prior authorization once.',
+  leadIn: 'MEDKONG puts payers and providers on the same rulebook.',
+  lede: 'We built the reviewer’s workbench first: seven gates, with the policy cited behind every finding. Providers clear the same gates before they submit. Every decision feeds back into the rulebook. Decided once, and it holds.',
+};
+
+export const WHAT_IT_IS = {
+  eyebrow: 'What MEDKONG is',
+  headline: 'Infrastructure you own. Powered by the same rulebook.',
+  support:
+    'For providers and for the reviewers who decide their cases. Same rules on both sides, installed in each side’s own environment.',
+  plain: {
+    label: 'What it does',
+    body: 'MEDKONG is revenue cycle infrastructure that AKOS deploys into your environment and you own. The same record, engines and governance serve two desks: the provider preparing and defending a claim, and the Medicare Administrative Contractor reviewing a prior authorization request.',
+    points: [
+      'Eight provider modules, from eligibility to AR follow-up',
+      'A MAC review system for prior authorization: seven gates and a decision',
+      'Deployed and owned, never rented. Your data stays in your systems',
+      'The system prepares the work; a named person signs every decision',
+    ],
+  },
+  technical: {
+    label: 'How it’s built',
+    body: 'Infrastructure as code, built by AKOS on Palantir Foundry. Each module ships as a versioned package into your environment, and both sides execute against one versioned rulebook.',
+    spec: [
+      { k: 'Delivery', v: 'Versioned modules: ontology object types, governed actions, functions, automations, operator apps' },
+      { k: 'Runtime', v: 'Your Foundry environment. No MEDKONG tenant holds your records' },
+      { k: 'Record', v: 'Patients, encounters, codes, authorizations, claims and accounts as objects every module reads and writes' },
+      { k: 'Rulebook', v: 'LCDs, NCDs and coverage articles resolved by category, state and jurisdiction, plus your own payer policies' },
+      { k: 'Harnesses', v: 'Provider modules and the MAC review path run the same checks against the same rulebook' },
+      { k: 'Controls', v: 'Governed actions, not direct writes. A rerun never overwrites a verified human decision' },
+    ],
+  },
+  diagram: {
+    left: { label: 'Provider side', sub: '8 modules' },
+    center: { label: 'One rulebook', sub: 'Coverage policy · payer rules' },
+    right: { label: 'Reviewer side', sub: 'MAC review path · 7 gates' },
+  },
 };
 
 export const PRINCIPLES_HEAD = {
