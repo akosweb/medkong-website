@@ -10,6 +10,7 @@ import { usePageMotion, useSmoothAnchors } from '@/components/shared/motion';
 import { SiteHeader } from '@/components/shared/SiteHeader';
 import { sx } from '@/lib/css';
 import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
+import { RulebookFlow, RulebookStack } from './RulebookFlow';
 import { CLOSING, CONTRAST, HERO, PRINCIPLES, PRINCIPLES_HEAD, RELAY, REVIEWER, SUBMIT_ONCE, WHAT_IT_IS } from '@/lib/manifesto-data';
 
 const WRAP = 'max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px)';
@@ -91,39 +92,15 @@ function Hero() {
 
 /* ----------------------------------------------------------- what it is */
 
-function DiagramNode({ n, strong }: { n: { label: string; where: string; does: string }; strong?: boolean }) {
-  return (
-    <div
-      style={sx(
-        'border-radius:12px;padding:20px 22px;text-align:center;' +
-          (strong ? 'background:#0A5A4B;color:#fff' : 'background:#fff;border:1px solid #DDE2DC')
-      )}
-    >
-      <span style={sx(`${LABEL};color:${strong ? '#8FD3C1' : '#616961'}`)}>{n.where}</span>
-      <p style={sx('font-weight:600;font-size:20px;letter-spacing:-0.018em;margin:12px 0 0')}>{n.label}</p>
-      <p style={sx(`font-size:14px;line-height:1.5;margin:6px 0 0;color:${strong ? '#CFE6DE' : '#5A625C'}`)}>{n.does}</p>
-    </div>
-  );
-}
-
 function WhatItIs() {
-  const { plain, technical, diagram } = WHAT_IT_IS;
+  const { plain, technical } = WHAT_IT_IS;
   return (
     <section id="what" style={sx('background:#F4F6F3;border-top:1px solid #E6EAE5;padding:110px 0')}>
       <div style={sx(WRAP)}>
         <SectionHead eyebrow={WHAT_IT_IS.eyebrow} headline={WHAT_IT_IS.headline} support={WHAT_IT_IS.support} />
 
-        {/* Rulebook in the middle, one harness either side. */}
-        <div
-          className="mk-harness"
-          style={sx('display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1.1fr) 56px minmax(0,1fr);align-items:center;margin-top:44px')}
-        >
-          <DiagramNode n={diagram.left} />
-          <span className="mk-harness-link" aria-hidden="true" style={sx('height:2px;background:#0A5A4B')} />
-          <DiagramNode n={diagram.center} strong />
-          <span className="mk-harness-link" aria-hidden="true" style={sx('height:2px;background:#0A5A4B')} />
-          <DiagramNode n={diagram.right} />
-        </div>
+        <RulebookFlow />
+        <RulebookStack />
 
         <div
           className="mkcols"

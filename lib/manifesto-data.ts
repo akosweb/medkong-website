@@ -19,30 +19,31 @@ export const WHAT_IT_IS = {
   support:
     'For providers and for the reviewers who decide their cases. Same rules on both sides, installed in each side’s own environment.',
   plain: {
-    label: 'In plain terms',
-    body: 'MEDKONG is software that checks prior authorization cases against Medicare’s rules. The reviewer deciding a case and the provider preparing it run the same rules. It’s installed in your environment, not rented from us, so your data, your decisions and what the system learns stay yours.',
+    label: 'What it does',
+    body: 'MEDKONG is revenue cycle infrastructure that AKOS deploys into your environment and you own. The same record, engines and governance serve two desks: the provider preparing and defending a claim, and the Medicare Administrative Contractor reviewing a prior authorization request.',
     points: [
-      'One set of rules for both sides of the table',
-      'Installed in your environment, not a subscription you rent',
-      'The machine prepares the case; a named person signs every decision',
+      'Eight provider modules, from eligibility to AR follow-up',
+      'A MAC review system for prior authorization: seven gates and a decision',
+      'Deployed and owned, never rented. Your data stays in your systems',
+      'The system prepares the work; a named person signs every decision',
     ],
   },
   technical: {
-    label: 'In technical terms',
-    body: 'Infrastructure as code. Each module ships as a versioned package deployed into your Palantir Foundry environment. The rulebook is a shared, versioned layer that two harnesses execute against.',
+    label: 'How it’s built',
+    body: 'Infrastructure as code, built by AKOS on Palantir Foundry. Each module ships as a versioned package into your environment, and both sides execute against one versioned rulebook.',
     spec: [
       { k: 'Delivery', v: 'Versioned modules: ontology object types, governed actions, functions, automations, operator apps' },
       { k: 'Runtime', v: 'Your Foundry environment. No MEDKONG tenant holds your records' },
-      { k: 'Rulebook', v: 'LCDs, NCDs, coverage articles and rule groups, resolved by category, state and jurisdiction' },
-      { k: 'Harnesses', v: 'Reviewer harness and provider harness, both running the seven gates against one rulebook' },
-      { k: 'Controls', v: 'Governed actions, not direct writes. Verified human decisions are never overwritten by a rerun' },
-      { k: 'Change', v: 'Rulebook updates ship as new versions, applied to every affected case' },
+      { k: 'Record', v: 'Patients, encounters, codes, authorizations, claims and accounts as objects every module reads and writes' },
+      { k: 'Rulebook', v: 'LCDs, NCDs and coverage articles resolved by category, state and jurisdiction, plus your own payer policies' },
+      { k: 'Harnesses', v: 'Provider modules and the MAC review path run the same checks against the same rulebook' },
+      { k: 'Controls', v: 'Governed actions, not direct writes. A rerun never overwrites a verified human decision' },
     ],
   },
   diagram: {
-    left: { label: 'Reviewer harness', where: 'The reviewer’s environment', does: 'Decides the case' },
-    center: { label: 'One rulebook', where: 'Versioned · shared', does: 'Seven gates · LCD · NCD · rule groups' },
-    right: { label: 'Provider harness', where: 'Your environment', does: 'Prepares the case' },
+    left: { label: 'Provider side', sub: '8 modules' },
+    center: { label: 'One rulebook', sub: 'Coverage policy · payer rules' },
+    right: { label: 'Reviewer side', sub: 'MAC review path · 7 gates' },
   },
 };
 
