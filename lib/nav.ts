@@ -10,6 +10,7 @@ export type NavLink = { href: string; label: string; external?: boolean };
 export const SITE_NAV: NavLink[] = [
   { href: '/providers', label: 'For Providers' },
   { href: '/medicare-administrative-contractors', label: 'For MACs' },
+  { href: '/manifesto', label: 'Our Manifesto' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -25,6 +26,7 @@ export const FOOTER_NAV: { title: string; links: NavLink[] }[] = [
   {
     title: 'Company',
     links: [
+      { href: '/manifesto', label: 'Our Manifesto' },
       { href: '/contact', label: 'Contact' },
       { href: '/contact', label: 'Request a demo' },
       { href: 'https://akos.ai', label: 'AKOS', external: true },
