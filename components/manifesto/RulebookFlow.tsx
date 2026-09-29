@@ -125,6 +125,9 @@ export function RulebookFlow() {
         ))}
 
         <g className="mk-flow-core">
+          {/* Stacked pages behind the front card: the rulebook has depth. */}
+          <rect x={BOX.x0 + 28} y={MID - BOX.h / 2 - 24} width={BOX.x1 - BOX.x0 - 56} height={BOX.h} rx={14} fill="#B2D5C9" />
+          <rect x={BOX.x0 + 14} y={MID - BOX.h / 2 - 12} width={BOX.x1 - BOX.x0 - 28} height={BOX.h} rx={14} fill="#4FA48F" />
           <rect x={BOX.x0} y={MID - BOX.h / 2} width={BOX.x1 - BOX.x0} height={BOX.h} rx={14} fill="#0A5A4B" />
           <text x={(BOX.x0 + BOX.x1) / 2} y={MID - 10} textAnchor="middle" style={sx('font-family:Archivo,sans-serif;font-size:23px;font-weight:600;letter-spacing:-0.02em;fill:#fff')}>
             {diagram.center.label}
