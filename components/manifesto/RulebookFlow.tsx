@@ -49,9 +49,9 @@ const acrossRL = (yr: number, yl: number) =>
 
 const FLOW = {
   /** Provider cases: many, quick. Grey until checked, teal after. */
-  lr: { every: 170, duration: 2300, r: 3.4, before: '#9AA59D', after: '#12866F' },
+  lr: { every: 260, duration: 3800, r: 3.4, before: '#9AA59D', after: '#12866F' },
   /** Reviewer decisions back to providers: fewer, slower. */
-  rl: { every: 1150, duration: 3400, r: 4.6, before: '#0A5A4B', after: '#0A5A4B' },
+  rl: { every: 1700, duration: 5400, r: 4.6, before: '#0A5A4B', after: '#0A5A4B' },
   /** Hold the stream until the lines have drawn in. */
   delay: 1200,
 };
