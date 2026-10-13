@@ -598,8 +598,8 @@ body.mk-dialog-open {
 }
 
 /* Manifesto rulebook diagram (components/manifesto/RulebookFlow.tsx).
-   Lines draw in toward the rulebook once; a dash then travels each line
-   inward. Armed = off screen at load, so hiding it costs nothing. */
+   Lines draw in toward the rulebook once; the case particles are driven
+   from JS. Armed = off screen at load, so hiding it costs nothing. */
 .mk-flow-armed .mk-flow-line {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
@@ -620,29 +620,6 @@ body.mk-dialog-open {
   transition: opacity 0.6s ease 0.7s;
 }
 
-.mk-flow-dot {
-  opacity: 0;
-}
-
-.mk-flow-in .mk-flow-dot {
-  opacity: 1;
-  animation: mkflow 3.2s linear infinite;
-  animation-delay: var(--p);
-}
-
-.mk-flow-armed.mk-flow-in .mk-flow-dot {
-  transition: opacity 0.4s ease 1.2s;
-}
-
-@keyframes mkflow {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: -100;
-  }
-}
-
 .mk-flow-stack {
   display: none !important;
 }
@@ -657,8 +634,3 @@ body.mk-dialog-open {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .mk-flow-dot {
-    display: none;
-  }
-}

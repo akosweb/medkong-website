@@ -45,6 +45,11 @@ export const WHAT_IT_IS = {
     left: { label: 'Provider side', sub: '8 modules' },
     center: { label: 'One rulebook', sub: 'Coverage policy · payer rules' },
     right: { label: 'Reviewer side', sub: 'MAC review path · 7 gates' },
+    legend: {
+      unchecked: 'Provider case',
+      checked: 'Checked against the rulebook',
+      decision: 'Decision back to the provider',
+    },
   },
 };
 
