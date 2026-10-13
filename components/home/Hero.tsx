@@ -43,7 +43,21 @@ export function Hero() {
           </h1>
           <div>
             <p style={sx('font-size:18px;line-height:1.62;margin:0;color:#3A443E')}>{HERO.lede}</p>
-            <div style={sx('display:flex;gap:12px;flex-wrap:wrap;margin-top:26px')}>
+            <div style={sx('display:flex;gap:24px;flex-wrap:wrap;margin-top:22px')}>
+              <a
+                href="/providers"
+                style={sx('color:#0A5A4B;font-weight:600;font-size:15.5px;text-decoration:underline;text-underline-offset:4px')}
+              >
+                For Providers
+              </a>
+              <a
+                href="/medicare-administrative-contractors"
+                style={sx('color:#0A5A4B;font-weight:600;font-size:15.5px;text-decoration:underline;text-underline-offset:4px')}
+              >
+                For Payers &amp; Contractors
+              </a>
+            </div>
+            <div style={sx('display:flex;gap:12px;flex-wrap:wrap;margin-top:22px')}>
               <button
                 type="button"
                 className="mkcta"
@@ -54,15 +68,6 @@ export function Hero() {
               >
                 Request a demo
               </button>
-              <a
-                className="mkghost"
-                href="#modules"
-                style={sx(
-                  'display:inline-flex;align-items:center;min-height:48px;padding:12px 22px;border-radius:9px;border:1px solid #CFD6CF;color:#0E1512;font-weight:500;font-size:15.5px;white-space:nowrap;transition:background .18s ease,border-color .18s ease'
-                )}
-              >
-                Explore the modules
-              </a>
             </div>
           </div>
         </div>

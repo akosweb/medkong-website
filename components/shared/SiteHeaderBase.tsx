@@ -71,7 +71,7 @@ function useActiveSection(sections: NavLink[] | undefined) {
 
 /**
  * The sticky site header: wordmark, the same main nav on every page (For
- * Providers · For MACs · Contact), the CTA button, and an optional "On this
+ * Providers · For Payers & Contractors · Contact), the CTA button, and an optional "On this
  * page" row of section links with scroll-spy. Below 1020px both nav groups
  * move into a full-screen hamburger menu on the ink ground.
  *

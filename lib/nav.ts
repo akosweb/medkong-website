@@ -9,7 +9,7 @@ export type NavLink = { href: string; label: string; external?: boolean };
 
 export const SITE_NAV: NavLink[] = [
   { href: '/providers', label: 'For Providers' },
-  { href: '/medicare-administrative-contractors', label: 'For MACs' },
+  { href: '/medicare-administrative-contractors', label: 'For Payers & Contractors' },
   { href: '/manifesto', label: 'Our Manifesto' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -20,7 +20,7 @@ export const FOOTER_NAV: { title: string; links: NavLink[] }[] = [
     links: [
       { href: '/', label: 'Platform' },
       { href: '/providers', label: 'For Providers' },
-      { href: '/medicare-administrative-contractors', label: 'For MACs' },
+      { href: '/medicare-administrative-contractors', label: 'For Payers & Contractors' },
     ],
   },
   {
