@@ -51,7 +51,7 @@ const FLOW = {
   /** Provider cases: many, quick. Grey until checked, teal after. */
   lr: { every: 260, duration: 3800, r: 3.4, before: '#9AA59D', after: '#12866F' },
   /** Reviewer decisions back to providers: fewer, slower. */
-  rl: { every: 1700, duration: 5400, r: 4.6, before: '#0A5A4B', after: '#0A5A4B' },
+  rl: { every: 1700, duration: 5400, r: 4.6, before: '#0E1512', after: '#0E1512' },
   /** Hold the stream until the lines have drawn in. */
   delay: 1200,
 };
@@ -109,10 +109,6 @@ function useParticles(
       const el = document.createElementNS(SVG_NS, 'circle');
       el.setAttribute('r', String(f.r));
       el.setAttribute('fill', f.before);
-      if (dir === 'rl') {
-        el.setAttribute('stroke', '#fff');
-        el.setAttribute('stroke-width', '1.5');
-      }
       layer.appendChild(el);
       live.push({ el, path, len, start: now, dir, checked: false });
     };
@@ -285,12 +281,12 @@ export function RulebookFlow() {
         {[
           { c: FLOW.lr.before, t: diagram.legend.unchecked },
           { c: FLOW.lr.after, t: diagram.legend.checked },
-          { c: FLOW.rl.before, t: diagram.legend.decision, ring: true },
+          { c: FLOW.rl.before, t: diagram.legend.decision },
         ].map((l) => (
           <span key={l.t} style={sx('display:inline-flex;align-items:center;gap:8px')}>
             <span
               aria-hidden="true"
-              style={sx(`width:9px;height:9px;border-radius:50%;background:${l.c};${l.ring ? 'box-shadow:0 0 0 1.5px #fff,0 0 0 2.5px ' + l.c : ''}`)}
+              style={sx(`width:9px;height:9px;border-radius:50%;background:${l.c}`)}
             />
             {l.t}
           </span>
