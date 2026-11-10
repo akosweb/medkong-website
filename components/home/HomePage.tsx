@@ -24,7 +24,7 @@ function Header() {
       sections={HOME_SECTIONS}
       ctaLabel="Request a demo"
       onCta={openDemo}
-      tagline="Deployable AI infrastructure for the revenue cycle"
+      tagline="Deployable Agents for critical revenue cycle workflows"
     />
   );
 }

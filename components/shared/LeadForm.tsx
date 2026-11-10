@@ -118,7 +118,7 @@ export function LeadForm({ variant, source, submitLabel, successNoun, intro, pla
     ? count
       ? `${count} jurisdiction${count === 1 ? '' : 's'} selected`
       : 'No jurisdiction selected'
-    : `${count} modules selected`;
+    : `${count} Agents selected`;
 
   return (
     <div ref={rootRef} style={{ ...sx('position:relative'), ...(frozenHeight ? { minHeight: frozenHeight } : null) }}>
@@ -172,7 +172,7 @@ export function LeadForm({ variant, source, submitLabel, successNoun, intro, pla
           </div>
 
           <div style={sx('display:grid;gap:9px')}>
-            <span style={LABEL}>{mac ? 'Jurisdictions you review for' : 'Modules you’re interested in'}</span>
+            <span style={LABEL}>{mac ? 'Jurisdictions you review for' : 'Agents you’re interested in'}</span>
             <div style={sx('display:flex;flex-wrap:wrap;gap:8px')}>
               {mac
                 ? JURISDICTIONS.map((j) => {

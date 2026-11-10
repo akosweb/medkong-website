@@ -6,6 +6,16 @@ Notable changes to the MEDKONG website. Newest first.
 
 ### Changed
 
+- **Agent-first positioning** across every page: MEDKONG is now described as
+  deployable AI agents for critical revenue cycle workflows, added to the stack
+  a customer already runs. Headlines, heroes, header and footer taglines, page
+  metadata, the Manifesto and `/llms.txt` lead with agents; "module" stays as
+  the delivery term (each agent ships as a versioned module). Product
+  capabilities and claims are unchanged, and agents still only prepare work: a
+  named person makes every decision.
+  - "Agent" is always capitalized and never prefixed with "AI". In headings
+    the word is set in the primary teal, via `accentAgents()` in
+    `components/shared/accent.tsx`.
 - **Manifesto rulebook diagram** now shows direction: a fast, dense stream of
   provider cases flows left to right through the rulebook, changing colour as
   they come out checked, while fewer decisions flow right to left back to the

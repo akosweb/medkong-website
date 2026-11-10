@@ -156,7 +156,7 @@ export const AKOS_LAYERS = [
       'A canonical model of patients, encounters, claims, payers and dollars that holds against messy source data.',
   },
   {
-    name: 'Workflow & agents',
+    name: 'Workflow & Agents',
     detail: 'Agents operating inside approval paths, with queues, thresholds and handoffs made explicit.',
   },
   {
@@ -180,7 +180,7 @@ export const PALANTIR_POINTS = [
   },
   {
     name: 'Orchestration and decision support',
-    detail: 'Workflows, queues and agent actions run against live objects, not exported spreadsheets.',
+    detail: 'Workflows, queues and Agent actions run against live objects, not exported spreadsheets.',
   },
   {
     name: 'Auditability by construction',
@@ -241,10 +241,10 @@ export const STACK = [
   },
   {
     n: '05',
-    name: 'AI agents & workflow engines',
+    name: 'Agents & workflow engines',
     owner: 'MedKong',
     detail: 'Drafting, classification, checking and queue logic, each scoped to a module and an approval path.',
-    chips: ['Auth agent', 'Appeal agent', 'QA engine'],
+    chips: ['Auth Agent', 'Appeal Agent', 'QA engine'],
   },
   {
     n: '04',
@@ -283,7 +283,7 @@ export const SEGMENTS = [
     title: 'Start where the payer mix hurts most',
     body: 'Many facilities, one revenue cycle, and a decade of accumulated systems. Deploy against the worst queue without a multi-year platform program.',
     statA: '1',
-    labelA: 'Module to start',
+    labelA: 'Agent to start',
     statB: '0',
     labelB: 'Systems replaced',
     chip: 'Enterprise',
@@ -292,7 +292,7 @@ export const SEGMENTS = [
     n: '02',
     kicker: 'PROVIDER GROUPS & MSOs',
     title: 'One operational view across acquired practices',
-    body: 'Growth by acquisition leaves several PM systems and no common view. The ontology gives you one, and modules run across all of them.',
+    body: 'Growth by acquisition leaves several PM systems and no common view. The ontology gives you one, and Agents run across all of them.',
     statA: '4+',
     labelA: 'PM systems unified',
     statB: '1',
@@ -303,7 +303,7 @@ export const SEGMENTS = [
     n: '03',
     kicker: 'IN-HOUSE RCM TEAMS',
     title: 'Absorb the assembly work, keep the judgment',
-    body: 'Headcount is capped and volume is not. Modules take the assembly and checking so experienced staff spend the day on exceptions and payers.',
+    body: 'Headcount is capped and volume is not. Agents take the assembly and checking so experienced staff spend the day on exceptions and payers.',
     statA: '38%',
     labelA: 'Fewer touches',
     statB: '100%',
@@ -327,7 +327,7 @@ export const STEPS = [
   {
     n: '01',
     name: 'Pick the queue',
-    body: 'Two weeks of diagnostic on volumes, touches and leakage. One module chosen on numbers.',
+    body: 'Two weeks of diagnostic on volumes, touches and leakage. One Agent chosen on numbers.',
     c: '#12866F',
   },
   {
@@ -345,13 +345,13 @@ export const STEPS = [
   {
     n: '04',
     name: 'Run it live',
-    body: 'Operators work in the module with automation supervised, then progressively released as accuracy holds.',
+    body: 'Operators work alongside the Agent with automation supervised, then progressively released as accuracy holds.',
     c: '#B2D5C9',
   },
   {
     n: '05',
-    name: 'Add the next module',
-    body: 'The foundation is built. Adjacent workflows install against the same model and governance.',
+    name: 'Add the next Agent',
+    body: 'The foundation is built. Adjacent Agents deploy against the same model and governance.',
     c: '#D6E7DF',
   },
 ];

@@ -10,8 +10,8 @@ import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
 
 const EXPECT = [
   { t: 'The workbenches running', d: 'Prior auth, coding review, claim QA, denial triage and AR follow-up on sample data, end to end.' },
-  { t: 'The Foundry ontology behind them', d: 'How source systems land once and every module reads and writes the same governed objects.' },
-  { t: 'A scoping of a first module', d: 'Which queue to start with in your environment, what it connects to, and what six weeks to production looks like.' },
+  { t: 'The Foundry ontology behind them', d: 'How source systems land once and every Agent reads and writes the same governed objects.' },
+  { t: 'A scoping of a first Agent', d: 'Which queue to start with in your stack, what it connects to, and what six weeks to production looks like.' },
 ];
 
 function scrollToForm() {
@@ -31,7 +31,7 @@ export function ContactPage() {
 
   return (
     <div className="mk-page mk-contact">
-      <SiteHeader ctaLabel="Request a demo" onCta={scrollToForm} tagline="Deployable AI infrastructure for the revenue cycle" />
+      <SiteHeader ctaLabel="Request a demo" onCta={scrollToForm} tagline="Deployable Agents for critical revenue cycle workflows" />
 
       <section style={sx('background:#fff;padding:80px 0 110px')}>
         <div style={sx('max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px)')}>
@@ -67,7 +67,7 @@ export function ContactPage() {
               </h1>
               <p style={sx('font-size:18px;line-height:1.62;margin:24px 0 0;color:#3A443E;max-width:56ch')}>
                 A walkthrough runs 45 minutes. Tell us which queue hurts most and an AKOS - MEDKONG engineer will set it
-                up against the modules you pick.
+                up against the Agents you pick.
               </p>
 
               <div style={sx('margin-top:32px;border:1px solid #DDE2DC;border-radius:14px;overflow:hidden')}>
@@ -105,7 +105,7 @@ export function ContactPage() {
                   placement="contact"
                   submitLabel="Request a demo"
                   successNoun="demo"
-                  intro="Pick the modules you want to see. Two are preselected because that’s where most operators start."
+                  intro="Pick the Agents you want to see. Two are preselected because that’s where most operators start."
                 />
               </div>
             </div>

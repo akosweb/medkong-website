@@ -22,7 +22,7 @@ export function Modules() {
               <span style={sx(`flex:${p.count} 1 120px;display:grid;gap:8px`)}>
                 <span style={sx(`height:3px;border-radius:2px;background:${p.c}`)}></span>
                 <Label>
-                  {p.phase} · {p.count} modules
+                  {p.phase} · {p.count} Agents
                 </Label>
               </span>
             </Fragment>
@@ -43,7 +43,7 @@ export function Modules() {
                   <span style={sx('display:flex;align-items:center;justify-content:space-between;gap:10px')}>
                     <span style={sx(m.risk ? BADGE_RISK : BADGE_OK)}>{m.phase}</span>
                     <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>
-                      Module {m.n}
+                      Agent {m.n}
                     </span>
                   </span>
                   <h4 style={sx('font-weight:600;font-size:19px;line-height:1.25;letter-spacing:-0.02em;margin:14px 0 0')}>{m.name}</h4>

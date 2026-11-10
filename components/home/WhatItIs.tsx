@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { SectionHead } from '@/components/macs/mock';
 import { sx } from '@/lib/css';
 import { PILLARS, WHAT_IT_IS } from '@/lib/home-data';
+import { accentAgents } from '@/components/shared/accent';
 
 export function WhatItIs() {
   return (
@@ -18,7 +19,7 @@ export function WhatItIs() {
                 <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>
                   {c.n}
                 </span>
-                <h4 style={sx('font-weight:600;font-size:19px;line-height:1.25;letter-spacing:-0.02em;margin:12px 0 0')}>{c.title}</h4>
+                <h4 style={sx('font-weight:600;font-size:19px;line-height:1.25;letter-spacing:-0.02em;margin:12px 0 0')}>{accentAgents(c.title)}</h4>
                 <p style={sx('font-size:14.5px;line-height:1.58;margin:10px 0 0;color:#5A625C')}>{c.body}</p>
               </div>
             </Fragment>

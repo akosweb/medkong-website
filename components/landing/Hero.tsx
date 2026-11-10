@@ -19,9 +19,9 @@ export function Hero() {
     <span style={sx("display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:#6B756E;white-space:nowrap")}>Built on <img src={PALANTIR_WORDMARK} alt="Palantir" style={sx("height:15px;width:auto")} /> Foundry</span>
     </div>
     <div className="mkcols" style={sx("display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px clamp(32px,5vw,90px);align-items:start;margin-top:38px")}>
-    <h1 style={sx("font-weight:600;font-size:clamp(42px,5.6vw,82px);line-height:1.02;letter-spacing:-0.038em;margin:0")}>Modular AI Kit for the revenue cycle.</h1>
+    <h1 style={sx("font-weight:600;font-size:clamp(42px,5.6vw,82px);line-height:1.02;letter-spacing:-0.038em;margin:0")}>Deployable <span style={sx("color:#0A5A4B")}>Agents</span> for the revenue cycle.</h1>
     <div>
-    <p style={sx("font-size:18px;line-height:1.62;margin:0;color:#3A443E")}>A kit of deployable AI and workflow modules for healthcare revenue cycle operations: patient access, prior auth, coding, claims, denials, payments and AR. Install the module that fixes your worst queue. Expand when it earns it. No rip and replace.</p>
+    <p style={sx("font-size:18px;line-height:1.62;margin:0;color:#3A443E")}>Agents for the critical workflows in healthcare revenue cycle operations: patient access, prior auth, coding, claims, denials, payments and AR. Each one plugs into the stack you already run. Deploy the Agent that fixes your worst queue. Add the next when it earns it. No rip and replace.</p>
     <div style={sx("display:flex;gap:12px;flex-wrap:wrap;margin-top:26px")}>
     <button type="button" className="mkcta" onClick={openDemo} style={sx("display:inline-flex;align-items:center;height:48px;padding:0 24px;border:0;border-radius:9px;background:#0A5A4B;color:#fff;font-weight:600;font-size:15.5px;cursor:pointer;transition:background .18s ease")}>Request a demo</button>
     <a className="mkghost" href="#platform" style={sx("display:inline-flex;align-items:center;min-height:48px;padding:12px 22px;border-radius:9px;border:1px solid #CFD6CF;color:#0E1512;font-weight:500;font-size:15.5px;white-space:nowrap;transition:background .18s ease,border-color .18s ease")}>Explore the workbenches</a>

@@ -27,7 +27,7 @@ export function Outcomes() {
     </div>
     <div style={sx("background:#fff;padding:32px 28px")}>
     <p style={sx("margin:0;font-weight:600;font-size:clamp(42px,4.6vw,64px);letter-spacing:-0.04em;line-height:1")}>6wk</p>
-    <p style={sx("margin:18px 0 0;font-size:14.5px;line-height:1.5;color:#5A625C")}>From kickoff to first module in production</p>
+    <p style={sx("margin:18px 0 0;font-size:14.5px;line-height:1.5;color:#5A625C")}>From kickoff to first Agent in production</p>
     </div>
     </div>
     </div>

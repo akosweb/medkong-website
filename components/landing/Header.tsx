@@ -13,7 +13,7 @@ export function Header() {
       sections={PROVIDERS_SECTIONS}
       ctaLabel="Request a demo"
       onCta={openDemo}
-      tagline="Modular AI kit for healthcare RCM operations"
+      tagline="Deployable Agents for provider revenue cycle operations"
     />
   );
 }

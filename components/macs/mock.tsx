@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { MedkongMark } from '@/components/shared/MedkongMark';
 import { sx } from '@/lib/css';
 import { TAG, type TagKind } from '@/lib/landing-data';
+import { accentAgents } from '@/components/shared/accent';
 
 /**
  * Small pieces the MAC mock panels share. Everything is a non-interactive
@@ -168,7 +169,7 @@ export function SectionHead({
               'font-weight:600;font-size:clamp(32px,3.7vw,52px);line-height:1.06;letter-spacing:-0.032em;margin:0'
             )}
           >
-            {headline}
+            {accentAgents(headline)}
           </h2>
           <p style={sx('font-size:17px;line-height:1.62;margin:0;color:#3A443E')}>{support}</p>
         </div>
@@ -178,7 +179,7 @@ export function SectionHead({
             'font-weight:600;font-size:clamp(32px,3.7vw,52px);line-height:1.06;letter-spacing:-0.032em;margin:18px 0 0;max-width:26ch'
           )}
         >
-          {headline}
+          {accentAgents(headline)}
         </h2>
       )}
     </>

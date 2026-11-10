@@ -38,7 +38,7 @@ export const FOOTER_NAV: { title: string; links: NavLink[] }[] = [
 export const HOME_SECTIONS: NavLink[] = [
   { href: '#what', label: 'Overview' },
   { href: '#layers', label: 'How it works' },
-  { href: '#modules', label: 'Modules' },
+  { href: '#modules', label: 'Agents' },
   { href: '#foundry', label: 'Foundry' },
   { href: '#deployment', label: 'Deployment' },
   { href: '#solutions', label: 'Solutions' },

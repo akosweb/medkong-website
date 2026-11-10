@@ -3,6 +3,7 @@ import { Label, PanelGhost, PanelPrimary, SectionHead, Tag } from '@/components/
 import { sx } from '@/lib/css';
 import { DETERMINATION, GOVERNED_ACTION, LAYERS, LAYERS_HEAD, SUGGESTION } from '@/lib/home-data';
 import { useHome } from './state';
+import { accentAgents } from '@/components/shared/accent';
 
 const PANEL = 'margin:0 24px 24px;border:1px solid #E6EAE5;border-radius:10px;overflow:hidden;background:#fff';
 const PANEL_HEAD =
@@ -170,7 +171,7 @@ export function Layers() {
                         {l.n}
                       </span>
                     </span>
-                    <h3 style={sx('font-weight:600;font-size:24px;line-height:1.16;letter-spacing:-0.024em;margin:16px 0 0')}>{l.title}</h3>
+                    <h3 style={sx('font-weight:600;font-size:24px;line-height:1.16;letter-spacing:-0.024em;margin:16px 0 0')}>{accentAgents(l.title)}</h3>
                     <p style={sx('font-size:14.5px;line-height:1.58;margin:12px 0 0;color:#3A443E')}>{l.body}</p>
                   </div>
                   <Widget />

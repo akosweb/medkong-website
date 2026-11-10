@@ -12,6 +12,7 @@ import { sx } from '@/lib/css';
 import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
 import { RulebookFlow, RulebookStack } from './RulebookFlow';
 import { CLOSING, CONTRAST, HERO, PRINCIPLES, PRINCIPLES_HEAD, RELAY, REVIEWER, SUBMIT_ONCE, WHAT_IT_IS } from '@/lib/manifesto-data';
+import { accentAgents } from '@/components/shared/accent';
 
 const WRAP = 'max-width:1400px;margin:0 auto;padding:0 clamp(24px,4vw,56px)';
 const EYEBROW = "font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B";
@@ -19,7 +20,7 @@ const LABEL = "font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;
 
 function Header() {
   const { openDemo } = useDemo();
-  return <SiteHeader ctaLabel="Request a demo" onCta={openDemo} tagline="Deployable AI infrastructure for the revenue cycle" />;
+  return <SiteHeader ctaLabel="Request a demo" onCta={openDemo} tagline="Deployable Agents for critical revenue cycle workflows" />;
 }
 
 /* ------------------------------------------------------------------ hero */
@@ -61,7 +62,7 @@ function Hero() {
             {HERO.headline} <span style={sx('display:block;color:#0A5A4B')}>{HERO.second}</span>
           </h1>
           <div>
-            <p style={sx('font-weight:600;font-size:21px;line-height:1.4;letter-spacing:-0.015em;margin:0 0 16px;color:#0E1512')}>{HERO.leadIn}</p>
+            <p style={sx('font-weight:600;font-size:21px;line-height:1.4;letter-spacing:-0.015em;margin:0 0 16px;color:#0E1512')}>{accentAgents(HERO.leadIn)}</p>
             <p style={sx('font-size:18px;line-height:1.62;margin:0;color:#3A443E')}>{HERO.lede}</p>
             <div style={sx('display:flex;gap:12px;flex-wrap:wrap;margin-top:26px')}>
               <a
