@@ -3,7 +3,7 @@ import { ManifestoPage } from '@/components/manifesto/ManifestoPage';
 
 const title = 'Manifesto · MEDKONG';
 const description =
-  'Revenue cycle doesn’t have an AI problem. It has an argument problem. Four principles: one rulebook for both sides of the table, defensible decisions, policy as a system process, and decision making you own.';
+  'Revenue cycle doesn’t have an AI problem. It has an argument problem. Deployable Agents on both sides of the table, and four principles: one rulebook for both sides, defensible decisions, policy as a system process, and decision making you own.';
 
 export const metadata: Metadata = {
   title,

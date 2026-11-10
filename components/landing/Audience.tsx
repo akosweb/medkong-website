@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { sx } from '@/lib/css';
 import { useLanding } from './state';
+import { accentAgents } from '@/components/shared/accent';
 
 export function Audience() {
   const { segments } = useLanding();
@@ -16,7 +17,7 @@ export function Audience() {
     <div className="mkcard" style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:14px;overflow:hidden")}>
     <div style={sx("padding:24px 26px 20px")}>
     <span style={sx("font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#6B736C")}>{s.n} · {s.kicker}</span>
-    <h3 style={sx("font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-0.024em;margin:12px 0 0")}>{s.title}</h3>
+    <h3 style={sx("font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-0.024em;margin:12px 0 0")}>{accentAgents(s.title)}</h3>
     <p style={sx("font-size:15px;line-height:1.6;margin:12px 0 0;color:#3A443E")}>{s.body}</p>
     </div>
     <div style={sx("border-top:1px solid #EEF1ED;background:#FAFBFA;padding:18px 26px;display:flex;align-items:center;gap:28px;flex-wrap:wrap")}>
@@ -35,7 +36,7 @@ export function Audience() {
     </div>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:12px;padding:20px 22px")}>
     <h4 style={sx("font-weight:600;font-size:19px;line-height:1.25;letter-spacing:-0.02em;margin:0")}>Healthcare platforms</h4>
-    <p style={sx("font-size:14px;line-height:1.55;margin:9px 0 0;color:#5A625C")}>Building administrative software of your own? Use the kit as the operational backbone instead of rebuilding integrations and governance.</p>
+    <p style={sx("font-size:14px;line-height:1.55;margin:9px 0 0;color:#5A625C")}>Building administrative software of your own? Use the Agents as the operational backbone instead of rebuilding integrations and governance.</p>
     </div>
     </div>
     </div>

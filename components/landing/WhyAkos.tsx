@@ -13,9 +13,9 @@ export function WhyAkos() {
     <div>
     <img src={AKOS_MARK} alt="AKOS" style={sx("display:block;width:36px;height:36px;border-radius:5px;margin:0 0 16px")} />
     <span style={sx("display:block;font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#0A5A4B")}>Why AKOS</span>
-    <h2 style={sx("font-weight:600;font-size:clamp(30px,3.3vw,46px);line-height:1.07;letter-spacing:-0.03em;margin:22px 0 0")}>The team behind the kit builds the whole stack.</h2>
-    <p style={sx("font-size:17px;line-height:1.62;margin:20px 0 0;color:#3A443E")}>AKOS is a systems builder, not a design studio with an AI demo. The work is integration against real systems of record, canonical models that survive messy source data, agents that operate inside approval paths, and applications operators run their shift in.</p>
-    <p style={sx("font-size:17px;line-height:1.62;margin:18px 0 0;color:#3A443E")}>That is why MEDKONG ships as a kit: every layer beneath the modules is infrastructure AKOS already deploys for enterprise operations.</p>
+    <h2 style={sx("font-weight:600;font-size:clamp(30px,3.3vw,46px);line-height:1.07;letter-spacing:-0.03em;margin:22px 0 0")}>The team behind the <span style={sx("color:#0A5A4B")}>Agents</span> builds the whole stack.</h2>
+    <p style={sx("font-size:17px;line-height:1.62;margin:20px 0 0;color:#3A443E")}>AKOS is a systems builder, not a design studio with an AI demo. The work is integration against real systems of record, canonical models that survive messy source data, Agents that operate inside approval paths, and applications operators run their shift in.</p>
+    <p style={sx("font-size:17px;line-height:1.62;margin:18px 0 0;color:#3A443E")}>That is why MEDKONG ships as deployable Agents: every layer beneath them is infrastructure AKOS already deploys for enterprise operations.</p>
     <a href="https://akos.ai" target="_blank" rel="noopener" style={sx("display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-weight:600;font-size:16px")}>akos.ai →</a>
     </div>
     <div style={sx("display:grid;gap:12px")}>

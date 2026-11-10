@@ -26,11 +26,11 @@ export const SECTIONS = [
 
 export const HERO = {
   eyebrow: 'MEDKONG for Medicare Administrative Contractors',
-  headline: 'The system prepares the case.',
+  headline: 'The Agent prepares the case.',
   /** Second sentence, set in primary teal on its own line. */
   headlineAccent: 'The reviewer decides.',
   lede:
-    'MEDKONG for MACs turns a submitted prior authorization request into a structured, evidence-backed review case. Seven review gates, policy-aware findings, and a reviewer in control of every determination, through to the final decision, the UTN and the provider letter.',
+    'MEDKONG for MACs is a review Agent that turns a submitted prior authorization request into a structured, evidence-backed review case, deployed alongside the systems your review team already runs. Seven review gates, policy-aware findings, and a reviewer in control of every determination, through to the final decision, the UTN and the provider letter.',
   caption: 'The MEDKONG MAC review workbench. Sample data.',
 };
 
@@ -113,7 +113,7 @@ export const VISIT_NOTE = {
 
 export const TRUST = {
   claim:
-    'Ontology-backed case objects, governed actions and full lineage: the infrastructure layer under every review gate.',
+    'A review Agent working on ontology-backed case objects, through governed actions, with full lineage under every review gate.',
   chips: ['Human in the loop', 'Audit trail per action', 'Policy-aware findings'],
 };
 
@@ -121,9 +121,9 @@ export const TRUST = {
 
 export const WHAT_IT_IS = {
   eyebrow: 'The MAC-side solution',
-  headline: 'A review system, not an AI answer.',
+  headline: 'A review Agent, not an AI answer.',
   support:
-    'A purpose-built operational workbench for reviewing Medicare hospital outpatient prior authorization requests. Automated intake, eligibility and policy analysis, combined with a disciplined human-review process. Reviewers receive a guided case, not a collection of files and reference tables.',
+    'A purpose-built review Agent and operational workbench for reviewing Medicare hospital outpatient prior authorization requests. Automated intake, eligibility and policy analysis, combined with a disciplined human-review process. Reviewers receive a guided case, not a collection of files and reference tables.',
 };
 
 export const CAPABILITIES = [
@@ -428,7 +428,7 @@ export const FOUNDRY = {
   flow: [
     'PAR submissions · beneficiary coverage · policy corpus · clinical documents',
     'Foundry ontology & orchestration',
-    'MEDKONG MAC review kit',
+    'MEDKONG MAC review Agent',
     'Reviewer workbench',
   ],
 };

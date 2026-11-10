@@ -5,6 +5,7 @@ import { LeadForm } from '@/components/shared/LeadForm';
 import { sx } from '@/lib/css';
 import { REQUEST } from '@/lib/macs-data';
 import { REQUEST_ID } from './state';
+import { accentAgents } from '@/components/shared/accent';
 
 /**
  * The page's one conversion point. Same lead form as the rest of the site, in
@@ -26,7 +27,7 @@ export function RequestForm() {
               {REQUEST.eyebrow}
             </span>
             <h2 style={sx('font-weight:600;font-size:clamp(34px,4.4vw,64px);line-height:1.03;letter-spacing:-0.036em;margin:18px 0 0')}>
-              {REQUEST.headline}
+              {accentAgents(REQUEST.headline)}
             </h2>
             <p style={sx('font-size:18px;line-height:1.62;margin:24px 0 0;color:#3A443E;max-width:58ch')}>{REQUEST.lede}</p>
 

@@ -57,7 +57,7 @@ export function DemoDialog() {
               </h3>
               <p style={sx('font-size:15px;line-height:1.6;margin:12px 0 0;color:#5A625C')}>
                 45 minutes: the workbenches running, the Foundry ontology behind them, and a scoping of
-                a first module in your environment.
+                a first Agent in your stack.
               </p>
             </div>
             <button
@@ -109,7 +109,7 @@ export function DemoDialog() {
               <span style={sx('color:#fff;font-weight:600;font-size:14.5px')}>Built on Foundry</span>
             </span>
             <span style={sx("font:400 11.5px/1.5 'IBM Plex Mono',monospace;color:#9FC9BD")}>
-              Deployed module by module, into the systems you already run.
+              Deployed Agent by Agent, into the systems you already run.
             </span>
           </div>
         </div>

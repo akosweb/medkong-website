@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { ProvidersPage } from '@/components/landing/Landing';
 
-const title = 'MEDKONG for providers · Modular AI kit for the revenue cycle';
+const title = 'MEDKONG for providers · Deployable Agents for the revenue cycle';
 const description =
-  'Eight deployable modules for provider revenue cycle operations (eligibility, prior auth, charge capture, coding review, claim QA, denials, posting and AR) with the operator workbenches, outcomes and architecture. Built by AKOS on Palantir Foundry.';
+  'Eight deployable Agents for provider revenue cycle operations (eligibility, prior auth, charge capture, coding review, claim QA, denials, posting and AR) that plug into your existing stack, with the operator workbenches, outcomes and architecture. Built by AKOS on Palantir Foundry.';
 
 export const metadata: Metadata = {
   title,

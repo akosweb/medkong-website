@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { SectionHead } from '@/components/macs/mock';
 import { sx } from '@/lib/css';
 import { SOLUTIONS, SOLUTIONS_HEAD } from '@/lib/home-data';
+import { accentAgents } from '@/components/shared/accent';
 
 /** Two doors out of the overview: the provider kit and the MAC review system. Whole card is the link. */
 export function Solutions() {
@@ -26,7 +27,7 @@ export function Solutions() {
                   <span style={sx("font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;color:#6B736C")}>
                     {s.n} · {s.kicker}
                   </span>
-                  <h3 style={sx('font-weight:600;font-size:29px;line-height:1.14;letter-spacing:-0.026em;margin:14px 0 0')}>{s.title}</h3>
+                  <h3 style={sx('font-weight:600;font-size:29px;line-height:1.14;letter-spacing:-0.026em;margin:14px 0 0')}>{accentAgents(s.title)}</h3>
                   <p style={sx('font-size:15.5px;line-height:1.6;margin:14px 0 0;color:#3A443E')}>{s.body}</p>
                 </div>
                 <div

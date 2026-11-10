@@ -10,41 +10,41 @@ export const HERO = {
   eyebrow: 'Our manifesto',
   headline: 'One rulebook.',
   second: 'Checked from both sides.',
-  leadIn: 'MEDKONG puts payers and providers on the same rulebook.',
-  lede: 'We built the reviewer’s workbench first: seven gates, with the policy cited behind every finding. Providers clear the same gates before they submit. Every decision feeds back into the rulebook. Decided once, and it holds.',
+  leadIn: 'MEDKONG deploys Agents on both sides of the table, working from the same rulebook.',
+  lede: 'We built the reviewer’s Agent first: seven gates, with the policy cited behind every finding. Provider Agents clear the same gates before they submit. Every decision feeds back into the rulebook. Decided once, and it holds.',
 };
 
 export const WHAT_IT_IS = {
   eyebrow: 'What MEDKONG is',
-  headline: 'Infrastructure you own. Powered by the same rulebook.',
+  headline: 'Agents in your stack. Powered by the same rulebook.',
   support:
-    'For providers and for the reviewers who decide their cases. Same rules on both sides, installed in each side’s own environment.',
+    'For providers and for the reviewers who decide their cases. Same rules on both sides, deployed into each side’s existing stack.',
   plain: {
     label: 'What it does',
-    body: 'MEDKONG is revenue cycle infrastructure that AKOS deploys into your environment and you own. The same record, engines and governance serve two desks: the provider preparing and defending a claim, and the Medicare Administrative Contractor reviewing a prior authorization request.',
+    body: 'MEDKONG is a set of deployable Agents for critical revenue cycle workflows. AKOS adds them to the stack you already run, and you own them. The same record, Agents and governance serve two desks: the provider preparing and defending a claim, and the Medicare Administrative Contractor reviewing a prior authorization request.',
     points: [
-      'Eight provider modules, from eligibility to AR follow-up',
-      'A MAC review system for prior authorization: seven gates and a decision',
-      'Deployed and owned, never rented. Your data stays in your systems',
-      'The system prepares the work; a named person signs every decision',
+      'Eight provider Agents, from eligibility to AR follow-up',
+      'A MAC review Agent for prior authorization: seven gates and a decision',
+      'Deployed into your stack, never rented. Your data stays in your systems',
+      'The Agent prepares the work; a named person signs every decision',
     ],
   },
   technical: {
     label: 'How it’s built',
-    body: 'Infrastructure as code, built by AKOS on Palantir Foundry. Each module ships as a versioned package into your environment, and both sides execute against one versioned rulebook.',
+    body: 'Each Agent is infrastructure as code, built by AKOS on Palantir Foundry. It ships as a versioned package into your environment, and both sides execute against one versioned rulebook.',
     spec: [
-      { k: 'Delivery', v: 'Versioned modules: ontology object types, governed actions, functions, automations, operator apps' },
+      { k: 'Delivery', v: 'Each Agent as a versioned module: ontology object types, governed actions, functions, automations, operator apps' },
       { k: 'Runtime', v: 'Your Foundry environment. No MEDKONG tenant holds your records' },
-      { k: 'Record', v: 'Patients, encounters, codes, authorizations, claims and accounts as objects every module reads and writes' },
+      { k: 'Record', v: 'Patients, encounters, codes, authorizations, claims and accounts as objects every Agent reads and writes' },
       { k: 'Rulebook', v: 'LCDs, NCDs and coverage articles resolved by category, state and jurisdiction, plus your own payer policies' },
-      { k: 'Harnesses', v: 'Provider modules and the MAC review path run the same checks against the same rulebook' },
+      { k: 'Harnesses', v: 'Provider Agents and the MAC review Agent run the same checks against the same rulebook' },
       { k: 'Controls', v: 'Governed actions, not direct writes. A rerun never overwrites a verified human decision' },
     ],
   },
   diagram: {
-    left: { label: 'Provider side', sub: '8 modules' },
+    left: { label: 'Provider side', sub: '8 Agents' },
     center: { label: 'One rulebook', sub: 'Coverage policy · payer rules' },
-    right: { label: 'Reviewer side', sub: 'MAC review path · 7 gates' },
+    right: { label: 'Reviewer side', sub: 'MAC review Agent · 7 gates' },
     legend: {
       unchecked: 'Provider case',
       checked: 'Checked against the rulebook',
@@ -67,7 +67,7 @@ export const PRINCIPLES = [
       'A denial is not a billing error. It’s two parties reading the same policy differently. It ends only when both sides work from the same rules.',
     industry: 'Shift left. Catch errors earlier. Appeal faster.',
     applies:
-      'MEDKONG runs on both sides of prior authorization. The reviewer’s workbench checks every request through seven gates; the provider module builds the packet against those same gates before submission. Same LCD, NCD and rule-group logic, so the outcome is predictable before the request is sent.',
+      'MEDKONG runs on both sides of prior authorization. The reviewer’s Agent checks every request through seven gates; the provider Agent builds the packet against those same gates before submission. Same LCD, NCD and rule-group logic, so the outcome is predictable before the request is sent.',
   },
   {
     n: '02',
@@ -76,7 +76,7 @@ export const PRINCIPLES = [
       'A decision nobody can explain isn’t finished; it’s an appeal waiting to happen. What matters is the decision that holds up, not how many tasks got automated.',
     industry: 'Automate more. Measure the automation rate.',
     applies:
-      'Every automated action carries its inputs, its reasoning and a named reviewer. Findings quote the evidence and cite the policy text. The system proposes, a person records the verdict, and a verified decision can’t be overwritten by a later automated refresh.',
+      'Every automated action carries its inputs, its reasoning and a named reviewer. Findings quote the evidence and cite the policy text. The Agent proposes, a person records the verdict, and a verified decision can’t be overwritten by a later automated refresh.',
   },
   {
     n: '03',
@@ -94,7 +94,7 @@ export const PRINCIPLES = [
       'Your denial patterns and review history are your most valuable operating data. Outsourcing the decision means paying someone else to learn from it.',
     industry: 'Outsource follow-up. Buy SaaS. Hold vendors to a scorecard.',
     applies:
-      'MEDKONG is deployed, not hosted. Modules ship as versioned infrastructure into your own environment on Palantir Foundry. You run it, govern it and extend it, so what the system learns stays with you.',
+      'MEDKONG is deployed, not hosted. Each Agent ships as versioned infrastructure into your own environment on Palantir Foundry, inside the stack you already run. You run it, govern it and extend it, so what the Agents learn stays with you.',
   },
 ];
 
@@ -113,8 +113,8 @@ export const REVIEWER = {
   eyebrow: 'What we do',
   headline: 'We built the reviewer’s side first.',
   body: [
-    'MEDKONG’s reviewer workbench checks every request through the seven gates a reviewer is required to check. We know the gates because we built them from the reviewer’s side.',
-    'Providers scale up to match that rulebook. Your case is checked against the same seven gates before it leaves your building.',
+    'MEDKONG’s reviewer Agent checks every request through the seven gates a reviewer is required to check. We know the gates because we built them from the reviewer’s side.',
+    'Providers scale up to match that rulebook. Provider Agents check your case against the same seven gates before it leaves your building.',
   ],
   gates: [
     'Completeness',
@@ -163,5 +163,5 @@ export const CONTRAST = {
 export const CLOSING = {
   quote: 'Decide once, correctly,',
   quoteSecond: 'in a way both sides can check.',
-  body: 'Revenue cycle AI we deploy and you own. The machine prepares the case, a person signs it, and the rules are the same on both sides of the table.',
+  body: 'Deployable Agents for the critical workflows in your stack. The Agent prepares the case, a person signs it, and the rules are the same on both sides of the table.',
 };

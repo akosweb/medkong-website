@@ -42,9 +42,9 @@ export function Hero() {
           )}
         >
           <h1 style={sx('font-weight:600;font-size:clamp(38px,4.6vw,66px);line-height:1.04;letter-spacing:-0.036em;margin:0')}>
-            {HERO.headline}
+            <span style={sx('color:#0A5A4B')}>{HERO.headline}</span>
             <br />
-            <span style={sx('color:#0A5A4B')}>{HERO.headlineAccent}</span>
+            {HERO.headlineAccent}
           </h1>
           <div>
             <p style={sx('font-size:18px;line-height:1.62;margin:0;color:#3A443E')}>{HERO.lede}</p>

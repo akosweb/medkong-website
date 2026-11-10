@@ -16,11 +16,12 @@ import type { TagKind } from './landing-data';
 /* ------------------------------------------------------------------ hero */
 
 export const HERO = {
-  eyebrow: 'Deployable revenue cycle infrastructure',
-  headline: 'Revenue cycle AI we deploy and you own.',
+  eyebrow: 'Deployable Agents · Revenue cycle',
+  headline: 'Agents for critical RCM workflows.',
+  subhead: 'Deployed to your stack. Completely yours to run and own.',
   lede:
-    'MEDKONG is a kit of deployable modules for healthcare revenue cycle operations (eligibility, prior authorization, charge capture, coding review, claim QA, denials, posting and AR) and a review system for Medicare Administrative Contractors. AKOS deploys each module as versioned infrastructure into your environment. Your organization runs it, governs it and extends it. It is not a tenant you rent.',
-  caption: 'The MEDKONG kit manifest for one deployment. Sample data.',
+    'MEDKONG is a set of deployable Agents for the critical workflows in healthcare revenue cycle operations (eligibility, prior authorization, charge capture, coding review, claim QA, denials, posting and AR), plus review Agents for Medicare Administrative Contractors. AKOS deploys each Agent into the stack you already run, against your systems of record. The Agent prepares the work; your people decide. You own it. It is not a tenant you rent.',
+  caption: 'One MEDKONG deployment: each Agent ships as a versioned module. Sample data.',
 };
 
 /** The kit as the manifest mock's sidebar shows it: version and state per module. */
@@ -75,56 +76,56 @@ export const ENVIRONMENT = [
 
 export const TRUST = {
   claim:
-    'Ontology-backed objects, governed actions and full lineage: the infrastructure layer under every module, deployed into your environment.',
-  chips: ['Deployed as code', 'Audit trail per action', 'Human in the loop'],
+    'Agents that work on ontology-backed objects, through governed actions, with full lineage: deployed into your environment, alongside the systems you already run.',
+  chips: ['Added to your stack', 'Audit trail per action', 'Human in the loop'],
 };
 
 /* -------------------------------------------------------------- what it is */
 
 export const WHAT_IT_IS = {
   eyebrow: 'What MEDKONG is',
-  headline: 'Infrastructure you deploy. Not software you rent.',
+  headline: 'Agents you add to your stack. Not software you rent.',
   support:
-    'MEDKONG is delivered as versioned modules: ontology objects, governed actions, functions, automations and operator applications, built by AKOS on Palantir Foundry and deployed into your environment. Your organization runs it, governs it and changes it.',
+    'Each MEDKONG Agent is delivered as a versioned module (ontology objects, governed actions, functions, automations and an operator workbench), built by AKOS on Palantir Foundry and deployed into your environment. It works alongside the EHR, PM system and clearinghouse you already run. Your organization runs it, governs it and changes it.',
 };
 
 export const PILLARS = [
   {
     n: '01',
     title: 'Deployed, not hosted',
-    body: 'Each module lands in your environment as versioned infrastructure. Your data stays in your systems of record and lands once, with lineage. There is no MEDKONG tenant holding your records.',
+    body: 'Each Agent lands in your environment as versioned infrastructure. Your data stays in your systems of record and lands once, with lineage. There is no MEDKONG tenant holding your records.',
   },
   {
     n: '02',
     title: 'One record underneath',
-    body: 'Patients, encounters, documentation, codes, authorizations, claims, payments and balances are objects every module reads and writes, not copies in module-specific silos.',
+    body: 'Patients, encounters, documentation, codes, authorizations, claims, payments and balances are objects every Agent reads and writes, not copies in Agent-specific silos.',
   },
   {
     n: '03',
     title: 'Yours to extend',
-    body: 'Add an object type, a governed action or a work queue. Encode your payer policies and reviewer roles. The kit is the starting point; the operating model is yours.',
+    body: 'Add an object type, a governed action or a work queue. Encode your payer policies and reviewer roles. The Agents are the starting point; the operating model is yours.',
   },
   {
     n: '04',
-    title: 'Start with one module',
-    body: 'Deploy against the queue that hurts most, whether that is prior authorization, coding or claim QA, then add adjacent modules against the same foundation without rebuilding it.',
+    title: 'Start with one Agent',
+    body: 'Deploy an Agent against the queue that hurts most, whether that is prior authorization, coding or claim QA, then add adjacent Agents against the same foundation without rebuilding it.',
   },
 ];
 
 /* ------------------------------------------------------------------ layers */
 
 export const LAYERS_HEAD = {
-  eyebrow: 'How every module is built',
+  eyebrow: 'How every Agent is built',
   headline: 'Four layers on one governed record.',
   support:
-    'An engine that prepares the work with its evidence. A workbench where an authorized person decides. Governance that sets who may act and what a rerun may touch. An audit record that keeps what happened.',
+    'An Agent that prepares the work with its evidence. A workbench where an authorized person decides. Governance that sets who may act and what a rerun may touch. An audit record that keeps what happened.',
 };
 
 export const LAYERS = [
   {
     n: 'Layer 01',
     kicker: 'Preparation',
-    title: 'Engines that prepare the work',
+    title: 'Agents that prepare the work',
     body: 'Authorization determinations against the policy stack, ICD-10 suggestions validated against the index and tabular reference, clinical entities extracted from the transcript, the whole claim record checked before it leaves. Each result carries its evidence, its caveats and the exact inputs it still needs.',
   },
   {
@@ -200,10 +201,10 @@ export const LEDGER = [
 /* ----------------------------------------------------------------- modules */
 
 export const MODULES_HEAD = {
-  eyebrow: 'The kit',
-  headline: 'Eight modules. One revenue cycle.',
+  eyebrow: 'The Agents',
+  headline: 'Eight Agents. One revenue cycle.',
   support:
-    'Deployable independently, in any order. Each answers one operational question and hands structured context to the next. The visit, documentation, codes, charges and payments stay linked to the same patient and encounter.',
+    'Deployable independently, in any order. Each Agent answers one operational question and hands structured context to the next. The visit, documentation, codes, charges and payments stay linked to the same patient and encounter.',
   footnote:
     'Payer APIs, EDI transactions, clearinghouse acknowledgments, ERA posting and collection workflows are scoped and integrated per deployment, not assumed.',
 };
@@ -281,9 +282,9 @@ export const MODULE_CARDS: { n: string; phase: Phase; name: string; question: st
 export const FOUNDRY = {
   headline: 'MEDKONG is built on Palantir Foundry.',
   lede:
-    'Foundry is the substrate every module deploys onto: the governed data foundation, the ontology, the action framework and the lineage that make an AI decision inside a revenue workflow traceable rather than plausible.',
+    'Foundry is the substrate every Agent deploys onto: the governed data foundation, the ontology, the action framework and the lineage that make an AI decision inside a revenue workflow traceable rather than plausible.',
   second:
-    'It is also why the kit can be deployed rather than hosted. Modules are Foundry object types, actions, functions and applications, versioned and installed into your environment.',
+    'It is also why the Agents can be deployed rather than hosted. Each Agent ships as Foundry object types, actions, functions and applications, versioned and installed into your environment.',
   points: [
     {
       name: 'One governed data foundation',
@@ -291,7 +292,7 @@ export const FOUNDRY = {
     },
     {
       name: 'A shared operational ontology',
-      detail: 'Patients, encounters, codes, authorizations, claims and accounts as objects every module reads and writes.',
+      detail: 'Patients, encounters, codes, authorizations, claims and accounts as objects every Agent reads and writes.',
     },
     {
       name: 'Governed actions, not direct writes',
@@ -309,7 +310,7 @@ export const FOUNDRY = {
   flow: [
     'Your systems of record · EHR, PM, clearinghouse, documents',
     'Foundry ontology & orchestration',
-    'MEDKONG modules, deployed as code',
+    'MEDKONG Agents, deployed as code',
     'Operator workbenches',
   ],
 };
@@ -320,7 +321,7 @@ export const DEPLOYMENT_HEAD = {
   eyebrow: 'Deployment model',
   headline: 'What you own, and what AKOS delivers.',
   support:
-    'MEDKONG is not a hosted tenant. It is deployed into your environment by AKOS engineers, module by module, and handed over as infrastructure your team operates.',
+    'MEDKONG is not a hosted tenant. AKOS engineers add each Agent to your existing stack, one at a time, and hand it over as infrastructure your team operates.',
 };
 
 export const DEPLOYMENT = [
@@ -352,7 +353,7 @@ export const DEPLOYMENT = [
   {
     label: 'Delivery',
     value: 'AKOS engineers, in your stack',
-    body: 'Diagnose the queue, deploy the first module, encode your rules, run supervised, hand over. Then the next module.',
+    body: 'Diagnose the queue, deploy the first Agent, encode your rules, run supervised, hand over. Then the next Agent.',
   },
 ];
 
@@ -360,7 +361,7 @@ export const DEPLOYMENT = [
 export const DEPLOYMENT_CTA = {
   label: 'Next step',
   title: 'See it running against your queue.',
-  body: 'A 45-minute walkthrough: the workbenches, the ontology behind them, and a scoping of what the first module would take in your environment.',
+  body: 'A 45-minute walkthrough: the workbenches, the ontology behind them, and a scoping of what the first Agent would take in your stack.',
   primary: 'Request a demo',
   secondary: 'Talk to AKOS',
 };
@@ -368,27 +369,27 @@ export const DEPLOYMENT_CTA = {
 /* --------------------------------------------------------------- solutions */
 
 export const SOLUTIONS_HEAD = {
-  eyebrow: 'Two solutions, one kit',
+  eyebrow: 'Two solutions, one set of Agents',
   headline: 'Built for the provider side and the reviewer side.',
   support:
-    'The same record, engines and governance serve two very different desks: the provider organization preparing and defending a claim, and the Medicare Administrative Contractor reviewing a prior authorization request.',
+    'The same record, Agents and governance serve two very different desks: the provider organization preparing and defending a claim, and the Medicare Administrative Contractor reviewing a prior authorization request.',
 };
 
 export const SOLUTIONS = [
   {
     n: '01',
     kicker: 'For providers, SNFs & multi-facility groups',
-    title: 'Eight modules from pre-service to AR follow-up.',
-    body: 'Eligibility, prior authorization, charge capture, coding review, claim QA, denials, payment posting and AR: one governed workflow in which each module hands structured context to the next. Start with the queue that hurts most.',
+    title: 'Eight Agents from pre-service to AR follow-up.',
+    body: 'Eligibility, prior authorization, charge capture, coding review, claim QA, denials, payment posting and AR: one governed workflow in which each Agent hands structured context to the next. Start with the queue that hurts most.',
     chips: ['Pre-service', 'Mid-cycle', 'Post-service'],
     href: '/providers',
-    cta: 'Explore the provider kit',
+    cta: 'Explore the provider Agents',
   },
   {
     n: '02',
     kicker: 'For Medicare Administrative Contractors',
-    title: 'The system prepares the case. The reviewer decides.',
-    body: 'A submitted prior authorization request becomes a structured, evidence-backed review case: seven review gates, policy-aware findings, and a reviewer in control of every determination, through to the decision, the UTN and the provider letter.',
+    title: 'The Agent prepares the case. The reviewer decides.',
+    body: 'A review Agent turns a submitted prior authorization request into a structured, evidence-backed review case: seven review gates, policy-aware findings, and a reviewer in control of every determination, through to the decision, the UTN and the provider letter.',
     chips: ['Review Path · 7 gates', 'Decision · UTN · letter', 'Pilot-ready'],
     href: '/medicare-administrative-contractors',
     cta: 'See MEDKONG for MACs',

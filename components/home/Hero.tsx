@@ -4,6 +4,7 @@ import { HERO } from '@/lib/home-data';
 import { AKOS_MARK, PALANTIR_WORDMARK } from '@/lib/assets';
 import { KitManifest } from './KitManifest';
 import { useHome } from './state';
+import { accentAgents } from '@/components/shared/accent';
 
 export function Hero() {
   const { clock } = useHome();
@@ -39,7 +40,14 @@ export function Hero() {
           )}
         >
           <h1 style={sx('font-weight:600;font-size:clamp(42px,5.6vw,82px);line-height:1.02;letter-spacing:-0.038em;margin:0')}>
-            {HERO.headline}
+            {accentAgents(HERO.headline)}
+            <span
+              style={sx(
+                'display:block;margin-top:16px;font-weight:500;font-size:clamp(22px,2.3vw,32px);line-height:1.2;letter-spacing:-0.02em;color:#3A443E'
+              )}
+            >
+              {HERO.subhead}
+            </span>
           </h1>
           <div>
             <p style={sx('font-size:18px;line-height:1.62;margin:0;color:#3A443E')}>{HERO.lede}</p>

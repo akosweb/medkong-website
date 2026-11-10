@@ -238,7 +238,7 @@ export function RulebookFlow() {
         className="mk-flow"
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="The eight provider modules and the seven MAC review gates all run against one rulebook."
+        aria-label="The eight provider Agents and the seven MAC review gates all run against one rulebook."
         style={sx('display:block;width:100%;height:auto;margin-top:18px;overflow:visible')}
       >
         <Lines lines={lines} />

@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { sx } from '@/lib/css';
 import { useLanding } from './state';
+import { accentAgents } from '@/components/shared/accent';
 
 export function Workbenches() {
   const { arRows, arWork, batchId, codingRows, holds, isAr, isAuth, isClaims, isCoding, isDenials, packetBar, packetPct, packetRows, slaHero, tab, tabs, tower, triageRows } = useLanding();
@@ -22,7 +23,7 @@ export function Workbenches() {
     </div>
     <div className="mkcols" style={sx("display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.9fr);gap:36px clamp(32px,4vw,72px);margin-top:40px;align-items:start")}>
     <div>
-    <h3 style={sx("font-weight:600;font-size:clamp(26px,2.4vw,34px);line-height:1.12;letter-spacing:-0.028em;margin:0")}>{tab.title}</h3>
+    <h3 style={sx("font-weight:600;font-size:clamp(26px,2.4vw,34px);line-height:1.12;letter-spacing:-0.028em;margin:0")}>{accentAgents(tab.title)}</h3>
     <p style={sx("font-size:16px;line-height:1.62;margin:18px 0 0;color:#3A443E")}>{tab.pain}</p>
     <p style={sx("font-size:16px;line-height:1.62;margin:16px 0 0;color:#3A443E")}>{tab.capability}</p>
     <div style={sx("margin-top:24px;display:grid;gap:12px")}>
@@ -190,14 +191,14 @@ export function Workbenches() {
     </div>
     <div style={sx("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;margin-top:26px")}>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:12px;padding:20px 22px")}>
-    <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>Also in the kit</span>
+    <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>Also deployable</span>
     <h4 style={sx("font-weight:600;font-size:20px;line-height:1.25;letter-spacing:-0.02em;margin:10px 0 0")}>Payment posting &amp; reconciliation</h4>
     <p style={sx("font-size:14px;line-height:1.55;margin:9px 0 0;color:#5A625C")}>Remits matched to claims, variances explained against contract, exceptions queued instead of buried.</p>
     </div>
     <div style={sx("background:#fff;border:1px solid #DDE2DC;border-radius:12px;padding:20px 22px")}>
-    <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>Also in the kit</span>
+    <span style={sx("font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6B736C")}>Also deployable</span>
     <h4 style={sx("font-weight:600;font-size:20px;line-height:1.25;letter-spacing:-0.02em;margin:10px 0 0")}>Executive RCM command center</h4>
-    <p style={sx("font-size:14px;line-height:1.55;margin:9px 0 0;color:#5A625C")}>Work in flight across every installed module: throughput, aging, denial patterns by payer, automation rate, human intervention.</p>
+    <p style={sx("font-size:14px;line-height:1.55;margin:9px 0 0;color:#5A625C")}>Work in flight across every deployed Agent: throughput, aging, denial patterns by payer, automation rate, human intervention.</p>
     </div>
     </div>
     </div>

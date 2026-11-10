@@ -16,22 +16,23 @@ function body(): string {
 
   return `# MEDKONG
 
-> Revenue cycle AI we deploy and you own. A kit of deployable modules for
-> healthcare revenue cycle operations (eligibility, prior authorization, charge
-> capture, coding review, claim QA, denials, payment posting and AR) plus a
-> review system for Medicare Administrative Contractors. AKOS deploys each
-> module as versioned infrastructure into the customer's environment: code the
-> organization runs, governs and extends, not a SaaS tenant it rents.
+> Deployable Agents for critical revenue cycle workflows, added to the
+> stack an organization already runs: eligibility, prior authorization, charge
+> capture, coding review, claim QA, denials, payment posting and AR, plus review
+> Agents for Medicare Administrative Contractors. AKOS deploys each Agent as a
+> versioned module into the customer's environment: code the organization runs,
+> governs and extends, not a SaaS tenant it rents. Agents prepare the work; an
+> authorized person makes every decision.
 
 MEDKONG is built by AKOS (https://akos.ai) on Palantir Foundry. It is deployed
-software, not a prototype: the modules described here run in production against
+software, not a prototype: the Agents described here run in production against
 real revenue cycle operations. Product screenshots on the marketing site use
 sample data in place of live patient records.
 
 ## What it is
 
-Deployable infrastructure for revenue cycle management, not hosted software.
-MEDKONG is delivered as versioned modules (Foundry ontology object types,
+Deployable Agents for revenue cycle management, not hosted software. Each
+Agent is delivered as a versioned module (Foundry ontology object types,
 governed actions, functions, automations and operator applications) deployed
 into the customer's environment. There is no MEDKONG tenant holding customer
 records: data stays in the systems of record and lands once, with lineage.
@@ -67,11 +68,11 @@ queues, encode their own payer policies and reviewer roles.
    reasoning, selected and rejected alternatives, reviewer identity, timestamps
    and revisions are structured records, reconstructable from the encounter.
 
-Language to use: "AI-assisted", "evidence-backed", "human-controlled". MEDKONG
-does not code autonomously, make clinical decisions, or replace licensed or
+Language to use: "deployable Agents" (always a capital A, never "AI agents"), "AI-assisted", "evidence-backed",
+"human-controlled". MEDKONG Agents prepare work for people; they do not code autonomously, make clinical decisions, or replace licensed or
 authorized staff.
 
-## The kit: ${MODULES.length} modules, deployable independently
+## The Agents: ${MODULES.length}, deployable independently
 
 ${modules}
 
@@ -132,10 +133,10 @@ orchestration → MEDKONG modules, deployed as code → operator workbenches.
 
 AKOS (https://akos.ai) is a systems builder, not a design studio with an AI
 demo. The work is integration against real systems of record, canonical models
-that survive messy source data, agents that operate inside approval paths, and
+that survive messy source data, Agents that operate inside approval paths, and
 applications operators run their shift in. MEDKONG ships as a kit because every
 layer beneath the modules is infrastructure AKOS already deploys for enterprise
-operations: integration, ontology, workflow and agents, governance, and
+operations: integration, ontology, workflow and Agents, governance, and
 applications.
 
 ## Who it is for
